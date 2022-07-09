@@ -1,17 +1,17 @@
 export default function () {
-  $(".ol-scale-line").mousedown(function(event){
-    const target = $(this);
-    target.addClass("drag");
-    const eX = event.pageX - target.css("left").replace(/px/,"");
-    const eY = event.pageY - target.css("top").replace(/px/,"");
-    $(document).mousemove(function(event){
-      target.find('.drag').css("left",event.pageX - eX).css("top",event.pageY - eY);
-    });
-    $(document).mouseup(function(){
-      target.unbind("mousemove");
-      target.removeClass("drag");
-    });
-  });
+  // $(".ol-scale-line").mousedown(function(event){
+  //   const target = $(this);
+  //   target.addClass("drag");
+  //   const eX = event.pageX - target.css("left").replace(/px/,"");
+  //   const eY = event.pageY - target.css("top").replace(/px/,"");
+  //   $(document).mousemove(function(event){
+  //     target.find('.drag').css("left",event.pageX - eX).css("top",event.pageY - eY);
+  //   });
+  //   $(document).mouseup(function(){
+  //     target.unbind("mousemove");
+  //     target.removeClass("drag");
+  //   });
+  // });
   /*
 $(".handle").mousedown(function(event){
   const parent = $(this).parent();

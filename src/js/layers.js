@@ -88,7 +88,7 @@ export const flood10Obj = {};
 for (let i of mapsStr) {
   flood10Obj[i] = new ImageLaye(new Dem10());
   flood10Obj[i].getSource().on('beforeoperations', function(event) {
-    event.data.level = Number($('#' + i  + " .flood-range10m").val());
+    event.data.level = Number(document.querySelector('#' + i  + " .flood-range10m").value);
     event.data.colors = store.state.info.colors;
   });
 }
@@ -110,7 +110,7 @@ export const flood5Obj = {};
 for (let i of mapsStr) {
   flood5Obj[i] = new ImageLaye(new Dem5());
   flood5Obj[i].getSource().on('beforeoperations', function(event) {
-    event.data.level = Number($('#' + i  + " .flood-range5m").val());
+    event.data.level = Number(document.querySelector('#' + i  + " .flood-range5m").value);
     event.data.colors = store.state.info.colors;
   });
 }
