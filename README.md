@@ -2,11 +2,11 @@
 ol5+vueで作成したオープン版の「ひなたGIS」です。「ひなたGIS」の作者が作っています。
 # Demo
 [・初期時](https://kenzkenz.xsrv.jp/open-hinata/)
-[・２画面](http://bit.ly/2BPJGuQ)
-[・３画面](http://bit.ly/2BNnb9I)
-[・４画面](http://bit.ly/2QWvfiS)
-[・５万分の１旧版地形図](http://bit.ly/2BNnSjk)
-[・海面上昇シミュレーション](http://bit.ly/2BRjzDL)
+[・２画面](https://bit.ly/3IpLX1u)
+[・３画面](https://bit.ly/3nP9Jul)
+[・４画面](https://bit.ly/3apKADr)
+[・５万分の１旧版地形図](https://bit.ly/3c3GpOg)
+[・海面上昇シミュレーション](https://bit.ly/3amhBk5)
 
 
 # Dependencies
