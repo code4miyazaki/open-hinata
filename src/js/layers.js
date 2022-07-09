@@ -556,6 +556,22 @@ for (let i of mapsStr) {
 const shinsuishinSumm = '';
 // 洪水浸水想定ここまで------------------------------------------------------------------------
 
+// 津波浸水想定-------------------------------------------------------------------------------
+function Tsunami () {
+  this.source = new XYZ({
+    // url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}\.png',
+    url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/{z}/{x}/{y}.png',
+    minZoom: 1,
+    maxZoom: 17
+  })
+}
+const tsunamiObj = {};
+for (let i of mapsStr) {
+  tsunamiObj[i] = new TileLayer(new Tsunami())
+}
+const tunamiSumm = 'test';
+// 津波浸水想定ここまで------------------------------------------------------------------------
+
 // ここにレイヤーを全部書く。クリックするとストアのlayerListに追加されていく-------------------------
 const layers =
   [
@@ -597,7 +613,9 @@ const layers =
         { text: '海面上昇シミュ5Mdem', data: { id: 'flood5m', layer: flood5Obj, opacity: 1, summary: floodSumm, component: {name: 'flood5m', values:[]}} },
         { text: '海面上昇シミュ10Mdem', data: { id: 'flood10m', layer: flood10Obj, opacity: 1, summary: floodSumm, component: {name: 'flood10m', values:[]}} },
       ]},
-    { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } }
+    { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } },
+    { text: '津波浸水想定', data: { id: 'tunami', layer: tsunamiObj, opacity: 1, summary: tunamiSumm } }
+
   ];
 export const Layers = layers;
 
