@@ -68,7 +68,6 @@
             "longUrl":target
           }
         }) .then(function (response) {
-          console.log(response.data);
           vm.shortUrlText = response.data.data.url
         });
       }
@@ -85,11 +84,6 @@
       });
     }
   }
-
-
-
-
-
 </script>
 
 <style scoped>

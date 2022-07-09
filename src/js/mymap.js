@@ -43,27 +43,26 @@ export function initMap (vm) {
     store.commit('base/setMap', {mapName: maps[i].mapName, map});
 
     // イベント
-    map.on("pointermove",function(evt){
-      $(".ol-viewport").css({cursor:""});
-      const map = evt.map;
-      const option = {
-        layerFilter: function (layer) {
-          return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';
-        }
-      };
-      const feature = map.forEachFeatureAtPixel(evt.pixel,
-        function(feature) {
-          return feature;
-        },option);
-      if (feature) {
-        $(".ol-viewport").css({cursor:"pointer"});
-        return
-      }
-    });
+    // map.on("pointermove",function(evt){
+    //   document.querySelector(".ol-viewport").css({cursor:""});
+    //   const map = evt.map;
+    //   const option = {
+    //     layerFilter: function (layer) {
+    //       return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';
+    //     }
+    //   };
+    //   const feature = map.forEachFeatureAtPixel(evt.pixel,
+    //     function(feature) {
+    //       return feature;
+    //     },option);
+    //   if (feature) {
+    //     document.querySelector(".ol-viewport").css({cursor:"pointer"});
+    //     return
+    //   }
+    // });
 
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
-
       const map = evt.map;
       const option = {
         layerFilter: function (layer) {
@@ -134,25 +133,25 @@ export function initMap (vm) {
     store.commit('base/setNotifications',{mapName:mapName, control: notification});
     map.addControl(new ScaleLine());
 
-    const className =' .ol-scale-line';
-    $(className).mousedown(function(event){
-      const target = $(this);
-      target.addClass("drag");
-      let eX; let eY;
-      if (!event.changedTouches) {
-        eY = event.pageY - target.css("top").replace(/px/,"");
-        eX = event.pageX - target.css("left").replace(/px/,"");
-      }
-      $(document).mousemove(function(event){
-        if (!event.changedTouches) {
-          $(className + ".drag").css("left",event.pageX - eX).css("top",event.pageY - eY);
-        }
-      });
-      $(document).mouseup(function(){
-        target.unbind("mousemove");
-        target.removeClass("drag");
-      });
-    });
+    // const className =' .ol-scale-line';
+    // $(className).mousedown(function(event){
+    //   const target = $(this);
+    //   target.addClass("drag");
+    //   let eX; let eY;
+    //   if (!event.changedTouches) {
+    //     eY = event.pageY - target.css("top").replace(/px/,"");
+    //     eX = event.pageX - target.css("left").replace(/px/,"");
+    //   }
+    //   $(document).mousemove(function(event){
+    //     if (!event.changedTouches) {
+    //       $(className + ".drag").css("left",event.pageX - eX).css("top",event.pageY - eY);
+    //     }
+    //   });
+    //   $(document).mouseup(function(){
+    //     target.unbind("mousemove");
+    //     target.removeClass("drag");
+    //   });
+    // });
   }
 }
 
@@ -190,33 +189,33 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
   let myZindex = 0;
   for (let i = newLayerList[0].length - 1; i >= 0; i--) {
     // リストクリックによる追加したレイヤーで リストの先頭で リストの増加があったとき
-    const layer = newLayerList[0][i].layer;
-    if (newLayerList[0][i].addFlg) {
-      if (i === 0 ) {
-        if (newLayerList[1] > oldLayerList[1]) {
-          const oldCenter = map.getView().getCenter();
-          const center = layer.getProperties().center;
-          if (center) {
-            map.getView().setCenter(transform(center,"EPSG:4326","EPSG:3857"));
-            const div = $('<div>').text('元の位置に戻しますか？ ');
-
-            $('<a>').text('戻す')
-            .click(function() {
-              map.getView().setCenter(oldCenter);
-              store.state.base.notifications[thisName].hide();
-            })
-            .appendTo(div);
-
-            $('<a style="margin-left: 10px;">').text('NO')
-            .click(function() {
-              store.state.base.notifications[thisName].hide();
-            })
-            .appendTo(div);
-            store.state.base.notifications[thisName].show(div.get(0),5000)
-          }
-        }
-      }
-    }
+     const layer = newLayerList[0][i].layer;
+    // if (newLayerList[0][i].addFlg) {
+    //   if (i === 0 ) {
+    //     if (newLayerList[1] > oldLayerList[1]) {
+    //       const oldCenter = map.getView().getCenter();
+    //       const center = layer.getProperties().center;
+    //       if (center) {
+    //         map.getView().setCenter(transform(center,"EPSG:4326","EPSG:3857"));
+    //         const div = document.querySelector('div').text('元の位置に戻しますか？ ');
+    //
+    //         $('<a>').text('戻す')
+    //         .click(function() {
+    //           map.getView().setCenter(oldCenter);
+    //           store.state.base.notifications[thisName].hide();
+    //         })
+    //         .appendTo(div);
+    //
+    //         $('<a style="margin-left: 10px;">').text('NO')
+    //         .click(function() {
+    //           store.state.base.notifications[thisName].hide();
+    //         })
+    //         .appendTo(div);
+    //         store.state.base.notifications[thisName].show(div.get(0),5000)
+    //       }
+    //     }
+    //   }
+    // }
     // グループレイヤーで個別にzindexを触っているときがあるのでリセット。重くなるようならここをあきらめる。
    if (layer.values_.layers) {
      const gLayers = layer.values_.layers.array_;

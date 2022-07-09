@@ -35,7 +35,8 @@
         MyMap.removeLayer(item, this.s_layerList, this.mapName)
       },
       infoOpen (e,item) {
-        const dialogEl = $(e.currentTarget).parents('.dialog-div')[0];
+        // const dialogEl = $(e.currentTarget).parents('.dialog-div')[0];
+        const dialogEl =document.querySelector(".dialog-div")
         const top = dialogEl.offsetTop + 'px';
         const left = (dialogEl.offsetLeft + dialogEl.offsetWidth + 5) + 'px';
         const result = this.s_dialogsINfo[this.mapName].find(el => el.id === item.id);

@@ -7,13 +7,13 @@ import Snotify from 'vue-snotify'
 import 'vue-snotify/styles/material.css'
 import Dialog from './components/Dialog'
 import DialogInfo from './components/Dialog-info'
-import jQuery from 'jquery'
+// import jQuery from 'jquery'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
 import drag from './js/drag'
-global.$ = jQuery;
-const $ = jQuery;
+// global.$ = jQuery;
+// const $ = jQuery;
 Vue.use(drag);
 Vue.use(BootstrapVue);
 Vue.component('v-dialog', Dialog);

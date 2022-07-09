@@ -111,7 +111,8 @@ export function permalinkEventSet () {
                       store.state.base.dialogs[mapName].style.display = 'block';
                       const top = store.state.base.dialogs[mapName].style.top;
                       // $('#map01' + ' .dialog-div')の長さがわかればいい。それぞれに必要なし
-                      const left = Number(store.state.base.dialogs[mapName].style.left.replace(/px/,"")) + $('#map01' + ' .dialog-div').width() + 10 + 'px';
+                      document.querySelector('#map01' + ' .dialog-div').style.display = 'block';
+                      const left = Number(store.state.base.dialogs[mapName].style.left.replace(/px/,"")) + document.querySelector('#map01' + ' .dialog-div').clientWidth + 10 + 'px';
                       const infoDialog =
                         {
                           id: node.data.id,
