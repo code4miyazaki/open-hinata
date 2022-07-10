@@ -389,7 +389,7 @@
     .ol-scale-line{
         left: calc(50% - 50px);
         height: 22px;
-        cursor: grab;
+        /*cursor: grab;*/
     }
     .ol-zoom {
         bottom: 40px;

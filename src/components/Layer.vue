@@ -36,7 +36,24 @@
       },
       infoOpen (e,item) {
         // const dialogEl = $(e.currentTarget).parents('.dialog-div')[0];
-        const dialogEl =document.querySelector(".dialog-div")
+        console.log(e.currentTarget.parentNode)
+        console.log(this.mapName)
+        let len= 1
+        switch (this.mapName) {
+          case 'map01':
+            len = 0
+            break;
+          case 'map02':
+            len = 2  //なぜか２でないとうまくいかない。
+            break;
+          case 'map03':
+            len = 3
+            break;
+          case 'map04':
+            len = 4
+            break;
+         }
+        const dialogEl = document.querySelectorAll(".dialog-div")[len]
         const top = dialogEl.offsetTop + 'px';
         const left = (dialogEl.offsetLeft + dialogEl.offsetWidth + 5) + 'px';
         const result = this.s_dialogsINfo[this.mapName].find(el => el.id === item.id);
