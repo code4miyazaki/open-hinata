@@ -36,7 +36,7 @@
 
           if (node.data.component) {
             const top = this.$store.state.base.dialogs[this.mapName].style.top;
-            const left = Number(this.$store.state.base.dialogs[this.mapName].style.left.replace(/px/,"")) + $('#' + this.mapName + ' .dialog-div').width() + 10 + 'px';
+            const left = Number(this.$store.state.base.dialogs[this.mapName].style.left.replace(/px/,"")) + document.querySelector('#' + this.mapName + ' .dialog-div').clientWidth + 10 + 'px';
             const infoDialog =
               {
                 id: node.data.id,
