@@ -616,7 +616,7 @@ const miyazakisiHmObj = {};
 for (let i of mapsStr) {
   miyazakisiHmObj[i] = new TileLayer(new MiyazakisiHm())
 }
-const miyazakisiHmSumm = '';
+const miyazakisiHmSumm = '<a href="http://www.city.miyazaki.miyazaki.jp/life/fire_department/hazard_map/1153.html" target="_blank">宮崎市洪水ハザードマップ</a>へ';
 // 宮崎市ハザードマップここまで------------------------------------------------------------------------
 
 // ここにレイヤーを全部書く。クリックするとストアのlayerListに追加されていく-------------------------
@@ -666,7 +666,7 @@ const layers =
       children: [
         { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } },
         { text: '津波浸水想定', data: { id: 'tunami', layer: tsunamiObj, opacity: 1, summary: tunamiSumm } },
-        { text: '宮崎市洪水ハザードマップ', data: { id: 'miyazakisiHm', layer: miyazakisiHmObj, opacity: 1, summary: miyazakisiHmSumm } }
+        { text: '宮崎市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyazakisiHm', layer: miyazakisiHmObj, opacity: 1, summary: miyazakisiHmSumm } }
       ]}
   ];
 export const Layers = layers;
