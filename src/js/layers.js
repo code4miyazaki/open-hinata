@@ -603,6 +603,22 @@ for (let i of mapsStr) {
 const tunamiSumm = 'test';
 // 津波浸水想定ここまで------------------------------------------------------------------------
 
+// 宮崎市ハザードマップ-------------------------------------------------------------------------------
+function MiyazakisiHm () {
+  this.source = new XYZ({
+    // url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}\.png',
+    url: 'https://kenzkenz.github.io/hazardmap/tile/miyazakisi/{z}/{x}/{-y}.png',
+    minZoom: 1,
+    maxZoom: 18
+  })
+}
+const miyazakisiHmObj = {};
+for (let i of mapsStr) {
+  miyazakisiHmObj[i] = new TileLayer(new MiyazakisiHm())
+}
+const miyazakisiHmSumm = '';
+// 宮崎市ハザードマップここまで------------------------------------------------------------------------
+
 // ここにレイヤーを全部書く。クリックするとストアのlayerListに追加されていく-------------------------
 const layers =
   [
@@ -633,22 +649,25 @@ const layers =
         { text: '東西蝦夷山川地理取調図', data: { id: 'ezosansen', layer: ezosansenObj, opacity: 1, summary: ezosansenSumm } },
         { text: '北海道古地図', data: { id: 'kotizu01hokkaidou', layer: kotizu01hokkaidouObj, opacity: 1, summary: kotizu01hokkaidouSumm } }
       ]},
-    { text: '今昔マップ',
-      children: [
-        { text: '福岡・北九州編',
-          children: [
-            { text: '1922-1926年', data: { id: 'kon_hu01', layer: kon_hukuoka01Obj, opacity: 1, summary: kon_hukuoka01Summ } },
-            // { text: '1936-1938年', data: { id: 'kon_hu02', layer: nihonCsArr, opacity: 1 } }
-          ]}
-      ]},
+    // { text: '今昔マップ',
+    //   children: [
+    //     { text: '福岡・北九州編',
+    //       children: [
+    //         { text: '1922-1926年', data: { id: 'kon_hu01', layer: kon_hukuoka01Obj, opacity: 1, summary: kon_hukuoka01Summ } },
+    //         // { text: '1936-1938年', data: { id: 'kon_hu02', layer: nihonCsArr, opacity: 1 } }
+    //       ]}
+    //   ]},
     { text: '海面上昇',
       children: [
         { text: '海面上昇シミュ5Mdem', data: { id: 'flood5m', layer: flood5Obj, opacity: 1, summary: floodSumm, component: {name: 'flood5m', values:[]}} },
         { text: '海面上昇シミュ10Mdem', data: { id: 'flood10m', layer: flood10Obj, opacity: 1, summary: floodSumm, component: {name: 'flood10m', values:[]}} },
       ]},
-    { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } },
-    { text: '津波浸水想定', data: { id: 'tunami', layer: tsunamiObj, opacity: 1, summary: tunamiSumm } }
-
+    { text: 'ハザードマップ',
+      children: [
+        { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } },
+        { text: '津波浸水想定', data: { id: 'tunami', layer: tsunamiObj, opacity: 1, summary: tunamiSumm } },
+        { text: '宮崎市洪水ハザードマップ', data: { id: 'miyazakisiHm', layer: miyazakisiHmObj, opacity: 1, summary: miyazakisiHmSumm } }
+      ]}
   ];
 export const Layers = layers;
 
