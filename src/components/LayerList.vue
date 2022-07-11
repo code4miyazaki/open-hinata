@@ -27,6 +27,8 @@
               title: node.text,
               layer: node.data.layer,
               opacity: node.data.opacity,
+              zoom:node.data.zoom,
+              center:node.data.center,
               addFlg:true,
               summary: node.data.summary,
               component: node.data.component

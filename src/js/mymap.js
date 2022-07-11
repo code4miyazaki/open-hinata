@@ -230,6 +230,13 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
     map.removeLayer(layer);
     map.addLayer(layer);
     layer.setOpacity(newLayerList[0][i].opacity)
+    // console.log(newLayerList[0][i])
+    if (newLayerList[0][i].zoom) {
+      map.getView().setZoom(newLayerList[0][i].zoom)
+    }
+    if (newLayerList[0][i].center) {
+      map.getView().setCenter(transform(newLayerList[0][i].center, "EPSG:4326", "EPSG:3857"));
+    }
   }
 }
 
