@@ -606,7 +606,6 @@ const tunamiSumm = 'test';
 // 宮崎市ハザードマップ-------------------------------------------------------------------------------
 function MiyazakisiHm () {
   this.source = new XYZ({
-    // url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}\.png',
     url: 'https://kenzkenz.github.io/hazardmap/tile/miyazakisi/{z}/{x}/{-y}.png',
     minZoom: 1,
     maxZoom: 18
@@ -618,6 +617,22 @@ for (let i of mapsStr) {
 }
 const miyazakisiHmSumm = '<a href="http://www.city.miyazaki.miyazaki.jp/life/fire_department/hazard_map/1153.html" target="_blank">宮崎市洪水ハザードマップ</a>へ';
 // 宮崎市ハザードマップここまで------------------------------------------------------------------------
+
+// 都城市ハザードマップ-------------------------------------------------------------------------------
+function MiyakonozyousiHm () {
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/hazardmap/tile/miyakonozyousi/{z}/{x}/{-y}.png',
+    minZoom: 1,
+    maxZoom: 18
+  })
+}
+const miyakonozyousiHmObj = {};
+for (let i of mapsStr) {
+  miyakonozyousiHmObj[i] = new TileLayer(new MiyakonozyousiHm())
+}
+const miyakonozyousiHmSumm = '';
+// 都城市ハザードマップここまで------------------------------------------------------------------------
+
 
 // ここにレイヤーを全部書く。クリックするとストアのlayerListに追加されていく-------------------------
 const layers =
@@ -666,7 +681,8 @@ const layers =
       children: [
         { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } },
         { text: '津波浸水想定', data: { id: 'tunami', layer: tsunamiObj, opacity: 1, summary: tunamiSumm } },
-        { text: '宮崎市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyazakisiHm', layer: miyazakisiHmObj, opacity: 1, summary: miyazakisiHmSumm } }
+        { text: '宮崎市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyazakisiHm', layer: miyazakisiHmObj, opacity: 1, summary: miyazakisiHmSumm } },
+        { text: '都城市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyakonozyousiHm', layer: miyakonozyousiHmObj, opacity: 1, summary: miyakonozyousiHmSumm } }
       ]}
   ];
 export const Layers = layers;

@@ -31,7 +31,7 @@
   import * as Permalink from '../js/permalink'
   import Inobounce from '../js/inobounce'
   import * as MyMap from '../js/mymap'
-  import JqueryFunction from '../js/jquery-function'
+  // import JqueryFunction from '../js/jquery-function'
   export default {
     name: 'App',
     components: {
@@ -175,7 +175,7 @@
         Inobounce();
       });
 
-      JqueryFunction();//削除予定
+      // JqueryFunction();//削除予定
     }
   }
 </script>
