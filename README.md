@@ -6,7 +6,7 @@ ol5+vueで作成したオープン版の「ひなたGIS」です。「ひなたG
 [・３画面](https://bit.ly/3nP9Jul)
 [・４画面](https://bit.ly/3apKADr)
 [・５万分の１旧版地形図](https://bit.ly/3c3GpOg)
-[・海面上昇シミュレーション](https://bit.ly/3amhBk5)
+[・海面上昇シミュレーション](https://bit.ly/3z0cmQC)
 
 
 # Dependencies
