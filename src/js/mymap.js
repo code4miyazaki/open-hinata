@@ -231,11 +231,12 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
     map.addLayer(layer);
     layer.setOpacity(newLayerList[0][i].opacity)
     // console.log(newLayerList[0][i])
-    if (newLayerList[0][i].zoom) {
-      map.getView().setZoom(newLayerList[0][i].zoom)
+   // 新規追懐したレイヤーだけにズームとセンターを設定する。
+    if (newLayerList[0][0].zoom) {
+      map.getView().setZoom(newLayerList[0][0].zoom)
     }
-    if (newLayerList[0][i].center) {
-      map.getView().setCenter(transform(newLayerList[0][i].center, "EPSG:4326", "EPSG:3857"));
+    if (newLayerList[0][0].center) {
+      map.getView().setCenter(transform(newLayerList[0][0].center, "EPSG:4326", "EPSG:3857"));
     }
   }
 }
