@@ -436,7 +436,7 @@ function Mapwarper (url,bbox) {
 function Mw5center () {
   this.name = 'Mw5center';
   this.source = new VectorSource({
-    url:'https://kenzkenz.xsrv.jp/aaa/geojson/mw5center.geojson',
+    url:'https://kenzkenz.xsrv.jp/open-hinata/geojson/mw5center.geojson',
     format: new GeoJSON()
   });
   this.maxResolution = 1222.99;

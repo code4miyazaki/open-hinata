@@ -73,11 +73,11 @@ export function initMap (vm) {
         function(feature) {
           return feature;
         },option);
-      if (feature) {
-        const prop = feature.getProperties();
-        window.open(prop.uri, '_blank');
-        return
-      }
+      // if (feature) {
+      //   const prop = feature.getProperties();
+      //   window.open(prop.uri, '_blank');
+      //   return
+      // }
 
       const layers = map.getLayers().getArray();
       const result5 = layers.find(el => el === Layers.mw5Obj[mapName]);
