@@ -383,8 +383,8 @@
 <style>
     /*ol関係のスタイル*/
     .ol-rotate {
-        right: 49%;
-        top: 20px;
+        right: 50%;
+        top: 2.5em;
     }
     .ol-scale-line{
         left: calc(50% - 50px);
