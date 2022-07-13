@@ -432,7 +432,7 @@ function Mapwarper (url,bbox) {
   // クリックしたとときにextentを操作するため元のextentを保存しておく。
   this.extent2 = transformE(bbox)
 }
-// 地区名
+// 地図上に地区名を表示する。
 function Mw5center () {
   this.name = 'Mw5center';
   this.source = new VectorSource({
