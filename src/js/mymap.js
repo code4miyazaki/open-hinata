@@ -5,6 +5,7 @@ import Map from 'ol/Map'
 import View from 'ol/View'
 import { transform, fromLonLat } from 'ol/proj'
 import { ScaleLine } from 'ol/control';
+import Toggle from 'ol-ext/control/Toggle'
 import Target from 'ol-ext/control/Target'
 import Lego from 'ol-ext/filter/Lego'
 import Notification from '../js/notification'
@@ -127,6 +128,37 @@ export function initMap (vm) {
       vm.zoom[mapName] = 'zoom=' + String(Math.floor(map.getView().getZoom() * 100) / 100)
     });
     // コントロール追加
+    //現在地取得
+    const  success = (pos) =>{
+      const lon = pos.coords.longitude;
+      const lat = pos.coords.latitude;
+      // map.getView().setCenter(transform([lon,lat],"EPSG:4326","EPSG:3857"));
+      const center = transform([lon,lat],"EPSG:4326","EPSG:3857")
+      map.getView().animate({
+        center: center,
+        duration: 500
+      });
+    }
+    const  fail = (error) =>{alert('位置情報の取得に失敗しました。エラーコード：' + error.code)}
+    let interval
+    const stop = () => {clearInterval(interval)}
+    const  currentPosition = new Toggle(
+      {	html: '<a>現</a>',
+        className: "current-position",
+        active:true,
+        onToggle: function(active)
+        {
+          if(!active) {
+            interval = setInterval(function(){
+              navigator.geolocation.getCurrentPosition(success, fail);
+            },2000);
+          } else {
+            stop()
+          }
+        }
+      }
+    );
+    map.addControl(currentPosition);
     map.addControl(new Target({composite: 'difference'}));
     const notification = new Notification();
     map.addControl(notification);
@@ -175,6 +207,9 @@ export function synch (vm) {
     store.state.base.maps.map04.setView(map01View)
   }
 }
+
+
+
 
 export function resize () {
   store.state.base.maps.map01.updateSize();

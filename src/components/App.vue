@@ -433,4 +433,15 @@
         color: #9cf;
         cursor: pointer;
     }
+    .ol-button i
+    {	color: inherit;
+    }
+    .ol-button.ol-active button
+    {	background: rgba(60, 136, 0, 0.7)
+
+    }
+    .current-position {
+      top: 0.5em;
+      right: 50%;
+    }
 </style>
