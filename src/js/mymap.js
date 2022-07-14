@@ -120,12 +120,13 @@ export function initMap (vm) {
       if (feature) {
         const prop = feature.getProperties();
         const uri = prop.uri
+        const title = prop.title
         if(uri.includes('stanford')) {
           if (confirm('スタンフォード大学のサイトを表示しますか？')) {
             window.open(uri, '_blank');
           }
         } else {
-          notification.show("スタンフォード大学に地図はありません。",5000)
+          notification.show('「' +title + '」の地図はスタンフォード大学にありません。',5000)
         }
         // return
       }
@@ -176,9 +177,6 @@ export function initMap (vm) {
     map.on('moveend', function () {
       vm.zoom[mapName] = 'zoom=' + String(Math.floor(map.getView().getZoom() * 100) / 100)
     });
-
-
-
 
     // const className =' .ol-scale-line';
     // $(className).mousedown(function(event){
