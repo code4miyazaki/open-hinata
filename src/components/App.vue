@@ -165,7 +165,7 @@
         MyMap.synch(this)
         console.log(this.synchFlg)
         if(this.synchFlg) {
-        document.querySelector('.lock-open').style.display ='none'
+          document.querySelector('.lock-open').style.display ='none'
           document.querySelector('.lock').style.display ='block'
         } else {
           document.querySelector('.lock-open').style.display = 'block'
@@ -274,9 +274,13 @@
         background-color: #fff;
         color: rgba(0,60,136,0.5);
         z-index: 10001;
+        cursor: pointer;
     }
     #lock:hover{
         color: rgba(0,60,136,0.7);
+    }
+    .lock, .lock-open {
+      margin-top: 4px;
     }
     .olbtn{
         background-color: rgba(0,60,136,0.5);
@@ -435,7 +439,7 @@
         left: 33.33%;
         max-width: calc(66% - 4em);
         min-width: 5em;
-        max-height: 5em;
+        max-height: 15em;
         min-height: 3em;
         border-radius: 4px 4px 0 0;
         padding: .2em .5em;

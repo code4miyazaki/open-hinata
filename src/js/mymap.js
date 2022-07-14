@@ -71,7 +71,7 @@ export function initMap (vm) {
         onToggle: function(active)
         {
           if(!active) {
-            notification.show("現在地を取得します。<br>元に戻すときはもう一回クリック",5000)
+            notification.show("現在地を取得します。<br>戻すときはもう一回クリック",5000)
             interval = setInterval(function(){
               navigator.geolocation.getCurrentPosition(success, fail);
             },2000);
