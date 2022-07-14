@@ -45,7 +45,7 @@ export function initMap (vm) {
 
     // コントロール追加---------------------------------------------------------------------------
     map.addControl(new Target({composite: 'difference'}));
-    // map.addControl(new ScaleLine());
+    map.addControl(new ScaleLine());
     const notification = new Notification();
     map.addControl(notification);
     store.commit('base/setNotifications',{mapName:mapName, control: notification});
