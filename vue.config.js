@@ -6,9 +6,9 @@ module.exports = {
     ? ''
     : '',
   // vue-awesomeの設定。最適化される？
-  transpileDependencies: [
-    /\bvue-awesome\b/
-  ],
+  // transpileDependencies: [
+  //   /\bvue-awesome\b/
+  // ],
   // performance: {
   //     // デフォルトは244 KiB. 10メガに変更
   //   maxEntrypointSize: 10000000,

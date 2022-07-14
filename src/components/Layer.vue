@@ -3,13 +3,13 @@
     <v-draggable element="ul" :options="{handle:'.handle-div',animation: 200}" v-model="s_layerList">
         <li v-for="item in s_layerList" :key="item.id">
             <div class="list-div">
-                <div class="handle-div" ><v-icon name="align-justify" class="hover-white handle-icon"/></div>
+                <div class="handle-div" ><i class="fa-solid fa-bars hover-white handle-icon "></i></div>
                 <div class="item-div">
                     <span v-html="item.title"></span>
                 </div>
                 <div class="range-div"><input type="range" min="0" max="1" step="0.01" class="range" v-model.number="item.opacity" @input="opacityChange(item)" /></div>
-                <div class="info-div" @click="infoOpen(arguments[0],item)"><v-icon name="info-circle" scale="1.0" class="hover"/></div>
-                <div class="close-div" @click="removeLayer(item)"><v-icon name="times" scale="1.0" class="hover"/></div>
+                <div class="info-div" @click="infoOpen(arguments[0],item)"><i class="fa-solid fa-circle-info hover"></i></div>
+                <div class="close-div" @click="removeLayer(item)"><i class="fa-solid fa-xmark fa-lg hover"></i></div>
             </div>
         </li>
         <vue-snotify></vue-snotify>

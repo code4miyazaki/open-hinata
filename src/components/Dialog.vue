@@ -2,7 +2,7 @@
     <div class="dialog-div" :style="this.dialog.style" @mousedown="dialogMouseDown">
         <div class="drag-handle" v-my-drag-handle></div>
             <div>
-                <div class="close-btn-div" @click="closeBtn"><v-icon name="times" scale="1.5" class="hover"/></div>
+                <div class="close-btn-div" @click="closeBtn"><i class="fa-solid fa-xmark fa-lg hover"></i></div>
                 <slot></slot>
             </div>
     </div>

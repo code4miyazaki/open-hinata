@@ -18,8 +18,8 @@
         <!--map01からmap04をループで作成。ここまで-->
         <transition>
             <div id="lock" v-show="synchDivFlg" @click="synch">
-                <v-icon v-if="synchFlg" name="lock" scale="1.5" class="hover"/>
-                <v-icon v-else name="lock-open" scale="1.5" class="hover"/>
+                  <span class="lock"><i  class="fa-solid fa-lock hover fa-lg"></i></span>
+                  <span class="lock-open" style="display: none"><i class="fa-solid fa-lock-open hover fa-lg"></i></span>
             </div>
         </transition>
     </div>
@@ -149,6 +149,14 @@
       // 同期-------------------------------------------------------------------------------------
       synch () {
         MyMap.synch(this)
+        console.log(this.synchFlg)
+        if(this.synchFlg) {
+        document.querySelector('.lock-open').style.display ='none'
+          document.querySelector('.lock').style.display ='block'
+        } else {
+          document.querySelector('.lock-open').style.display = 'block'
+          document.querySelector('.lock').style.display = 'none'
+        }
       }
     },
     mounted () {
@@ -188,25 +196,26 @@
         -moz-osx-font-smoothing: grayscale;
         margin: 0;
         padding: 0;
+        background-color: #bed2ff;
     }
     #map01{
-        background-color: #fff;
+        background-color: #bed2ff;
         position: relative;
         z-index: 1000;
         border: #fff 1px solid;
     }
     #map02{
-        background-color: #fff;
+        background-color: #bed2ff;
         position: absolute;
         border: #fff 1px solid;
     }
     #map03{
-        background-color: white;
+        background-color: #bed2ff;
         position: absolute;
         border: #fff 1px solid;
     }
     #map04{
-        background-color: white;
+        background-color: #bed2ff;
         position: absolute;
         border: #fff 1px solid;
     }
