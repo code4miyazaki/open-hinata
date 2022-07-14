@@ -11,6 +11,9 @@ import DialogInfo from './components/Dialog-info'
 import BootstrapVue from 'bootstrap-vue'
 import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap-vue/dist/bootstrap-vue.css'
+import '@fortawesome/fontawesome-free/js/fontawesome';
+import '@fortawesome/fontawesome-free/js/solid';
+import '@fortawesome/fontawesome-free/js/regular';
 import drag from './js/drag'
 // global.$ = jQuery;
 // const $ = jQuery;

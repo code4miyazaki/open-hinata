@@ -11,9 +11,6 @@ import Lego from 'ol-ext/filter/Lego'
 import Notification from '../js/notification'
 import * as Layers from '../js/layers'
 import {defaults as defaultInteractions, DragRotateAndZoom} from 'ol/interaction';
-import '@fortawesome/fontawesome-free/js/fontawesome';
-import '@fortawesome/fontawesome-free/js/solid';
-import '@fortawesome/fontawesome-free/js/regular';
 let maxZndex = 0;
 let legoFilter = null;
 export function initMap (vm) {
