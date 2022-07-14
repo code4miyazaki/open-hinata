@@ -7,20 +7,20 @@
                     <b-button  id = 'menu-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['menuDialog'])" style="margin-right:5px;"><i class="fa-solid fa-bars"></i></b-button>
                     <b-button id='split-map-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="splitMap" style="margin-right:5px;"><i class="fa-solid fa-table-columns"></i></b-button>
                     <b-button class='olbtn' :size="btnSize" @click="openDialog(s_dialogs[mapName])">背景</b-button>
-                    <b-popover
-                        content="画面を分割します。"
-                        target="split-map-btn"
-                        triggers="hover"
-                        placement="bottomleft"
-                        boundary="viewport"
-                    />
-                  <b-popover
-                      content="リセットはここから"
-                      target="menu-btn"
-                      triggers="hover"
-                      placement="bottomleft"
-                      boundary="viewport"
-                  />
+<!--                    <b-popover-->
+<!--                        content="画面を分割します。"-->
+<!--                        target="split-map-btn"-->
+<!--                        triggers="hover"-->
+<!--                        placement="bottomleft"-->
+<!--                        boundary="viewport"-->
+<!--                    />-->
+<!--                  <b-popover-->
+<!--                      content="リセットはここから"-->
+<!--                      target="menu-btn"-->
+<!--                      triggers="hover"-->
+<!--                      placement="bottomleft"-->
+<!--                      boundary="viewport"-->
+<!--                  />-->
                 </div>
                 <div class="top-right-div"></div>
                 <v-dialog-layer :mapName=mapName />
