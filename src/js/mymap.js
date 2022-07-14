@@ -43,25 +43,68 @@ export function initMap (vm) {
     // マップをストアに登録
     store.commit('base/setMap', {mapName: maps[i].mapName, map});
 
-    // イベント
-    // map.on("pointermove",function(evt){
-    //   document.querySelector(".ol-viewport").css({cursor:""});
-    //   const map = evt.map;
-    //   const option = {
-    //     layerFilter: function (layer) {
-    //       return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';
-    //     }
-    //   };
-    //   const feature = map.forEachFeatureAtPixel(evt.pixel,
-    //     function(feature) {
-    //       return feature;
-    //     },option);
-    //   if (feature) {
-    //     document.querySelector(".ol-viewport").css({cursor:"pointer"});
-    //     return
-    //   }
-    // });
+    // コントロール追加---------------------------------------------------------------------------
+    map.addControl(new Target({composite: 'difference'}));
+    // map.addControl(new ScaleLine());
+    const notification = new Notification();
+    map.addControl(notification);
+    store.commit('base/setNotifications',{mapName:mapName, control: notification});
+    //現在地取得
+    const  success = (pos) =>{
+      const lon = pos.coords.longitude;
+      const lat = pos.coords.latitude;
+      // map.getView().setCenter(transform([lon,lat],"EPSG:4326","EPSG:3857"));
+      const center = transform([lon,lat],"EPSG:4326","EPSG:3857")
+      map.getView().animate({
+        center: center,
+        duration: 500
+      });
+    }
+    const  fail = (error) =>{alert('位置情報の取得に失敗しました。エラーコード：' + error.code)}
+    let interval
+    const stop = () => {clearInterval(interval)}
+    const  currentPosition = new Toggle(
+      {	html: '<a>現</a>',
+        className: "current-position",
+        active:true,
+        onToggle: function(active)
+        {
+          if(!active) {
+            notification.show("現在地を取得します。<br>元に戻すときはもう一回クリック",5000)
+            interval = setInterval(function(){
+              navigator.geolocation.getCurrentPosition(success, fail);
+            },2000);
+          } else {
+            stop()
+          }
+        }
+      }
+    );
+    if (mapName === 'map01') map.addControl(currentPosition);
+    // コントロール追加ここまで----------------------------------------------------------------------
 
+    // イベント追加----------------------------------------------------------------
+    // フィーチャーにマウスがあたったとき
+    map.on("pointermove",function(evt){
+      document.querySelector(".ol-viewport").style.cursor = "default";
+      const map = evt.map;
+      const option = {
+        layerFilter: function (layer) {
+          return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';
+        }
+      };
+      const feature = map.forEachFeatureAtPixel(evt.pixel,
+        function(feature) {
+          return feature;
+        },option);
+      if (feature) {
+        document.querySelector(".ol-viewport").style.cursor = "pointer";
+      }
+    });
+    // シングルクリック------------------------------------------------------------------------------------
+    map.on('singleclick', function (evt) {
+      console.log(evt)
+    })
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
       const map = evt.map;
@@ -74,12 +117,18 @@ export function initMap (vm) {
         function(feature) {
           return feature;
         },option);
-      // if (feature) {
-      //   const prop = feature.getProperties();
-      //   window.open(prop.uri, '_blank');
-      //   return
-      // }
-
+      if (feature) {
+        const prop = feature.getProperties();
+        const uri = prop.uri
+        if(uri.includes('stanford')) {
+          if (confirm('スタンフォード大学のサイトを表示しますか？')) {
+            window.open(uri, '_blank');
+          }
+        } else {
+          notification.show("スタンフォード大学に地図はありません。",5000)
+        }
+        // return
+      }
       const layers = map.getLayers().getArray();
       const result5 = layers.find(el => el === Layers.mw5Obj[mapName]);
       const result20 = layers.find(el => el === Layers.mw20Obj[mapName]);
@@ -127,43 +176,9 @@ export function initMap (vm) {
     map.on('moveend', function () {
       vm.zoom[mapName] = 'zoom=' + String(Math.floor(map.getView().getZoom() * 100) / 100)
     });
-    // コントロール追加
-    //現在地取得
-    const  success = (pos) =>{
-      const lon = pos.coords.longitude;
-      const lat = pos.coords.latitude;
-      // map.getView().setCenter(transform([lon,lat],"EPSG:4326","EPSG:3857"));
-      const center = transform([lon,lat],"EPSG:4326","EPSG:3857")
-      map.getView().animate({
-        center: center,
-        duration: 500
-      });
-    }
-    const  fail = (error) =>{alert('位置情報の取得に失敗しました。エラーコード：' + error.code)}
-    let interval
-    const stop = () => {clearInterval(interval)}
-    const  currentPosition = new Toggle(
-      {	html: '<a>現</a>',
-        className: "current-position",
-        active:true,
-        onToggle: function(active)
-        {
-          if(!active) {
-            interval = setInterval(function(){
-              navigator.geolocation.getCurrentPosition(success, fail);
-            },2000);
-          } else {
-            stop()
-          }
-        }
-      }
-    );
-    map.addControl(currentPosition);
-    map.addControl(new Target({composite: 'difference'}));
-    const notification = new Notification();
-    map.addControl(notification);
-    store.commit('base/setNotifications',{mapName:mapName, control: notification});
-    map.addControl(new ScaleLine());
+
+
+
 
     // const className =' .ol-scale-line';
     // $(className).mousedown(function(event){

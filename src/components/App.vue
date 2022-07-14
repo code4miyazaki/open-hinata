@@ -384,7 +384,7 @@
     /*ol関係のスタイル*/
     .ol-rotate {
         right: 50%;
-        top: 2.5em;
+        top: 4em;
     }
     .ol-scale-line{
         left: calc(50% - 50px);
@@ -433,15 +433,15 @@
         color: #9cf;
         cursor: pointer;
     }
-    .ol-button i
-    {	color: inherit;
-    }
-    .ol-button.ol-active button
-    {	background: rgba(60, 136, 0, 0.7)
 
+    .ol-button i {
+      color: inherit;
+    }
+    .ol-button.ol-active button {
+      background: rgba(60, 136, 0, 0.7)
     }
     .current-position {
-      top: 0.5em;
-      right: 50%;
+      bottom: 0.5em;
+      right: 1em;
     }
 </style>
