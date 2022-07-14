@@ -416,11 +416,13 @@
     .ol-scale-line{
         left: calc(50% - 50px);
         height: 22px;
-        /*cursor: grab;*/
+        cursor: grab;
     }
     .ol-zoom {
-        bottom: 40px;
-        top: auto;
+        /*bottom: 40px;*/
+        /*top: auto;*/
+        top: calc(100% - 6em);
+        cursor: grab;
     }
     .ol-notification {
         width: 150%;
@@ -468,7 +470,7 @@
       background: rgba(60, 136, 0, 0.7)
     }
     .current-position {
-      bottom: 0.5em;
-      right: 1em;
+      top: calc(100% - 2em);
+      left: calc(100% - 2em);
     }
 </style>
