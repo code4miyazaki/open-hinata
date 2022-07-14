@@ -7,20 +7,20 @@
                     <b-button  id = 'menu-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['menuDialog'])" style="margin-right:5px;"><i class="fa-solid fa-bars"></i></b-button>
                     <b-button id='split-map-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="splitMap" style="margin-right:5px;"><i class="fa-solid fa-table-columns"></i></b-button>
                     <b-button class='olbtn' :size="btnSize" @click="openDialog(s_dialogs[mapName])">背景</b-button>
-<!--                    <b-popover-->
-<!--                        content="画面を分割します。"-->
-<!--                        target="split-map-btn"-->
-<!--                        triggers="hover"-->
-<!--                        placement="bottomleft"-->
-<!--                        boundary="viewport"-->
-<!--                    />-->
-<!--                  <b-popover-->
-<!--                      content="リセットはここから"-->
-<!--                      target="menu-btn"-->
-<!--                      triggers="hover"-->
-<!--                      placement="bottomleft"-->
-<!--                      boundary="viewport"-->
-<!--                  />-->
+                    <b-popover v-if='toolTip'
+                               content="画面を分割します。"
+                               target="split-map-btn"
+                               triggers="hover"
+                               placement="bottomleft"
+                              boundary="viewport"
+                    />
+                    <b-popover v-if='toolTip'
+                               content="リセットはここから"
+                               target="menu-btn"
+                               triggers="hover"
+                               placement="bottomleft"
+                               boundary="viewport"
+                    />
                 </div>
                 <div class="top-right-div"></div>
                 <v-dialog-layer :mapName=mapName />
@@ -45,7 +45,6 @@
   import * as Permalink from '../js/permalink'
   import Inobounce from '../js/inobounce'
   import * as MyMap from '../js/mymap'
-  // import JqueryFunction from '../js/jquery-function'
   export default {
     name: 'App',
     components: {
@@ -56,6 +55,7 @@
       return {
         mapNames: ['map01','map02','map03','map04'],
         btnSize: '',
+        toolTip: false,
         mapSize: {
           map01: {top: 0, left: 0, width: '100%', height: window.innerHeight + 'px'},
           map02: {top: 0, right: 0, width: 0, height: window.innerHeight + 'px'},
@@ -183,10 +183,12 @@
         this.splitMap2();
         // ④リサイズ---------------------------------
         const resize = () => {
-          if (window.innerWidth < 700) {
+          if (window.innerWidth < 1000) {
             this.btnSize = 'sm'
+            this.toolTip = false
           } else {
             this.btnSize = ''
+            this.toolTip = true
           }
           this.splitMap2()
         };
