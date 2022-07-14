@@ -2,6 +2,7 @@
     <v-dialog :dialog="S_menuDialog">
         <div :style="menuContentSize">
             <div>
+                <br>
                 <b-button class='olbtn' :size="btnSize" @click="reset01">リセット</b-button>
                 <b-button class='olbtn' :size="btnSize" @click="reset02" style="margin-left:5px;">座標を残してリセット</b-button>
             </div>

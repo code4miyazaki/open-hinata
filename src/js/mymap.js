@@ -222,9 +222,6 @@ export function synch (vm) {
   }
 }
 
-
-
-
 export function resize () {
   store.state.base.maps.map01.updateSize();
   store.state.base.maps.map02.updateSize();
