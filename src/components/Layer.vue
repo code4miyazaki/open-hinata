@@ -27,6 +27,13 @@
       'v-draggable': vuedraggable
     },
     methods: {
+      displayNotification() {
+        this.$snotify.simple({
+          body: '使っていないけど残している。メソッドをどこかに仕掛ければこのメッセージがでる。今のところ不要',
+          title: 'Notification Title',
+          config: {}
+        });
+      },
       opacityChange (item) {
         MyMap.opacityChange(item);
         permalink.moveEnd()

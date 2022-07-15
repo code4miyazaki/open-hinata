@@ -279,6 +279,7 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
   for (let i = newLayerList[0].length - 1; i >= 0; i--) {
     // リストクリックによる追加したレイヤーで リストの先頭で リストの増加があったとき
      const layer = newLayerList[0][i].layer;
+
     // if (newLayerList[0][i].addFlg) {
     //   if (i === 0 ) {
     //     if (newLayerList[1] > oldLayerList[1]) {
@@ -320,7 +321,7 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
     map.addLayer(layer);
     layer.setOpacity(newLayerList[0][i].opacity)
     // console.log(newLayerList[0][i])
-   // 新規追懐したレイヤーだけにズームとセンターを設定する。
+    // 新規追加したレイヤーだけにズームとセンターを設定する。
     if (newLayerList[0][0].zoom) {
       map.getView().setZoom(newLayerList[0][0].zoom)
     }

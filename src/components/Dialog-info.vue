@@ -2,7 +2,7 @@
     <div>
         <div class="v-dialog-info-div" v-for="item in info" :key="item.id" :style="item.style" @mousedown="dialogMouseDown(item)">
             <div class="drag-handle" v-my-drag-handle></div>
-            <div class="close-btn-div" @click="close(item)"><i class="fa-solid fa-xmark fa-lg hover"></i></div>
+            <div class="close-btn-div" @click="close(item)"><i class="fa-solid fa-xmark hover close-btn"></i></div>
             <!--なにもないとき。普通のラスターのとき-->
             <div v-if="!item.component">
                 <div class="info-content-div">
@@ -72,11 +72,17 @@
     }
     .close-btn-div{
         position: absolute;
-        top: 3px;
+        top: 0;
         right: 5px;
         cursor: pointer;
         color: #fff;
         z-index: 2;
+    }
+    .close-btn-div{
+      font-size:1.5em;
+    }
+    .hover:hover{
+      color: blue;
     }
     .info-content-div{
         padding: 10px;

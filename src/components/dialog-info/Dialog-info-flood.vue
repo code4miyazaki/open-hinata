@@ -4,6 +4,8 @@
         <div v-if="item.component.name === 'flood5m'">
             <div class="info-content-div">
                 <p v-html="item.title"></p><hr>
+                <input type="range" min="0" :max="floodMax5m" :step="seaLevelStep5m" class="flood-range5m" v-model.number="s_seaLevel5m" @input="flood5m" />
+                <div style="text-align: center;">{{ s_seaLevel5m.toFixed(1) }}m上昇した場合</div>
                 <p v-html="item.summary"></p><hr>
                 <div style="position: absolute;left:260px;"><chrome-picker v-show="colorsShowFlg" v-model="s_colors" @input="colorChange5m"/></div>
                 <div  @click="colorsShow('m20')" :style="style('m20')">20m～</div>
@@ -13,14 +15,14 @@
                 <div @click="colorsShow('m0')" :style="style('m0')">0.5m～3m</div>
                 <div @click="colorsShow('m00')" :style="style('m00')">～0.5m</div>
                 <b-form-radio-group v-model="s_selected5m" :options="options" @change="floodChange5m" />
-                <input type="range" min="0" :max="floodMax5m" :step="seaLevelStep5m" class="flood-range5m" v-model.number="s_seaLevel5m" @input="flood5m" />
-                <div style="text-align: center;">{{ s_seaLevel5m.toFixed(1) }}m上昇した場合</div>
             </div>
         </div>
         <!--海面上昇シミュレーション10m-->
         <div v-else-if="item.component.name === 'flood10m'">
             <div class="info-content-div">
                 <p v-html="item.title"></p><hr>
+                <input type="range" min="0" :max="floodMax10m" :step="seaLevelStep10m" class="flood-range10m" v-model.number="s_seaLevel10m" @input="flood10m" />
+                <div style="text-align: center;">{{ s_seaLevel10m.toFixed(1) }}m上昇した場合</div>
                 <p v-html="item.summary"></p><hr>
                 <div style="position: absolute;left:260px;"><chrome-picker v-show="colorsShowFlg" v-model="s_colors" @input="colorChange10m"/></div>
                 <div  @click="colorsShow('m20')" :style="style('m20')">20m～</div>
@@ -30,8 +32,6 @@
                 <div @click="colorsShow('m0')" :style="style('m0')">0.5m～3m</div>
                 <div @click="colorsShow('m00')" :style="style('m00')">～0.5m</div>
                 <b-form-radio-group v-model="s_selected10m" :options="options" @change="floodChange10m"/>
-                <input type="range" min="0" :max="floodMax10m" :step="seaLevelStep10m" class="flood-range10m" v-model.number="s_seaLevel10m" @input="flood10m" />
-                <div style="text-align: center;">{{ s_seaLevel10m.toFixed(1) }}m上昇した場合</div>
             </div>
         </div>
     </div>

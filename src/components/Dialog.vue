@@ -2,7 +2,7 @@
     <div class="dialog-div" :style="this.dialog.style" @mousedown="dialogMouseDown">
         <div class="drag-handle" v-my-drag-handle></div>
             <div>
-                <div class="close-btn-div" @click="closeBtn"><i class="fa-solid fa-xmark fa-lg hover"></i></div>
+                <div class="close-btn-div" @click="closeBtn"><i class="fa-solid fa-xmark hover close-btn"></i></div>
                 <slot></slot>
             </div>
     </div>
@@ -55,11 +55,14 @@
     }
     .close-btn-div{
         position: absolute;
-        top: 3px;
+        top: 0;
         right: 5px;
         cursor: pointer;
         color: #fff;
         z-index: 2;
+    }
+    .close-btn-div{
+      font-size:1.5em;
     }
     .hover:hover{
         color: blue;
@@ -67,6 +70,7 @@
     .hover-white:hover{
         color: white;
     }
+
     /* 1秒かけて透明度を遷移 */
     .v-enter-active, .v-leave-active {
         transition: opacity 1s;
