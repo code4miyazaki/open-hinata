@@ -421,7 +421,7 @@
     .ol-zoom {
         /*bottom: 40px;*/
         /*top: auto;*/
-        top: calc(100% - 6em);
+        top: calc(100% - 7em);
         cursor: grab;
     }
     .ol-notification {
@@ -470,7 +470,7 @@
       background: rgba(60, 136, 0, 0.7)
     }
     .current-position {
-      top: calc(100% - 2em);
-      left: calc(100% - 2em);
+      top: calc(100% - 3em);
+      left: calc(100% - 3em);
     }
 </style>
