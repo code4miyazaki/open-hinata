@@ -180,7 +180,7 @@ export function initMap (vm) {
     });
 
     //要素の取得
-    const elements = document.querySelectorAll(".ol-scale-line, .ol-zoom, .current-position");
+    const elements = document.querySelectorAll(".ol-scale-line, .ol-zoom, .current-position, .zoom-div");
     //要素内のクリックされた位置を取得するグローバル（のような）変数
     let x;
     let y;

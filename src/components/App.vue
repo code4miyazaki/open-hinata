@@ -252,7 +252,8 @@
     .zoom-div{
         position: absolute;
         left: 10px;
-        bottom: 10px;
+        /*bottom: 10px;*/
+        top: calc(100% - 2em);
         z-index: 1;
         color: #fff;
         text-shadow: black 1px 1px 0, black -1px 1px 0,
@@ -262,6 +263,7 @@
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
+        cursor: grab;
     }
     #lock{
         position: absolute;
