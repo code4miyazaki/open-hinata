@@ -512,7 +512,7 @@ const mw5Summ = '';
 function Mw20center () {
   this.name = 'Mw20center';
   this.source = new VectorSource({
-    url:'https://kenzkenz.xsrv.jp/aaa/geojson/mw20center.geojson',
+    url:'https://kenzkenz.xsrv.jp/open-hinata/geojson/mw20center.geojson',
     format: new GeoJSON()
   });
   this.style = function(feature) {
