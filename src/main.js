@@ -12,6 +12,11 @@ import '@fortawesome/fontawesome-free/js/fontawesome';
 import '@fortawesome/fontawesome-free/js/solid';
 import '@fortawesome/fontawesome-free/js/regular';
 import drag from './js/drag'
+import VueAnalytics from 'vue-analytics'
+
+Vue.use(VueAnalytics, {
+    id: 'UA-1289601-5'
+})
 Vue.use(drag);
 Vue.use(BootstrapVue);
 Vue.component('v-dialog', Dialog);

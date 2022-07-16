@@ -64,8 +64,8 @@ export function initMap (vm) {
     let interval
     const stop = () => {clearInterval(interval)}
     const  currentPosition = new Toggle(
-      // {	html: '<i class="fa-solid fa-location-crosshairs"></i>',
-      {	html: '現',
+        {	html: '<i class="fa-solid fa-location-crosshairs"></i>',
+      // {	html: '現',
          className: "current-position",
         active:true,
         onToggle: function(active)

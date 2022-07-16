@@ -4,7 +4,7 @@
         <transition v-for="mapName in mapNames" :key="mapName">
             <div :id=mapName :style="mapSize[mapName]" v-show="mapFlg[mapName]">
                 <div class="top-left-div">
-                    <b-button  id = 'menu-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['menuDialog'])" style="margin-right:5px;"><i class="fa-solid fa-bars"></i></b-button>
+                    <b-button id='menu-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['menuDialog'])" style="margin-right:5px;"><i class="fa-solid fa-bars"></i></b-button>
                     <b-button id='split-map-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="splitMap" style="margin-right:5px;"><i class="fa-solid fa-table-columns"></i></b-button>
                     <b-button class='olbtn' :size="btnSize" @click="openDialog(s_dialogs[mapName])">背景</b-button>
                     <b-popover v-if='toolTip'
@@ -36,6 +36,13 @@
                   <span class="lock-open" style="display: none"><i class="fa-solid fa-lock-open hover fa-lg"></i></span>
             </div>
         </transition>
+        <b-popover v-if='toolTip'
+                 content="画面同期を変更します。"
+                 target="lock"
+                 triggers="hover"
+                 placement="bottomright"
+                 boundary="viewport"
+        />
     </div>
 </template>
 
@@ -277,12 +284,13 @@
         color: rgba(0,60,136,0.5);
         z-index: 10001;
         cursor: pointer;
+        padding-top: 4px;
     }
     #lock:hover{
         color: rgba(0,60,136,0.7);
     }
     .lock, .lock-open {
-      margin-top: 4px;
+      /*margin-top: 4px;*/
     }
     .olbtn{
         background-color: rgba(0,60,136,0.5);
