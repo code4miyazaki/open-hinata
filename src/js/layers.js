@@ -456,47 +456,7 @@ for (let i of mapsStr) {
     const bbox = mw5[j].extent;
     const layer = new TileLayer(new Mapwarper(url,bbox));
     layerGroup.push(layer)
-    // ------------------------------------------------------
-/*
-    const extent = mw5[j].extent
-    // console.log(extent)
-    const lon = (extent[0] + extent[2]) / 2
-    // console.log(lon)
-    const lat = (extent[1] + extent[3]) / 2
-    // console.log(lat)
-    let title = mw5[j].title
-    const uri = mw5[j].source_uri
-    const result = title.match( /『(.*)』/ );
-    if (result) {
-      title = result[1]
-    }
-    const feature = {
-      "type": "Feature",
-      "geometry": {
-        "type": "Point",
-        "coordinates": [
-          lon,
-          lat
-        ]
-      },
-      "properties": {
-        "title": title,
-        "uri": uri,
-        "layer": "mw5center"
-        // "_fillColor": "rgb(0,0,255)",
-        // "_radius": 8
-      }
-    }
-    features.push(feature)
-    */
   }
-  /*
-  const geojson = {
-    "type": "FeatureCollection",
-    "features": features
-  }
-  console.log(JSON.stringify(geojson))
-  */
   const mw5centerLayer = new VectorLayer(new Mw5center());
   layerGroup.push(mw5centerLayer);
 
@@ -570,7 +530,6 @@ for (let i of mapsStr) {
 }
 const kotizu01hokkaidouSumm = '<a href="https://dl.ndl.go.jp/search/searchResult?featureCode=all&searchWord=%E6%9C%80%E6%96%B0%E8%A9%B3%E5%AF%86%E9%87%91%E5%88%BA%E5%88%86%E7%B8%A3%E5%9C%96&fulltext=1&viewRestricted=0" target="_blank">最新詳密金刺分縣圖です。</a></a>';
 // 	北海道古地図ここまで------------------------------------------------------------------------
-
 
 // 洪水浸水想定-------------------------------------------------------------------------------
 function Shinsuishin () {
@@ -659,7 +618,7 @@ const layers =
       children: [
         { text: '旧版地形図5万分の１', data: { id: 'mw5', layer: mw5Obj, opacity: 1, summary: mw5Summ } },
         { text: '旧版地形図20万分の１', data: { id: 'mw20', layer: mw20Obj, opacity: 1, summary: mw20Summ } },
-        { text: '迅速測図 (関東)', data: { id: 'jinsoku', layer: jinsokuObj, opacity: 1, summary: jinsokuSumm } },
+        { text: '迅速測図 (関東)', data: { id: 'jinsoku', layer: jinsokuObj, opacity: 1, zoom: 9, center: [139.8089637733657, 35.86926927958841], summary: jinsokuSumm } },
         { text: '東西蝦夷山川地理取調図', data: { id: 'ezosansen', layer: ezosansenObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: ezosansenSumm } },
         { text: '北海道古地図', data: { id: 'kotizu01hokkaidou', layer: kotizu01hokkaidouObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: kotizu01hokkaidouSumm } }
       ]},

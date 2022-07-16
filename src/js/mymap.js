@@ -16,10 +16,6 @@ let legoFilter = null;
 export function initMap (vm) {
   // マップ作製ループ用の配列を作成
   const maps = [
-    // {mapName: 'map01', map:store.state.base.map01, layer:store.state.base.layerLists.map01[0].layer},
-    // {mapName: 'map02', map:store.state.base.map02, layer:store.state.base.layerLists.map02[0].layer},
-    // {mapName: 'map03', map:store.state.base.map03, layer:store.state.base.layerLists.map03[0].layer},
-    // {mapName: 'map04', map:store.state.base.map04, layer:store.state.base.layerLists.map04[0].layer}
     {mapName: 'map01', map:store.state.base.map01},
     {mapName: 'map02', map:store.state.base.map02},
     {mapName: 'map03', map:store.state.base.map03},
@@ -27,7 +23,7 @@ export function initMap (vm) {
   ];
   const view01 = new View({
     center: fromLonLat([140.097, 37.856]),
-    zoom: 7
+    zoom: 6
   });
   for (let i in maps) {
     // マップ作製
@@ -279,33 +275,6 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
   for (let i = newLayerList[0].length - 1; i >= 0; i--) {
     // リストクリックによる追加したレイヤーで リストの先頭で リストの増加があったとき
      const layer = newLayerList[0][i].layer;
-
-    // if (newLayerList[0][i].addFlg) {
-    //   if (i === 0 ) {
-    //     if (newLayerList[1] > oldLayerList[1]) {
-    //       const oldCenter = map.getView().getCenter();
-    //       const center = layer.getProperties().center;
-    //       if (center) {
-    //         map.getView().setCenter(transform(center,"EPSG:4326","EPSG:3857"));
-    //         const div = document.querySelector('div').text('元の位置に戻しますか？ ');
-    //
-    //         $('<a>').text('戻す')
-    //         .click(function() {
-    //           map.getView().setCenter(oldCenter);
-    //           store.state.base.notifications[thisName].hide();
-    //         })
-    //         .appendTo(div);
-    //
-    //         $('<a style="margin-left: 10px;">').text('NO')
-    //         .click(function() {
-    //           store.state.base.notifications[thisName].hide();
-    //         })
-    //         .appendTo(div);
-    //         store.state.base.notifications[thisName].show(div.get(0),5000)
-    //       }
-    //     }
-    //   }
-    // }
     // グループレイヤーで個別にzindexを触っているときがあるのでリセット。重くなるようならここをあきらめる。
    if (layer.values_.layers) {
      const gLayers = layer.values_.layers.array_;
