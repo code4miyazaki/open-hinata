@@ -209,6 +209,20 @@ for (let i of mapsStr) {
   muroransiOrtObj[i] = new TileLayer(new MuroransiOrt())
 }
 const muroransiOrtSumm = '';
+// 鹿児島市航空写真----------------------------------------------------------------------------
+function KagosimasiOrt () {
+  this.source = new XYZ({
+    url: 'https://mtile.pref.miyazaki.lg.jp/tile/orts/kagoshima/{z}/{x}/{-y}.png',
+    crossOrigin: "Anonymous",
+    minZoom: 1,
+    maxZoom: 19
+  });
+}
+const kagosimasiOrtObj = {};
+for (let i of mapsStr) {
+  kagosimasiOrtObj[i] = new TileLayer(new KagosimasiOrt())
+}
+const kagosimasiOrtSumm = '';
 // 岐阜県CS立体図----------------------------------------------------------------------------
 function GihuCs () {
   this.source = new XYZ({
@@ -679,7 +693,8 @@ const layers =
         { text: '宮崎県航空写真', data: { id: 6, layer: miyazakiOrtObj, opacity: 1, zoom:9, center: [131.42386188579064, 31.911063477361182], summary: miyazakiOrtSumm } },
         { text: '全国最新写真', data: { id: 5, layer: seamlessphotoObj, opacity: 1, summary: seamlessphotoSumm } },
         { text: '静岡県航空写真', data: { id: 7, layer: sizuokaOrtObj, opacity: 1, zoom:12,center:[138.43674074146253, 35.052859245538755], summary: sizuokaOrtSumm } },
-        { text: '室蘭市航空写真', data: { id: 'muroransiort', layer: muroransiOrtObj, opacity: 1, zoom:13,center:[140.97759620387416, 42.35223030295967], summary: muroransiOrtSumm } }
+        { text: '室蘭市航空写真', data: { id: 'muroransiort', layer: muroransiOrtObj, opacity: 1, zoom:13,center:[140.97759620387416, 42.35223030295967], summary: muroransiOrtSumm } },
+        { text: '鹿児島市航空写真', data: { id: 'kagosimasiort', layer: kagosimasiOrtObj, opacity: 1, zoom:12,center:[130.51208842259823, 31.58146097086727], summary: kagosimasiOrtSumm } }
       ]},
     { text: '立体図等',
       children: [
