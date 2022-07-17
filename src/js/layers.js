@@ -180,7 +180,7 @@ const miyazakiOrtObj = {};
 for (let i of mapsStr) {
   miyazakiOrtObj[i] = new TileLayer(new MiyazakiOrt())
 }
-const miyazakiOrtSumm = '';
+const miyazakiOrtSumm = '宮崎県県土整備部砂防課が平成25年度に撮影した航空写真をオルソ補正したもの';
 // 静岡県航空写真----------------------------------------------------------------------------
 function SizuokaOrt () {
   this.extent = transformE([138.19778,34.8626474,138.671573,35.213088]);
@@ -195,7 +195,7 @@ const sizuokaOrtObj = {};
 for (let i of mapsStr) {
   sizuokaOrtObj[i] = new TileLayer(new SizuokaOrt())
 }
-const sizuokaOrtSumm = '';
+const sizuokaOrtSumm = '<a href="https://www.geospatial.jp/ckan/dataset/h30/resource/cb7f8bc4-0ec7-493b-b7fa-f90e5780ac5e" target="_blank">G空間情報センター</a>';
 // 室蘭市航空写真----------------------------------------------------------------------------
 function MuroransiOrt () {
   this.extent = transformE([140.888332,42.2961046,141.076206,42.44097007]),
@@ -210,7 +210,7 @@ const muroransiOrtObj = {};
 for (let i of mapsStr) {
   muroransiOrtObj[i] = new TileLayer(new MuroransiOrt())
 }
-const muroransiOrtSumm = '';
+const muroransiOrtSumm = '<a href="http://www.city.muroran.lg.jp/main/org2260/odlib.php" target="_blank">むろらんオープンデータライブラリ</a>';
 // 鹿児島市航空写真----------------------------------------------------------------------------
 function KagosimasiOrt () {
   this.extent = transformE([130.370675,31.2819,130.732,31.767]);
@@ -225,7 +225,7 @@ const kagosimasiOrtObj = {};
 for (let i of mapsStr) {
   kagosimasiOrtObj[i] = new TileLayer(new KagosimasiOrt())
 }
-const kagosimasiOrtSumm = '';
+const kagosimasiOrtSumm = '<a href="https://www.city.kagoshima.lg.jp/ict/opendata.html" target="_blank">鹿児島市オープンデータ</a>';
 // 岐阜県CS立体図----------------------------------------------------------------------------
 function GihuCs () {
   this.extent = transformE([136.257111,35.141011,137.666902,36.482164143934]);
@@ -240,7 +240,7 @@ const gihuCsObj = {};
 for (let i of mapsStr) {
   gihuCsObj[i] = new TileLayer(new GihuCs())
 }
-const hyougoCsSumm = '';
+const gihuCsSumm = '<a href="https://www.geospatial.jp/ckan/dataset/cs-2019-geotiff" target="_blank">G空間情報センター</a>';
 // 兵庫県CS立体図----------------------------------------------------------------------------
 function HyougoCs () {
   this.extent = transformE([134.2669714033038, 34.17797854803047,135.47241581374712, 35.783161768341444]);
@@ -255,7 +255,7 @@ const hyougoCsObj = {};
 for (let i of mapsStr) {
   hyougoCsObj[i] = new TileLayer(new HyougoCs())
 }
-const gihuCsSumm = '';
+const hyougoCsSumm = '<a href="https://web.pref.hyogo.lg.jp/kk26/hyogo-geo.html" target="_blank">全国初「全県土分の高精度3次元データ」の公開について</a>';
 // 長野県CS立体図----------------------------------------------------------------------------
 function NaganoCs () {
   this.extent = transformE([137.34924687267085, 35.181791181300085,138.7683143113627, 37.14523688239089]);
@@ -270,7 +270,7 @@ const naganoCsObj = {};
 for (let i of mapsStr) {
   naganoCsObj[i] = new TileLayer(new NaganoCs())
 }
-const naganoCsSumm = '';
+const naganoCsSumm = '<a href="https://www.geospatial.jp/ckan/dataset/nagano-csmap" target="_blank">G空間情報センター</a>';
 // 静岡県CS立体図----------------------------------------------------------------------------
 function SizuokaCs () {
   this.extent = transformE([137.47545,34.59443,139.1504,35.64359]);
@@ -285,12 +285,12 @@ const sizuokaCsObj = {};
 for (let i of mapsStr) {
   sizuokaCsObj[i] = new TileLayer(new SizuokaCs())
 }
-const sizuokaCsSumm = '';
+const sizuokaCsSumm = '<a href="https://www.geospatial.jp/ckan/dataset/shizuokakencsmap2" target="_blank">G空間情報センター</a>';
 // 日本CS立体図------------------------------------------------------------------------------
 function NihonCs () {
   this.source = new XYZ({
     url: 'http://kouapp.main.jp/csmap/tile/japan/{z}/{x}/{y}.jpg',
-    crossOrigin: 'Anonymous',
+    // crossOrigin: 'Anonymous',
     minZoom:9,
     maxZoom:15
   })
@@ -299,7 +299,7 @@ const nihonCsObj = {};
 for (let i of mapsStr) {
   nihonCsObj[i] = new TileLayer(new NihonCs())
 }
-const nihonCsSumm = '';
+const nihonCsSumm = '<a href="http://kouapp.main.jp/csmap/japan/setumei.html" target="_blank">日本CS立体図</a>';
 // 迅速測図 (関東)----------------------------------------------------------------------------
 function Jinsoku () {
   this.extent = transformE([138.954453,34.86946,140.8793163,36.45969967])
@@ -548,7 +548,8 @@ for (let i of mapsStr) {
     layers: layerGroup
   })
 }
-const mw5Summ = '';
+const mw5Summ = '<a href="https://mapwarper.h-gis.jp/" target="_blank">日本版 Map Warper</a><br>' +
+                               '<a href="https://stanford.maps.arcgis.com/apps/SimpleViewer/index.html?appid=733446cc5a314ddf85c59ecc10321b41" target="_blank">スタンフォード大学</a>';
 
 // 日本版mapwarper５万分の１ここまで------------------------------------------------------
 // 日本版mapwarper20万分の１ここから------------------------------------------------------
@@ -582,7 +583,7 @@ for (let i of mapsStr) {
     layers: layerGroup
   })
 }
-const mw20Summ = '';
+const mw20Summ = '<a href="https://mapwarper.h-gis.jp/" target="_blank">日本版 Map Warper</a><br>';
 // 日本版mapwarper20万分の１ここまで------------------------------------------------------
 
 // 	東西蝦夷山川地理取調図洪水浸水想定-------------------------------------------------------------------------------
