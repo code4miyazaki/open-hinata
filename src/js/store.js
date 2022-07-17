@@ -30,7 +30,8 @@ const moduleBase = {
     notifications: {},
     notification: '',
     dialogMaxZindex:1,
-    splitFlg: 1
+    splitFlg: 1,
+    firstFlg: true
   },
   getters: {
     layerList: (state) => (mapName) => {
@@ -57,6 +58,9 @@ const moduleBase = {
     }
   },
   mutations: {
+    updateFirstFlg (state,payload) {
+      state.firstFlg = payload
+    },
     // マップを登録------------------------------------------------------------------------------
     setMap (state,payload) {
       state.maps[payload.mapName] = payload.map
@@ -107,6 +111,7 @@ const moduleBase = {
       state.splitFlg = Number(payload)
     }
   }
+
 };
 
 const moduleInfo = {

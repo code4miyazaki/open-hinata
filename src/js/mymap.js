@@ -269,6 +269,7 @@ export function resize () {
 }
 
 export function watchLayer (map, thisName, newLayerList,oldLayerList) {
+  // store.commit('base/updateFirstFlg')
   //[0]はレイヤーリスト。[1]はlength
   // 逆ループ
   let myZindex = 0;
@@ -291,13 +292,16 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
     layer.setOpacity(newLayerList[0][i].opacity)
     // console.log(newLayerList[0][i])
     // 新規追加したレイヤーだけにズームとセンターを設定する。
-    if (newLayerList[0][0].zoom) {
-      map.getView().setZoom(newLayerList[0][0].zoom)
-    }
-    if (newLayerList[0][0].center) {
-      map.getView().setCenter(transform(newLayerList[0][0].center, "EPSG:4326", "EPSG:3857"));
+    if(!store.state.base.firstFlg) {
+      if (newLayerList[0][0].zoom) {
+        map.getView().setZoom(newLayerList[0][0].zoom)
+      }
+      if (newLayerList[0][0].center) {
+        map.getView().setCenter(transform(newLayerList[0][0].center, "EPSG:4326", "EPSG:3857"));
+      }
     }
   }
+  store.commit('base/updateFirstFlg',false)
 }
 
 export function opacityChange (item) {

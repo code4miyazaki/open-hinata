@@ -16,6 +16,8 @@
                 <b-button :pressed.sync="myToggle" class='olbtn' :size="btnSize">{{ myToggle ? 'ブロックOFF' : 'ブロックON' }}</b-button>
                 <b-form-select v-model="selected" :options="options" style="width: 60px;margin-left: 10px;"/>
             </div>
+            <br>
+            <a id="toPng" href="#" download="image.png" @click='toPng'>PNGダウンロード</a>
         </div>
     </v-dialog>
 </template>
@@ -71,7 +73,19 @@
         }) .then(function (response) {
           vm.shortUrlText = response.data.data.url
         });
-      }
+      },
+      toPng(){
+        const type = 'image/png';
+        const canvas = document.querySelector("canvas");
+        const dataurl = canvas.toDataURL(type);
+        const bin = atob(dataurl.split(',')[1]);
+        const buffer = new Uint8Array(bin.length);
+        for (var i = 0; i < bin.length; i++){
+           buffer[i] = bin.charCodeAt(i);
+        }
+        const blob = new Blob([buffer.buffer],{type:type});
+        document.getElementById('toPng').href = window.URL.createObjectURL(blob);
+       }
     },
     mounted () {
       this.$watch(function () {
