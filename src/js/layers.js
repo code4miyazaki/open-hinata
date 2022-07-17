@@ -100,7 +100,7 @@ const osmSumm = 'OpenStreetMapは、道路地図などの地理情報データ�
 function Std () {
   this.source = new XYZ({
     url: 'https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 2,
     maxZoom: 18
   })
@@ -114,7 +114,7 @@ const stdSumm = '国土地理院作成のタイルです。<br><a href="https://
 function Pale () {
   this.source = new XYZ({
     url: 'https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 2,
     maxZoom: 18
   })
@@ -128,7 +128,7 @@ const paleSumm = '国土地理院作成のタイルです。<a href="https://map
 function Blank () {
   this.source = new XYZ({
     url: 'https://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 2,
     maxZoom: 18
   })
@@ -142,7 +142,7 @@ const blankSumm = '国土地理院作成のタイルです。<a href="https://ma
 function Seamlessphoto () {
   this.source = new XYZ({
     url: 'https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 2,
     maxZoom: 18
   })
@@ -156,7 +156,7 @@ const seamlessphotoSumm = '国土地理院作成のタイルです。<a href="ht
 function Relief () {
   this.source = new XYZ({
     url: 'https://cyberjapandata.gsi.go.jp/xyz/relief/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 5,
     maxZoom: 15
   })
@@ -171,7 +171,7 @@ function MiyazakiOrt () {
   this.extent = transformE([130.66371,31.34280,131.88045,32.87815]);
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/ort/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 19
   });
@@ -186,7 +186,7 @@ function SizuokaOrt () {
   this.extent = transformE([138.19778,34.8626474,138.671573,35.213088]);
   this.source = new XYZ({
     url: 'https://tile.geospatial.jp/shizuoka_city/h30_aerophoto/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 19
   });
@@ -201,7 +201,7 @@ function MuroransiOrt () {
   this.extent = transformE([140.888332,42.2961046,141.076206,42.44097007]),
   this.source = new XYZ({
     url: 'https://kenzkenz2.xsrv.jp/muroran3/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 19
   });
@@ -216,7 +216,7 @@ function KagosimasiOrt () {
   this.extent = transformE([130.370675,31.2819,130.732,31.767]);
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/orts/kagoshima/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 19
   });
@@ -231,7 +231,7 @@ function GihuCs () {
   this.extent = transformE([136.257111,35.141011,137.666902,36.482164143934]);
   this.source = new XYZ({
     url: 'https://kenzkenz2.xsrv.jp/gihucs/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 18
   });
@@ -243,9 +243,10 @@ for (let i of mapsStr) {
 const hyougoCsSumm = '';
 // 兵庫県CS立体図----------------------------------------------------------------------------
 function HyougoCs () {
+  this.extent = transformE([134.2669714033038, 34.17797854803047,135.47241581374712, 35.783161768341444]);
   this.source = new XYZ({
     url: 'https://kenzkenz.xsrv.jp/tile/hyougo/cs/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 18
   });
@@ -257,9 +258,10 @@ for (let i of mapsStr) {
 const gihuCsSumm = '';
 // 長野県CS立体図----------------------------------------------------------------------------
 function NaganoCs () {
+  this.extent = transformE([137.34924687267085, 35.181791181300085,138.7683143113627, 37.14523688239089]);
   this.source = new XYZ({
     url: 'https://tile.geospatial.jp/CS/VER2/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 18
   });
@@ -274,7 +276,7 @@ function SizuokaCs () {
   this.extent = transformE([137.47545,34.59443,139.1504,35.64359]);
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cssizuoka/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 18
   });
@@ -288,7 +290,7 @@ const sizuokaCsSumm = '';
 function NihonCs () {
   this.source = new XYZ({
     url: 'http://kouapp.main.jp/csmap/tile/japan/{z}/{x}/{y}.jpg',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:9,
     maxZoom:15
   })
@@ -300,13 +302,13 @@ for (let i of mapsStr) {
 const nihonCsSumm = '';
 // 迅速測図 (関東)----------------------------------------------------------------------------
 function Jinsoku () {
+  this.extent = transformE([138.954453,34.86946,140.8793163,36.45969967])
   this.source = new XYZ({
     url: 'https://aginfo.cgk.affrc.go.jp/ws/tmc/1.0.0/Kanto_Rapid-900913-L/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:17
   });
-  this.extent = transformE([138.954453,34.86946,140.8793163,36.45969967])
 }
 const jinsokuObj = {};
 for (let i of mapsStr) {
@@ -318,7 +320,7 @@ const jinsokuSumm = '<a href=\'http://www.finds.jp/tmc/layers.html.ja\' target=\
 function Kon_hukuoka01 () {
   this.source = new XYZ({
     url: 'https://sv53.wadax.ne.jp/~ktgis-net/kjmapw/kjtilemap/fukuoka/00/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 16
   });
@@ -334,7 +336,7 @@ const kon_hukuoka01Summ = '';
 function Cs10m01 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/1/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -343,7 +345,7 @@ function Cs10m01 () {
 function Cs10m02 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/2/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -352,7 +354,7 @@ function Cs10m02 () {
 function Cs10m03 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/3/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -361,7 +363,7 @@ function Cs10m03 () {
 function Cs10m04 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/4/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -370,7 +372,7 @@ function Cs10m04 () {
 function Cs10m05 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/5/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -379,7 +381,7 @@ function Cs10m05 () {
 function Cs10m06 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/6/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -388,7 +390,7 @@ function Cs10m06 () {
 function Cs10m07 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/7/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -397,7 +399,7 @@ function Cs10m07 () {
 function Cs10m08 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/8/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -406,7 +408,7 @@ function Cs10m08 () {
 function Cs10m09 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/9/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -415,7 +417,7 @@ function Cs10m09 () {
 function Cs10m10 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/10/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -424,7 +426,7 @@ function Cs10m10 () {
 function Cs10m11 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/11/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -433,7 +435,7 @@ function Cs10m11 () {
 function Cs10m12 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/12/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -442,7 +444,7 @@ function Cs10m12 () {
 function Cs10m13 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/13/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -451,7 +453,7 @@ function Cs10m13 () {
 function Cs10m15 () {
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cs/15/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom:1,
     maxZoom:15
   });
@@ -506,7 +508,7 @@ const style = new Style({
 function Mapwarper (url,bbox) {
   this.source = new XYZ({
     url: url,
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 18
   });
@@ -587,7 +589,7 @@ const mw20Summ = '';
 function Ezosansen () {
   this.source = new XYZ({
     url: 'https://koukita.github.io/touzaiezo/tile/{z}/{x}/{y}.jpg',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 17
   })
@@ -603,7 +605,7 @@ const ezosansenSumm = '<a href="https://github.com/koukita/touzaiezo" target="_b
 function Kotizu01hokkaidou () {
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu4/tile/01hokkaidou0/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 17
   })
@@ -619,7 +621,7 @@ const kotizu01hokkaidouSumm = '<a href="https://dl.ndl.go.jp/search/searchResult
 function Shinsuishin () {
   this.source = new XYZ({
     url: 'https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 17
   })
@@ -637,7 +639,7 @@ function Tsunami () {
   this.source = new XYZ({
     // url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}\.png',
     url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/{z}/{x}/{y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 17
   })
@@ -653,7 +655,7 @@ const tunamiSumm = 'test';
 function MiyazakisiHm () {
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/hazardmap/tile/miyazakisi/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 18
   })
@@ -669,7 +671,7 @@ const miyazakisiHmSumm = '<a href="http://www.city.miyazaki.miyazaki.jp/life/fir
 function MiyakonozyousiHm () {
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/hazardmap/tile/miyakonozyousi/{z}/{x}/{-y}.png',
-    crossOrigin: "Anonymous",
+    crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 18
   })
