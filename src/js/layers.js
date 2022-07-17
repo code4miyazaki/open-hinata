@@ -658,13 +658,13 @@ const layers =
         { text: '標準地図', data: { id: 1, layer: stdObj, opacity: 1, summary: stdSumm } },
         { text: '淡色地図', data: { id: 2, layer: paleObj, opacity: 1, summary: paleSumm } },
         { text: '白地図', data: { id: 3, layer: blankObj, opacity: 1, summary: blankSumm } },
-        { text: '色別標高図', data: { id: 4, layer: reliefObj, opacity: 1, summary: reliefSumm } },
-        { text: '全国最新写真', data: { id: 5, layer: seamlessphotoObj, opacity: 1, summary: seamlessphotoSumm } }
+        { text: '色別標高図', data: { id: 4, layer: reliefObj, opacity: 1, summary: reliefSumm } }
       ]},
     { text: '航空写真',
       children: [
         { text: '宮崎県航空写真', data: { id: 6, layer: miyazakiOrtObj, opacity: 1, zoom:9, center: [131.42386188579064, 31.911063477361182], summary: miyazakiOrtSumm } },
-        { text: '静岡県航空写真', data: { id: 6, layer: sizuokaOrtObj, opacity: 1, zoom:12,center:[138.43674074146253, 35.052859245538755], summary: sizuokaOrtSumm } }
+        { text: '全国最新写真', data: { id: 5, layer: seamlessphotoObj, opacity: 1, summary: seamlessphotoSumm } },
+        { text: '静岡県航空写真', data: { id: 7, layer: sizuokaOrtObj, opacity: 1, zoom:12,center:[138.43674074146253, 35.052859245538755], summary: sizuokaOrtSumm } }
       ]},
     { text: '立体図等',
       children: [
