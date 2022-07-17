@@ -168,13 +168,13 @@ for (let i of mapsStr) {
 const reliefSumm = '国土地理院作成のタイルです。<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">リンク</a>';
 // 宮崎県航空写真----------------------------------------------------------------------------
 function MiyazakiOrt () {
+  this.extent = transformE([130.66371,31.34280,131.88045,32.87815]);
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/ort/{z}/{x}/{-y}.png',
     crossOrigin: "Anonymous",
     minZoom: 1,
     maxZoom: 19
   });
-  this.extent = transformE([130.66371,31.34280,131.88045,32.87815])
 }
 const miyazakiOrtObj = {};
 for (let i of mapsStr) {
@@ -183,6 +183,7 @@ for (let i of mapsStr) {
 const miyazakiOrtSumm = '';
 // 静岡県航空写真----------------------------------------------------------------------------
 function SizuokaOrt () {
+  this.extent = transformE([138.19778,34.8626474,138.671573,35.213088]);
   this.source = new XYZ({
     url: 'https://tile.geospatial.jp/shizuoka_city/h30_aerophoto/{z}/{x}/{y}.png',
     crossOrigin: "Anonymous",
@@ -197,6 +198,7 @@ for (let i of mapsStr) {
 const sizuokaOrtSumm = '';
 // 室蘭市航空写真----------------------------------------------------------------------------
 function MuroransiOrt () {
+  this.extent = transformE([140.888332,42.2961046,141.076206,42.44097007]),
   this.source = new XYZ({
     url: 'https://kenzkenz2.xsrv.jp/muroran3/{z}/{x}/{-y}.png',
     crossOrigin: "Anonymous",
@@ -211,6 +213,7 @@ for (let i of mapsStr) {
 const muroransiOrtSumm = '';
 // 鹿児島市航空写真----------------------------------------------------------------------------
 function KagosimasiOrt () {
+  this.extent = transformE([130.370675,31.2819,130.732,31.767]);
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/orts/kagoshima/{z}/{x}/{-y}.png',
     crossOrigin: "Anonymous",
@@ -225,13 +228,13 @@ for (let i of mapsStr) {
 const kagosimasiOrtSumm = '';
 // 岐阜県CS立体図----------------------------------------------------------------------------
 function GihuCs () {
+  this.extent = transformE([136.257111,35.141011,137.666902,36.482164143934]);
   this.source = new XYZ({
     url: 'https://kenzkenz2.xsrv.jp/gihucs/{z}/{x}/{-y}.png',
     crossOrigin: "Anonymous",
     minZoom: 1,
     maxZoom: 18
   });
-  this.extent = transformE([136.257111,35.141011,137.666902,36.482164143934]);
 }
 const gihuCsObj = {};
 for (let i of mapsStr) {
@@ -268,6 +271,7 @@ for (let i of mapsStr) {
 const naganoCsSumm = '';
 // 静岡県CS立体図----------------------------------------------------------------------------
 function SizuokaCs () {
+  this.extent = transformE([137.47545,34.59443,139.1504,35.64359]);
   this.source = new XYZ({
     url: 'https://mtile.pref.miyazaki.lg.jp/tile/cssizuoka/{z}/{x}/{-y}.png',
     crossOrigin: "Anonymous",
