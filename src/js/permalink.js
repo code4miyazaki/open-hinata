@@ -41,9 +41,9 @@ export function permalinkEventSet () {
     value: {
       id: 5,
       title: '全国最新写真',
-      layer: Layers.Layers[1].children[4].data.layer,
+      layer: Layers.Layers[2].children[2].data.layer,
       opacity: 1,
-      summary: Layers.Layers[1].children[4].data.summary,
+      summary: Layers.Layers[2].children[2].data.summary,
       component: ''
     },
     mapName: 'map04'
