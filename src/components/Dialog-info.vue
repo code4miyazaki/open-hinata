@@ -86,7 +86,7 @@
     }
     .info-content-div{
         padding: 10px;
-        width:250px;
+        max-width: 250px;
         word-wrap: break-word;
         overflow-wrap: break-word;
     }

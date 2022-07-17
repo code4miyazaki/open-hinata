@@ -292,6 +292,7 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
     layer.setOpacity(newLayerList[0][i].opacity)
     // console.log(newLayerList[0][i])
     // 新規追加したレイヤーだけにズームとセンターを設定する。
+    console.log(oldLayerList.length,newLayerList.length)
     if(!store.state.base.firstFlg) {
       if (newLayerList[0][0].zoom) {
         map.getView().setZoom(newLayerList[0][0].zoom)

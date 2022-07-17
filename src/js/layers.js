@@ -36,36 +36,6 @@ function flood(pixels, data) {
       } else {
         pixel[0] = c.m00.r; pixel[1] = c.m00.g; pixel[2] = c.m00.b; pixel[3] = c.m00.a*255
       }
-
-/*
-      if (sinsui >= 20) {
-        pixel[0] = 187; pixel[1] = 0; pixel[2] = 187; pixel[3] = 122
-      } else if (sinsui >= 10) {
-        pixel[0] = 228; pixel[1] = 0; pixel[2] = 142; pixel[3] = 135
-      } else if (sinsui >= 5) {
-        pixel[0] = 255; pixel[1] = 0; pixel[2] = 0; pixel[3] = 145
-      } else if (sinsui >= 3) {
-        pixel[0] = 255; pixel[1] = 13; pixel[2] = 13; pixel[3] = 179
-      } else if (sinsui >= 1) {
-        pixel[0] = 255; pixel[1] = 125; pixel[2] = 45; pixel[3] = 179
-      } else if (sinsui >= 0.5) {
-        pixel[0] = 236; pixel[1] = 169; pixel[2] = 0; pixel[3] = 166
-      } else if (sinsui >= 0.3) {
-        pixel[0] = 232; pixel[1] = 226; pixel[2] = 8; pixel[3] = 166
-      } else {
-        pixel[0] = 255;pixel[1] = 255;pixel[2] = 0;pixel[3] = 179
-      }
-*/
-
-
-      /*
-      let opacity = sinsui * 20;
-      if (opacity>200) opacity = 200;
-      pixel[0] = 0;
-      pixel[1] = 0;
-      pixel[2] = 180;
-      pixel[3] = opacity;
-      */
     } else {
       pixel[3] = 0;
     }
@@ -139,7 +109,7 @@ const stdObj = {};
 for (let i of mapsStr) {
   stdObj[i] = new TileLayer(new Std())
 }
-const stdSumm = '国土地理院作成のタイルです。<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">リンク</a>';
+const stdSumm = '国土地理院作成のタイルです。<br><a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">リンク</a>';
 // 淡色地図------------------------------------------------------------------------------------
 function Pale () {
   this.source = new XYZ({
@@ -612,7 +582,8 @@ const shinsuishinObj = {};
 for (let i of mapsStr) {
   shinsuishinObj[i] = new TileLayer(new Shinsuishin())
 }
-const shinsuishinSumm = '';
+const shinsuishinSumm = '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/shinsui_legend2-1.png">';
+// const shinsuishinSumm = '<img src=@/assets/img/shinsui_legend2-1.png>';
 // 洪水浸水想定ここまで------------------------------------------------------------------------
 
 // 津波浸水想定-------------------------------------------------------------------------------
