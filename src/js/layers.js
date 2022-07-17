@@ -181,6 +181,20 @@ for (let i of mapsStr) {
   miyazakiOrtObj[i] = new TileLayer(new MiyazakiOrt())
 }
 const miyazakiOrtSumm = '';
+// 静岡県航空写真----------------------------------------------------------------------------
+function SizuokaOrt () {
+  this.source = new XYZ({
+    url: 'https://tile.geospatial.jp/shizuoka_city/h30_aerophoto/{z}/{x}/{y}.png',
+    crossOrigin: "Anonymous",
+    minZoom: 1,
+    maxZoom: 19
+  });
+}
+const sizuokaOrtObj = {};
+for (let i of mapsStr) {
+  sizuokaOrtObj[i] = new TileLayer(new SizuokaOrt())
+}
+const sizuokaOrtSumm = '';
 // 岐阜県CS立体図----------------------------------------------------------------------------
 function GihuCs () {
   this.source = new XYZ({
@@ -645,11 +659,13 @@ const layers =
         { text: '淡色地図', data: { id: 2, layer: paleObj, opacity: 1, summary: paleSumm } },
         { text: '白地図', data: { id: 3, layer: blankObj, opacity: 1, summary: blankSumm } },
         { text: '色別標高図', data: { id: 4, layer: reliefObj, opacity: 1, summary: reliefSumm } },
-        { text: '全国最新写真', data: { id: 5, layer: seamlessphotoObj, opacity: 1, summary: seamlessphotoSumm } }
+
       ]},
-    { text: '宮崎県',
+    { text: '航空写真',
       children: [
-        { text: '宮崎県航空写真', data: { id: 6, layer: miyazakiOrtObj, opacity: 1, summary: miyazakiOrtSumm } }
+        { text: '宮崎県航空写真', data: { id: 6, layer: miyazakiOrtObj, opacity: 1, zoom:9, center: [131.42386188579064, 31.911063477361182], summary: miyazakiOrtSumm } },
+        { text: '全国最新写真', data: { id: 5, layer: seamlessphotoObj, opacity: 1, summary: seamlessphotoSumm } },
+        { text: '静岡県航空写真', data: { id: 6, layer: sizuokaOrtObj, opacity: 1, zoom:12,center:[138.43674074146253, 35.052859245538755], summary: sizuokaOrtSumm } }
       ]},
     { text: '立体図等',
       children: [
