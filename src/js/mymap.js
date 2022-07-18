@@ -175,8 +175,8 @@ export function initMap (vm) {
       vm.zoom[mapName] = 'zoom=' + String(Math.floor(map.getView().getZoom() * 100) / 100)
     });
     map.on("pointermove",function(event){
-      let z = Math.floor(map.getView().getZoom())
-        if(z>13) z=13;
+      let z = map.getView().getZoom() > 13 ? 13 : map.getView().getZoom()
+      if(z>13) z=13;
       const coord = event.coordinate
       const R = 6378137;// 地球の半径(m);
       const x = ( 0.5 + coord[ 0 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
