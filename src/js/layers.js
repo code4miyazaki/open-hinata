@@ -255,6 +255,21 @@ for (let i of mapsStr) {
 }
 const ryuuikiSumm = '<a href="https://tiles.dammaps.jp/ryuiki/" target="_blank">川だけ地形地図</a><br>' +
                                   '<small>本図は国土交通省 国土数値情報「河川」「流域メッシュ」「湖沼」（第2.1版）および国土地理院 地球地図日本「行政界」（第２版）をもとに高根たかね様が作成したものです。国土数値情報は国土計画関連業務のために作成されたデータが副次的に公開されたものであり、国土計画関連業務に差しさわりがない範囲で時間的、位置的精度において現況と誤差が含まれています。本地図を利用される場合はその点に十分ご留意の上ご利用ください。また、国土数値情報 利用約款を遵守しご利用ください。</small>'
+// エコリス植生図---------------------------------------------------------------------------
+function Ecoris () {
+  this.source = new XYZ({
+    url: 'https://map.ecoris.info/tiles/vegehill/{z}/{x}/{y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 5,
+    maxZoom: 14
+  });
+}
+const ecorisObj = {};
+for (let i of mapsStr) {
+  ecorisObj[i] = new TileLayer(new Ecoris())
+}
+const ecorisSumm = '<a href="http://map.ecoris.info/" target="_blank">エコリス地図タイル</a><br>' +
+  '<small>第5回 自然環境保全基礎調査 植生調査結果を着色し、国土地理院 基盤地図情報 数値標高データ10mメッシュから作成した陰影起伏図に重ねたものです。</small>'
 // 岐阜県CS立体図----------------------------------------------------------------------------
 function GihuCs () {
   this.extent = transformE([136.257111,35.141011,137.666902,36.482164143934]);
@@ -736,6 +751,7 @@ const layers =
       children: [
         { text: '川だけ地形地図', data: { id: 'kawadake', layer: kawadakeObj, opacity: 1, summary: kawadakeSumm } },
         { text: '川と流域地図', data: { id: 'ryuuiki', layer: ryuuikiObj, opacity: 1, summary: ryuuikiSumm } },
+        { text: 'エコリス植生図', data: { id: 'ecoris', layer: ecorisObj, opacity: 1, summary: ecorisSumm } },
         { text: '日本CS立体図', data: { id: 'jcs', layer: nihonCsObj, opacity: 1, summary: nihonCsSumm } },
         { text: '全国CS立体図10m', data: { id: 'cs10', layer: cs10mObj, opacity: 1, summary: cs10mSumm } },
         { text: '岐阜県CS立体図', data: { id: 'gcs', layer: gihuCsObj, opacity: 1, zoom:9, center:[137.03491577372932, 35.871742161031975], summary: gihuCsSumm } },
