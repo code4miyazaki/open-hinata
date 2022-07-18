@@ -226,6 +226,34 @@ for (let i of mapsStr) {
   kagosimasiOrtObj[i] = new TileLayer(new KagosimasiOrt())
 }
 const kagosimasiOrtSumm = '<a href="https://www.city.kagoshima.lg.jp/ict/opendata.html" target="_blank">鹿児島市オープンデータ</a>';
+// ７４~７８年の航空写真-------------------------------------------------------------------------------
+function Sp74 () {
+  this.source = new XYZ({
+    url: 'https://cyberjapandata.gsi.go.jp/xyz/gazo1/{z}/{x}/{y}.jpg',
+    crossOrigin: 'Anonymous',
+    minZoom: 10,
+    maxZoom: 17
+  })
+}
+const sp74Obj = {};
+for (let i of mapsStr) {
+  sp74Obj[i] = new TileLayer(new Sp74())
+}
+const sp74Summ = '国土地理院作成のタイルです。<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">リンク</a>';
+// ６１~６４年の航空写真-------------------------------------------------------------------------------
+function Sp61 () {
+  this.source = new XYZ({
+    url: 'https://maps.gsi.go.jp/xyz/ort_old10/{z}/{x}/{y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 10,
+    maxZoom: 17
+  })
+}
+const sp61Obj = {};
+for (let i of mapsStr) {
+  sp61Obj[i] = new TileLayer(new Sp61())
+}
+const sp61Summ = '国土地理院作成のタイルです。<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank">リンク</a>';
 // 川だけ地形地図---------------------------------------------------------------------------
 function Kawadake () {
     this.source = new XYZ({
@@ -746,6 +774,11 @@ const layers =
         { text: '静岡県航空写真', data: { id: 7, layer: sizuokaOrtObj, opacity: 1, zoom:12,center:[138.43674074146253, 35.052859245538755], summary: sizuokaOrtSumm } },
         { text: '室蘭市航空写真', data: { id: 'muroransiort', layer: muroransiOrtObj, opacity: 1, zoom:13,center:[140.97759620387416, 42.35223030295967], summary: muroransiOrtSumm } },
         { text: '鹿児島市航空写真', data: { id: 'kagosimasiort', layer: kagosimasiOrtObj, opacity: 1, zoom:12,center:[130.51208842259823, 31.58146097086727], summary: kagosimasiOrtSumm } }
+      ]},
+    { text: '過去の航空写真',
+      children: [
+        { text: '74~78年航空写真', data: { id: 'sp74', layer: sp74Obj, opacity: 1, summary: sp74Summ } },
+        { text: '61~64年航空写真', data: { id: 'sp61', layer: sp61Obj, opacity: 1, summary: sp61Summ } }
       ]},
     { text: '立体図等',
       children: [

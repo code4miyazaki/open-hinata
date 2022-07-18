@@ -265,7 +265,7 @@
         color: #fff;
         text-shadow: black 1px 1px 0, black -1px 1px 0,
         black 1px -1px 0, black -1px -1px 0;
-        font-size: x-large;
+        font-size: large;
         -webkit-user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;

@@ -174,7 +174,63 @@ export function initMap (vm) {
     map.on('moveend', function () {
       vm.zoom[mapName] = 'zoom=' + String(Math.floor(map.getView().getZoom() * 100) / 100)
     });
+    map.on("pointermove",function(event){
+      let z = Math.floor(map.getView().getZoom())
+        if(z>13) z=13;
+       var
+         coord = event.coordinate,
+        R = 6378137;// 地球の半径(m);
+        x = ( 0.5 + coord[ 0 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
+        y = ( 0.5 - coord[ 1 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
+      // var e = event;
+      getElev( x, y, z, function( h ) {
+        const zoom = String(Math.floor(map.getView().getZoom() * 100) / 100)
+        if (h !=='e') {
+          // console.log(h)
+          vm.zoom[mapName] = 'zoom=' + zoom + '  標高' + h + 'm'
+        } else {
+          vm.zoom[mapName] = 'zoom=' + zoom
+        }
+      } );
+    });
+    // ****************
+    // 産総研さん作成の関数
+    // getElev, タイル座標とズームレベルを指定して標高値を取得する関数
+    //	rx, ry: タイル座標(実数表現）z:　ズームレベル
+    //	thenは終了時に呼ばれるコールバック関数
+    //	成功時には標高(単位m)，無効値の場合は'e'を返す
+    // ****************
+    function getElev( rx, ry, z, then ) {
+      var
+        elevServer = 'https://gsj-seamless.jp/labs/elev2/elev/',
+        x = Math.floor( rx ),				// タイルX座標
+        y = Math.floor( ry ),				// タイルY座標
+        i = ( rx - x ) * 256,			// タイル内i座標
+        j = ( ry - y ) * 256,			// タイル内j座標
+        img = new Image();
 
+      img.crossOrigin = 'anonymous';
+      img.onload = function(){
+        var
+          canvas = document.createElement( 'canvas' ),
+          context = canvas.getContext( '2d' ),
+          h = 'e',
+          data;
+        canvas.width = 1;
+        canvas.height = 1;
+        context.drawImage( img, i, j, 1, 1, 0, 0, 1, 1 );
+        data = context.getImageData( 0, 0, 1, 1 ).data;
+        if ( data[ 3 ] === 255 ) {
+          h = data[ 0 ] * 256 * 256 + data[ 1 ] * 256 + data[ 2 ];
+          h = ( h < 8323072 ) ? h : h - 16777216;
+          h /= 100;
+        }
+        then( h );
+      }
+      img.src = elevServer + z + '/' + y + '/' + x + '.png?res=cm';
+    }
+
+    // 要素をドラッグする。
     //要素の取得
     const elements = document.querySelectorAll(".ol-scale-line, .ol-zoom, .current-position, .zoom-div");
     //要素内のクリックされた位置を取得するグローバル（のような）変数
