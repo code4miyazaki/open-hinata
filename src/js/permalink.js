@@ -39,11 +39,11 @@ export function permalinkEventSet () {
   });
   store.commit('base/unshiftLayerList', {
     value: {
-      id: 5,
+      id: 'zenkokusaisin',
       title: '全国最新写真',
-      layer: Layers.Layers[2].children[1].data.layer,
+      layer: Layers.Layers[2].children[0].data.layer,
       opacity: 1,
-      summary: Layers.Layers[2].children[1].data.summary,
+      summary: Layers.Layers[2].children[0].data.summary,
       component: ''
     },
     mapName: 'map04'

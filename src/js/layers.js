@@ -226,6 +226,35 @@ for (let i of mapsStr) {
   kagosimasiOrtObj[i] = new TileLayer(new KagosimasiOrt())
 }
 const kagosimasiOrtSumm = '<a href="https://www.city.kagoshima.lg.jp/ict/opendata.html" target="_blank">鹿児島市オープンデータ</a>';
+// 川だけ地形地図---------------------------------------------------------------------------
+function Kawadake () {
+    this.source = new XYZ({
+    url: 'http://www.gridscapes.net/AllRivers/1.0.0/t/{z}/{x}/{-y}.png',
+    // crossOrigin: 'Anonymous',
+    minZoom: 5,
+    maxZoom: 14
+  });
+}
+const kawadakeObj = {};
+for (let i of mapsStr) {
+  kawadakeObj[i] = new TileLayer(new Kawadake())
+}
+const kawadakeSumm = '<a href="https://www.gridscapes.net/#AllRiversAllLakesTopography" target="_blank">川だけ地形地図</a>';
+// 川と流域地図---------------------------------------------------------------------------
+function Ryuuiki () {
+  this.source = new XYZ({
+    url: 'https://tiles.dammaps.jp/ryuiki_t/1/{z}/{x}/{y}.png',
+    // crossOrigin: 'Anonymous',
+    minZoom: 5,
+    maxZoom: 14
+  });
+}
+const ryuuikiObj = {};
+for (let i of mapsStr) {
+  ryuuikiObj[i] = new TileLayer(new Ryuuiki())
+}
+const ryuuikiSumm = '<a href="https://tiles.dammaps.jp/ryuiki/" target="_blank">川だけ地形地図</a><br>' +
+                                  '<small>本図は国土交通省 国土数値情報「河川」「流域メッシュ」「湖沼」（第2.1版）および国土地理院 地球地図日本「行政界」（第２版）をもとに高根たかね様が作成したものです。国土数値情報は国土計画関連業務のために作成されたデータが副次的に公開されたものであり、国土計画関連業務に差しさわりがない範囲で時間的、位置的精度において現況と誤差が含まれています。本地図を利用される場合はその点に十分ご留意の上ご利用ください。また、国土数値情報 利用約款を遵守しご利用ください。</small>'
 // 岐阜県CS立体図----------------------------------------------------------------------------
 function GihuCs () {
   this.extent = transformE([136.257111,35.141011,137.666902,36.482164143934]);
@@ -697,14 +726,16 @@ const layers =
       ]},
     { text: '航空写真',
       children: [
+        { text: '全国最新写真', data: { id: 'zenkokusaisin', layer: seamlessphotoObj, opacity: 1, summary: seamlessphotoSumm } },
         { text: '宮崎県航空写真', data: { id: 6, layer: miyazakiOrtObj, opacity: 1, zoom:9, center: [131.42386188579064, 31.911063477361182], summary: miyazakiOrtSumm } },
-        { text: '全国最新写真', data: { id: 5, layer: seamlessphotoObj, opacity: 1, summary: seamlessphotoSumm } },
         { text: '静岡県航空写真', data: { id: 7, layer: sizuokaOrtObj, opacity: 1, zoom:12,center:[138.43674074146253, 35.052859245538755], summary: sizuokaOrtSumm } },
         { text: '室蘭市航空写真', data: { id: 'muroransiort', layer: muroransiOrtObj, opacity: 1, zoom:13,center:[140.97759620387416, 42.35223030295967], summary: muroransiOrtSumm } },
         { text: '鹿児島市航空写真', data: { id: 'kagosimasiort', layer: kagosimasiOrtObj, opacity: 1, zoom:12,center:[130.51208842259823, 31.58146097086727], summary: kagosimasiOrtSumm } }
       ]},
     { text: '立体図等',
       children: [
+        { text: '川だけ地形地図', data: { id: 'kawadake', layer: kawadakeObj, opacity: 1, summary: kawadakeSumm } },
+        { text: '川と流域地図', data: { id: 'ryuuiki', layer: ryuuikiObj, opacity: 1, summary: ryuuikiSumm } },
         { text: '日本CS立体図', data: { id: 'jcs', layer: nihonCsObj, opacity: 1, summary: nihonCsSumm } },
         { text: '全国CS立体図10m', data: { id: 'cs10', layer: cs10mObj, opacity: 1, summary: cs10mSumm } },
         { text: '岐阜県CS立体図', data: { id: 'gcs', layer: gihuCsObj, opacity: 1, zoom:9, center:[137.03491577372932, 35.871742161031975], summary: gihuCsSumm } },
