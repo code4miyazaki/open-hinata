@@ -177,11 +177,10 @@ export function initMap (vm) {
     map.on("pointermove",function(event){
       let z = Math.floor(map.getView().getZoom())
         if(z>13) z=13;
-       var
-         coord = event.coordinate,
-        R = 6378137;// 地球の半径(m);
-        x = ( 0.5 + coord[ 0 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
-        y = ( 0.5 - coord[ 1 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
+      const coord = event.coordinate
+      const R = 6378137;// 地球の半径(m);
+      const x = ( 0.5 + coord[ 0 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
+      const y = ( 0.5 - coord[ 1 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
       // var e = event;
       getElev( x, y, z, function( h ) {
         const zoom = String(Math.floor(map.getView().getZoom() * 100) / 100)
@@ -201,25 +200,21 @@ export function initMap (vm) {
     //	成功時には標高(単位m)，無効値の場合は'e'を返す
     // ****************
     function getElev( rx, ry, z, then ) {
-      var
-        elevServer = 'https://gsj-seamless.jp/labs/elev2/elev/',
-        x = Math.floor( rx ),				// タイルX座標
-        y = Math.floor( ry ),				// タイルY座標
-        i = ( rx - x ) * 256,			// タイル内i座標
-        j = ( ry - y ) * 256,			// タイル内j座標
-        img = new Image();
-
+      const elevServer = 'https://gsj-seamless.jp/labs/elev2/elev/'
+      const x = Math.floor( rx )				// タイルX座標
+      const y = Math.floor( ry )				// タイルY座標
+      const i = ( rx - x ) * 256			// タイル内i座標
+      const j = ( ry - y ) * 256			// タイル内j座標
+      const img = new Image();
       img.crossOrigin = 'anonymous';
       img.onload = function(){
-        var
-          canvas = document.createElement( 'canvas' ),
-          context = canvas.getContext( '2d' ),
-          h = 'e',
-          data;
+        const canvas = document.createElement( 'canvas' )
+        const context = canvas.getContext( '2d' )
+        let  h = 'e'
         canvas.width = 1;
         canvas.height = 1;
         context.drawImage( img, i, j, 1, 1, 0, 0, 1, 1 );
-        data = context.getImageData( 0, 0, 1, 1 ).data;
+        const data = context.getImageData( 0, 0, 1, 1 ).data;
         if ( data[ 3 ] === 255 ) {
           h = data[ 0 ] * 256 * 256 + data[ 1 ] * 256 + data[ 2 ];
           h = ( h < 8323072 ) ? h : h - 16777216;
