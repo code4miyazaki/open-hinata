@@ -260,7 +260,7 @@
         position: absolute;
         left: 10px;
         /*bottom: 10px;*/
-        top: calc(100% - 2em);
+        top: calc(100% - 1.5em);
         z-index: 1;
         color: #fff;
         text-shadow: black 1px 1px 0, black -1px 1px 0,
@@ -425,13 +425,14 @@
     }
     .ol-scale-line{
         left: calc(50% - 50px);
+        top: calc(100% - 3em);
         height: 22px;
         cursor: grab;
     }
     .ol-zoom {
         /*bottom: 40px;*/
         /*top: auto;*/
-        top: calc(100% - 7em);
+        top: calc(100% - 6em);
         cursor: grab;
     }
     .ol-notification {

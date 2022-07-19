@@ -171,13 +171,12 @@ export function initMap (vm) {
         }
       }
     });
-    map.on('moveend', function () {
-      vm.zoom[mapName] = 'zoom=' + String(Math.floor(map.getView().getZoom() * 100) / 100)
-    });
-    map.on("pointermove",function(event){
+
+    const getElevation = (event) =>{
       let z = map.getView().getZoom() > 13 ? 13 : map.getView().getZoom()
       if(z>13) z=13;
-      const coord = event.coordinate
+      // const coord = event.coordinate　こっちにするとマウスの標高を取得する。
+      const coord =map.getView().getCenter()
       const R = 6378137;// 地球の半径(m);
       const x = ( 0.5 + coord[ 0 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
       const y = ( 0.5 - coord[ 1 ] / ( 2 * R * Math.PI ) ) * Math.pow( 2, z );
@@ -186,11 +185,18 @@ export function initMap (vm) {
         const zoom = String(Math.floor(map.getView().getZoom() * 100) / 100)
         if (h !=='e') {
           // console.log(h)
-          vm.zoom[mapName] = 'zoom=' + zoom + '  標高' + h + 'm'
+          vm.zoom[mapName] = 'zoom=' + zoom + '  中心の標高' + h + 'm'
         } else {
           vm.zoom[mapName] = 'zoom=' + zoom
         }
       } );
+    }
+    map.on('moveend', function (event) {
+      // vm.zoom[mapName] = 'zoom=' + String(Math.floor(map.getView().getZoom() * 100) / 100)
+      getElevation(event)
+    });
+    map.on("pointermove",function(event){
+      getElevation(event)
     });
     // ****************
     // 産総研さん作成の関数
@@ -268,8 +274,18 @@ export function initMap (vm) {
       //フリックしたときに画面を動かさないようにデフォルト動作を抑制
       e.preventDefault();
       //マウスが動いた場所に要素を動かす
-      drag.style.top = event.pageY - y + "px";
-      drag.style.left = event.pageX - x + "px";
+      // console.log(drag.parentNode.parentNode.clientHeight)
+      let top = event.pageY - y
+      const left = event.pageX - x
+      // console.log(top)
+      // if (top >= drag.parentNode.clientHeight - drag.clientHeight || top - drag.parentNode.clientHeight - drag.clientHeight === 0) {
+      //   top = drag.parentNode.clientHeight - drag.clientHeight
+      //   document.body.addEventListener("mouseleave", mup, false);
+      //   document.body.addEventListener("touchleave", mup, false);
+      //   return
+      // }
+      drag.style.top = top + "px";
+      drag.style.left = left + "px";
       //マウスボタンが離されたとき、またはカーソルが外れたとき発火
       drag.addEventListener("mouseup", mup, false);
       document.body.addEventListener("mouseleave", mup, false);
