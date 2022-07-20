@@ -11,6 +11,7 @@ import Lego from 'ol-ext/filter/Lego'
 import Notification from '../js/notification'
 import * as Layers from '../js/layers'
 import {defaults as defaultInteractions, DragRotateAndZoom} from 'ol/interaction';
+import OLCesium from 'olcs/OLCesium.js';
 let maxZndex = 0;
 let legoFilter = null;
 export function initMap (vm) {
@@ -101,6 +102,8 @@ export function initMap (vm) {
     // シングルクリック------------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {
       console.log(evt)
+      const ol3d = new OLCesium({map: map}); // ol2dMap is the ol.Map instance
+      ol3d.setEnabled(true);
     })
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
