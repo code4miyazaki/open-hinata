@@ -2,12 +2,14 @@
     <div id="map00">
         <!--map01からmap04をループで作成-->
         <transition v-for="mapName in mapNames" :key="mapName">
-            <div :id=mapName :style="mapSize[mapName]" v-show="mapFlg[mapName]">
+          <div :id=mapName :style="mapSize[mapName]" v-show="mapFlg[mapName]">
+              <div class="center"><span style="position: absolute;top:-22px;left:-11px" >＋</span></div>
                 <div class="top-left-div">
                     <b-button id='menu-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['menuDialog'])" style="margin-right:5px;"><i class="fa-solid fa-bars"></i></b-button>
                     <b-button id='split-map-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="splitMap" style="margin-right:5px;"><i class="fa-solid fa-table-columns"></i></b-button>
                     <b-button class='olbtn' :size="btnSize" @click="openDialog(s_dialogs[mapName])">背景</b-button>
-                    <b-popover v-if='toolTip'
+                  <b-button class='olbtn' id='create3dbtn' :size="btnSize" @click="create3d(mapName)">{{ create3dTxt}}</b-button>
+                  <b-popover v-if='toolTip'
                                content="画面を分割します。"
                                target="split-map-btn"
                                triggers="hover"
@@ -43,8 +45,9 @@
                  placement="bottomright"
                  boundary="viewport"
         />
+
     </div>
-</template>
+    </template>
 
 <script>
   import DialogMenu from './Dialog-menu'
@@ -52,6 +55,10 @@
   import * as Permalink from '../js/permalink'
   import Inobounce from '../js/inobounce'
   import * as MyMap from '../js/mymap'
+  import OLCesium from 'olcs/OLCesium.js';
+  import { Cesium3DTileset, createWorldTerrain, IonResource, Viewer, Ion} from 'cesium'
+  import {OLCS_ION_TOKEN} from '../js/_common.js';
+  Cesium.Ion.defaultAccessToken = OLCS_ION_TOKEN;
   export default {
     name: 'App',
     components: {
@@ -60,6 +67,7 @@
     },
     data () {
       return {
+        create3dTxt: '3D',
         mapNames: ['map01','map02','map03','map04'],
         btnSize: '',
         toolTip: false,
@@ -89,6 +97,24 @@
       s_dialogMaxZindex () { return this.$store.state.base.dialogMaxZindex}
     },
     methods: {
+      create3d(mapName){
+
+        const map = this.$store.state.base.maps[mapName];
+        console.log(map)
+        const ol3d = new OLCesium({map: map}); // ol2dMap is the ol.Map instance
+        const scene = ol3d.getCesiumScene();
+        scene.terrainProvider = Cesium.createWorldTerrain();
+
+        console.log(ol3d.getEnabled())
+        if (!ol3d.getEnabled()) {
+          // this.create3dTxt = '2Dへ'
+          ol3d.setEnabled(true);
+        } else {
+          // this.create3dTxt = '3Dへ'
+          ol3d.setEnabled(false);
+        }
+
+      },
       // レイヤーのダイアログを開く------------------------------------------------------------------
       openDialog (dialog) {
         this.$store.commit('base/incrDialogMaxZindex');
@@ -416,6 +442,22 @@
     input[type=range]:focus::-ms-fill-upper {
         background: #B6B6B6;
     }
+    #create3dbtn{
+      margin-left: 5px;
+    }
+    .center{
+      position: absolute;
+      top: calc(50% - 15px);
+      left: calc(50% - 15px);;
+      width:30px;
+      height: 30px;
+      /*border-radius: 30px;*/
+      text-align: center;
+      /*background-color: #fff;*/
+      font-size:50px ;
+      z-index: 1;
+      pointer-events:none;
+      }
 </style>
 <style>
     /*ol関係のスタイル*/
