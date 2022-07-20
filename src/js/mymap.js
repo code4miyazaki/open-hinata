@@ -8,10 +8,14 @@ import { ScaleLine } from 'ol/control';
 import Toggle from 'ol-ext/control/Toggle'
 import Target from 'ol-ext/control/Target'
 import Lego from 'ol-ext/filter/Lego'
-import Notification from '../js/notification'
+// import Notification from '../js/notification'
 import * as Layers from '../js/layers'
 import {defaults as defaultInteractions, DragRotateAndZoom} from 'ol/interaction';
 import OLCesium from 'olcs/OLCesium.js';
+import { Cesium3DTileset, createWorldTerrain, IonResource, Viewer, Ion} from 'cesium'
+import {OLCS_ION_TOKEN} from './_common.js';
+console.log(Cesium)
+Cesium.Ion.defaultAccessToken = OLCS_ION_TOKEN;
 let maxZndex = 0;
 let legoFilter = null;
 export function initMap (vm) {
@@ -41,11 +45,11 @@ export function initMap (vm) {
     store.commit('base/setMap', {mapName: maps[i].mapName, map});
 
     // コントロール追加---------------------------------------------------------------------------
-    map.addControl(new Target({composite: 'difference'}));
-    map.addControl(new ScaleLine());
-    const notification = new Notification();
-    map.addControl(notification);
-    store.commit('base/setNotifications',{mapName:mapName, control: notification});
+    // map.addControl(new Target({composite: 'difference'}));
+    // map.addControl(new ScaleLine());
+    // const notification = new Notification();
+    // map.addControl(notification);
+    // store.commit('base/setNotifications',{mapName:mapName, control: notification});
     //現在地取得
     const  success = (pos) =>{
       const lon = pos.coords.longitude;
@@ -102,8 +106,10 @@ export function initMap (vm) {
     // シングルクリック------------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {
       console.log(evt)
-      const ol3d = new OLCesium({map: map}); // ol2dMap is the ol.Map instance
-      ol3d.setEnabled(true);
+      // const ol3d = new OLCesium({map: map}); // ol2dMap is the ol.Map instance
+      // const scene = ol3d.getCesiumScene();
+      // scene.terrainProvider = Cesium.createWorldTerrain();
+      // ol3d.setEnabled(true);
     })
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
