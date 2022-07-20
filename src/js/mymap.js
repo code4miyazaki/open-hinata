@@ -8,14 +8,9 @@ import { ScaleLine } from 'ol/control';
 import Toggle from 'ol-ext/control/Toggle'
 import Target from 'ol-ext/control/Target'
 import Lego from 'ol-ext/filter/Lego'
-// import Notification from '../js/notification'
+import Notification from '../js/notification'
 import * as Layers from '../js/layers'
 import {defaults as defaultInteractions, DragRotateAndZoom} from 'ol/interaction';
-import OLCesium from 'olcs/OLCesium.js';
-import { Cesium3DTileset, createWorldTerrain, IonResource, Viewer, Ion} from 'cesium'
-import {OLCS_ION_TOKEN} from './_common.js';
-console.log(Cesium)
-Cesium.Ion.defaultAccessToken = OLCS_ION_TOKEN;
 let maxZndex = 0;
 let legoFilter = null;
 export function initMap (vm) {
@@ -45,11 +40,11 @@ export function initMap (vm) {
     store.commit('base/setMap', {mapName: maps[i].mapName, map});
 
     // コントロール追加---------------------------------------------------------------------------
-    // map.addControl(new Target({composite: 'difference'}));
-    // map.addControl(new ScaleLine());
-    // const notification = new Notification();
-    // map.addControl(notification);
-    // store.commit('base/setNotifications',{mapName:mapName, control: notification});
+    map.addControl(new Target({composite: 'difference'}));
+    map.addControl(new ScaleLine());
+    const notification = new Notification();
+    map.addControl(notification);
+    store.commit('base/setNotifications',{mapName:mapName, control: notification});
     //現在地取得
     const  success = (pos) =>{
       const lon = pos.coords.longitude;
