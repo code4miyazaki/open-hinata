@@ -3,6 +3,10 @@
         <!--map01からmap04をループで作成-->
         <transition v-for="mapName in mapNames" :key="mapName">
             <div :id=mapName :style="mapSize[mapName]" v-show="mapFlg[mapName]">
+              <div :id="popup[mapName]" class="ol-popup">
+                <a href="#" :id="popupCloser[mapName]" class="ol-popup-closer"></a>
+                <div :id="popupContent[mapName]"></div>
+              </div>
                 <div class="top-left-div">
                     <b-button id='menu-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['menuDialog'])" style="margin-right:5px;"><i class="fa-solid fa-bars"></i></b-button>
                     <b-button id='split-map-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="splitMap" style="margin-right:5px;"><i class="fa-solid fa-table-columns"></i></b-button>
@@ -21,6 +25,7 @@
                                placement="bottomleft"
                                boundary="viewport"
                     />
+
                 </div>
                 <div class="top-right-div"></div>
                 <v-dialog-layer :mapName=mapName />
@@ -63,6 +68,9 @@
         mapNames: ['map01','map02','map03','map04'],
         btnSize: '',
         toolTip: false,
+        popup:{map01: 'map01-popup',map02: 'map02-popup',map03: 'map03-popup',map04: 'map04-popup'},
+        popupCloser:{map01: 'map01-popup-closer',map02: 'map02-popup-closer',map03: 'map03-popup-closer',map04: 'map04-popup-closer'},
+        popupContent:{map01: 'map01-popup-content',map02: 'map02-popup-content',map03: 'map03-popup-content',map04: 'map04-popup-content'},
         mapSize: {
           map01: {top: 0, left: 0, width: '100%', height: window.innerHeight + 'px'},
           map02: {top: 0, right: 0, width: 0, height: window.innerHeight + 'px'},
@@ -419,6 +427,47 @@
 </style>
 <style>
     /*ol関係のスタイル*/
+    .ol-popup {
+      position: absolute;
+      background-color: white;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #cccccc;
+      bottom: 12px;
+      left: -50px;
+      min-width: 280px;
+    }
+    .ol-popup:after, .ol-popup:before {
+      top: 100%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+    }
+    .ol-popup:after {
+      border-top-color: white;
+      border-width: 10px;
+      left: 48px;
+      margin-left: -10px;
+    }
+    .ol-popup:before {
+      border-top-color: #cccccc;
+      border-width: 11px;
+      left: 48px;
+      margin-left: -11px;
+    }
+    .ol-popup-closer {
+      text-decoration: none;
+      position: absolute;
+      top: 2px;
+      right: 8px;
+    }
+    .ol-popup-closer:after {
+      content: "✖";
+    }
     .ol-rotate {
         right: 50%;
         top: 4em;

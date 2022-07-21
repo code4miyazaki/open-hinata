@@ -2,6 +2,7 @@
 import store from './store'
 import 'ol/ol.css'
 import Map from 'ol/Map'
+import Overlay from 'ol/Overlay';
 import View from 'ol/View'
 import { transform, fromLonLat } from 'ol/proj'
 import { ScaleLine } from 'ol/control';
@@ -26,6 +27,24 @@ export function initMap (vm) {
     zoom: 6
   });
   for (let i in maps) {
+     //ポップアップを作る。現在不使用
+    const container = document.getElementById(maps[i].mapName + '-popup');
+    const content = document.getElementById(maps[i].mapName  + '-popup-content');
+    const closer = document.getElementById(maps[i].mapName  + '-popup-closer');
+    const overlay =[]
+    overlay[i] = new Overlay({
+      element: container,
+      autoPan: {
+        animation: {
+          duration: 250,
+        },
+      },
+    });
+    closer.onclick = function () {
+      overlay[i].setPosition(undefined);
+      closer.blur();
+      return false;
+    };
     // マップ作製
     const mapName = maps[i].mapName;
     const map = new Map({
@@ -33,6 +52,7 @@ export function initMap (vm) {
         new DragRotateAndZoom()
       ]),
       // layers: [maps[i].layer],
+      overlays: [overlay[i]],
       target: mapName,
       view: view01
     });
@@ -101,10 +121,17 @@ export function initMap (vm) {
     // シングルクリック------------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {
       console.log(evt)
-      // const ol3d = new OLCesium({map: map}); // ol2dMap is the ol.Map instance
-      // const scene = ol3d.getCesiumScene();
-      // scene.terrainProvider = Cesium.createWorldTerrain();
-      // ol3d.setEnabled(true);
+      // const pixel = (map).getPixelFromCoordinate(evt.coordinate);
+      // const features = [];
+      // const layers = [];
+      // (map).forEachFeatureAtPixel(pixel,function(feature,layer){
+      //   features.push(feature);
+      //   layers.push(layer);
+      // });
+      // if(!features.length) return;
+      // const coordinate = evt.coordinate;
+      // content.innerHTML = mapName;
+      // overlay[i].setPosition(coordinate);
     })
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
