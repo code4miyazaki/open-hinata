@@ -719,7 +719,7 @@ function mask (dep,layer) {
 }
 // 	青森県古地図-------------------------------------------------------------------------------
 function Kotizu01aomori () {
-  this.extent = transformE([139.767154, 40.37258968,141.8301430,41.6254812]);
+  // this.extent = transformE([139.767154, 40.37258968,141.8301430,41.6254812]);
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/02aomoriken/{z}/{x}/{-y}.png',
     crossOrigin: 'Anonymous',
@@ -737,7 +737,7 @@ for (let i of mapsStr) {
 const kotizu01aomoriSumm = '';
 // 	岩手県古地図-------------------------------------------------------------------------------
 function Kotizu03iwate () {
-  this.extent = transformE([139.767154, 40.37258968,141.8301430,41.6254812]);
+  // this.extent = transformE([139.767154, 40.37258968,141.8301430,41.6254812]);
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu3/tile/3iwateken/{z}/{x}/{-y}.png',
     crossOrigin: 'Anonymous',
@@ -877,14 +877,13 @@ const layers =
         { text: '旧版地形図20万分の１', data: { id: 'mw20', layer: mw20Obj, opacity: 1, summary: mw20Summ } },
         { text: '迅速測図 (関東)', data: { id: 'jinsoku', layer: jinsokuObj, opacity: 1, zoom: 9, center: [139.8089637733657, 35.86926927958841], summary: jinsokuSumm } },
         { text: '東西蝦夷山川地理取調図', data: { id: 'ezosansen', layer: ezosansenObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: ezosansenSumm } },
-        { text: '青森県古地図', data: { id: 'kotizu01aomori', layer: kotizu01aomoriObj, opacity: 1, zoom: 9, center: [140.67520521398887, 40.84152054620705], summary: kotizu01aomoriSumm } },
         { text: '最新詳密金刺分縣圖',
           children: [
-            { text: '北海道古地図', data: { id: 'kotizu01hokkaidou', layer: kotizu01hokkaidouObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: kotizu01hokkaidouSumm } },
+            { text: '01北海道古地図', data: { id: 'kotizu01hokkaidou', layer: kotizu01hokkaidouObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: kotizu01hokkaidouSumm } },
             { text: '東北',
               children: [
-                { text: '青森県古地図', data: { id: 'kotizu01aomori', layer: kotizu01aomoriObj, opacity: 1, zoom: 9, center: [140.67520521398887, 40.84152054620705], summary: kotizu01aomoriSumm } },
-                // { text: '1936-1938年', data: { id: 'kon_hu02', layer: nihonCsArr, opacity: 1 } }
+                { text: '02青森県古地図', data: { id: 'kotizu01aomori', layer: kotizu01aomoriObj, opacity: 1, zoom: 9, center: [140.67520521398887, 40.84152054620705], summary: kotizu01aomoriSumm } },
+                { text: '03岩手県古地図', data: { id: 'kotizu03iwate', layer: kotizu03iwateObj, opacity: 1, zoom: 9, center: [141.40762710839144, 39.6512878209730], summary: kotizu03iwateSumm } },
               ]}
           ]},
       ]},
