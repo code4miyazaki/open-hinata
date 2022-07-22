@@ -9,8 +9,8 @@ import { ScaleLine } from 'ol/control';
 import Toggle from 'ol-ext/control/Toggle'
 import Target from 'ol-ext/control/Target'
 import Lego from 'ol-ext/filter/Lego'
-import Notification from '../js/notification'
-import * as Layers from '../js/layers'
+import Notification from './notification'
+import * as Layers from './layers'
 import {defaults as defaultInteractions, DragRotateAndZoom} from 'ol/interaction';
 let maxZndex = 0;
 let legoFilter = null;

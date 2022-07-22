@@ -2,11 +2,11 @@
 ol5+vueで作成したオープン版の「ひなたGIS」です。「ひなたGIS」の作者が作っています。
 # Demo
 [・初期時](https://kenzkenz.xsrv.jp/open-hinata/)
-[・２画面](https://bit.ly/3IpLX1u)
-[・３画面](https://bit.ly/3nP9Jul)
-[・４画面](https://bit.ly/3apKADr)
-[・５万分の１旧版地形図](https://bit.ly/3c3GpOg)
-[・海面上昇シミュレーション](https://bit.ly/3z0cmQC)
+[・２画面](https://kenzkenz.xsrv.jp/open-hinata/#6/139.02448/37.77939%3FS%3D2%26L%3D%5B%5B%7B%22id%22%3A1%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A2%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A4%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%5D%5D)
+[・３画面](https://kenzkenz.xsrv.jp/open-hinata/#7/140.097/37.856%3FS%3D4%26L%3D%5B%5B%7B%22id%22%3A1%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A2%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A4%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%5D%5D)
+[・４画面](https://kenzkenz.xsrv.jp/open-hinata/#7/140.097/37.856%3FS%3D6%26L%3D%5B%5B%7B%22id%22%3A1%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A2%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A4%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A%22zenkokusaisin%22%2C%22o%22%3A1%7D%5D%5D)
+[・５万分の１旧版地形図](https://kenzkenz.xsrv.jp/open-hinata/#9/131.11275/32.72855%3FS%3D1%26L%3D%5B%5B%7B%22id%22%3A%22mw5%22%2C%22o%22%3A1%7D%2C%7B%22id%22%3A1%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A2%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A4%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%5D%5D)
+[・海面上昇シミュレーション](https://kenzkenz.xsrv.jp/open-hinata/#12/131.46822/32.09212%3FS%3D1%26L%3D%5B%5B%7B%22id%22%3A%22flood10m%22%2C%22o%22%3A1%2C%22c%22%3A%7B%22name%22%3A%22flood10m%22%2C%22values%22%3A%5B5.5%2C100%5D%7D%7D%2C%7B%22id%22%3A1%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A2%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%7B%22id%22%3A4%2C%22o%22%3A1%2C%22c%22%3A%22%22%7D%5D%2C%5B%5D%5D)
 
 
 # Dependencies
