@@ -827,8 +827,40 @@ const kotizu06yamagataSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunk
 
 
 
-
-
+// 29奈良県古地図-------------------------------------------------------------------------------
+function Kotizu29nara () {
+  // this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/29naraken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu29naraObj = {};
+for (let i of mapsStr) {
+  kotizu29naraObj[i] = new TileLayer(new Kotizu29nara())
+  const dep = MaskDep.nara
+  mask(dep,kotizu29naraObj[i] )
+}
+const kotizu29naraSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/29naraken.jpg" target="_blank">jpg</a>'
+// 30和歌山県古地図-------------------------------------------------------------------------------
+function Kotizu30wakayama () {
+  // this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/30wakayamaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu30wakayamaObj = {};
+for (let i of mapsStr) {
+  kotizu30wakayamaObj[i] = new TileLayer(new Kotizu30wakayama())
+  const dep = MaskDep.wakayama
+  mask(dep,kotizu30wakayamaObj[i] )
+}
+const kotizu30wakayamaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/30wakayamaken.jpg" target="_blank">jpg</a>'
 // 31鳥取県古地図-------------------------------------------------------------------------------
 function Kotizu31tottori () {
   // this.extent = transformE([131.613,34.290,133.347,35.654]);
@@ -1253,6 +1285,11 @@ const layers =
                 { text: '05秋田県古地図(大正13年)', data: { id: 'kotizu05akita', layer: kotizu05akitaObj, opacity: 1, zoom: 9, center: [140.342563594382, 39.746736192608324], summary: kotizu05akitaSumm } },
                 { text: '06山形県古地図(大正13年)', data: { id: 'kotizu06yamagata', layer: kotizu06yamagataObj, opacity: 1, zoom: 9, center: [140.09842298137926, 38.50471461587239], summary: kotizu06yamagataSumm } },
               ]},
+            { text: '近畿',
+              children: [
+                { text: '29奈良県古地図(大正14年)', data: { id: 'kotizu29nara', layer: kotizu29naraObj, opacity: 1, zoom: 9, center: [135.40787110854197, 33.93779078075431], summary: kotizu29naraSumm } },
+                { text: '30和歌山県古地図(大正14年)', data: { id: 'kotizu30wakayama', layer: kotizu30wakayamaObj, opacity: 1, zoom: 9, center: [135.40787110854197, 33.93779078075431], summary: kotizu30wakayamaSumm } },
+         ]},
             { text: ' 中国',
               children: [
                 { text: '31鳥取県古地図(大正14年)', data: { id: 'kotizu31tottori', layer: kotizu31tottoriObj, opacity: 1, zoom: 9, center: [133.86368161450991, 35.4283501390533], summary: kotizu31tottoriSumm } },
