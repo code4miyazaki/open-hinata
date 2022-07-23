@@ -823,7 +823,23 @@ for (let i of mapsStr) {
   mask(dep,kotizu07hukusimaObj[i])
 }
 const kotizu07hukusimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/7hukusimaken.jpg" target="_blank">jpg</a>'
-
+// 08茨城県古地図-------------------------------------------------------------------------------
+function Kotizu08ibaraki () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu3/tile/8ibarakiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu08ibarakiObj = {};
+for (let i of mapsStr) {
+  kotizu08ibarakiObj[i] = new TileLayer(new Kotizu08ibaraki())
+  const dep = MaskDep.ibaraki
+  mask(dep,kotizu08ibarakiObj[i])
+}
+const kotizu08ibarakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/8ibarakiken.jpg" target="_blank">jpg</a>'
 
 
 
@@ -1384,6 +1400,10 @@ const layers =
                 { text: '05秋田県古地図(大正13年)', data: { id: 'kotizu05akita', layer: kotizu05akitaObj, opacity: 1, zoom: 9, center: [140.342563594382, 39.746736192608324], summary: kotizu05akitaSumm } },
                 { text: '06山形県古地図(大正13年)', data: { id: 'kotizu06yamagata', layer: kotizu06yamagataObj, opacity: 1, zoom: 9, center: [140.09842298137926, 38.50471461587239], summary: kotizu06yamagataSumm } },
                 { text: '07福島県古地図(大正13年)', data: { id: 'kotizu07hukusima', layer: kotizu07hukusimaObj, opacity: 1, zoom: 9, center: [140.23376849960238, 37.48454580025047], summary: kotizu07hukusimaSumm } },
+              ]},
+            { text: '関東',
+              children: [
+                { text: '08茨城県古地図(大正14年)', data: { id: 'kotizu08ibaraki', layer: kotizu08ibarakiObj, opacity: 1, zoom: 9, center: [140.33340833916677, 36.289055943305996], summary: kotizu08ibarakiSumm } },
               ]},
             { text: '近畿',
               children: [
