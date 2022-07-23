@@ -786,6 +786,23 @@ for (let i of mapsStr) {
   mask(dep,kotizu05akitaObj[i] )
 }
 const kotizu05akitaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/05akitaken.jpg" target="_blank">jpg</a>'
+// 	05山形県古地図-------------------------------------------------------------------------------
+function Kotizu06yamagata () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu3/tile/6yamagataken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu06yamagataObj = {};
+for (let i of mapsStr) {
+  kotizu06yamagataObj[i] = new TileLayer(new Kotizu06yamagata())
+  const dep = MaskDep.yamagata
+  mask(dep,kotizu06yamagataObj[i] )
+}
+const kotizu06yamagataSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/05akitaken.jpg" target="_blank">jpg</a>'
 // 洪水浸水想定-------------------------------------------------------------------------------
 function Shinsuishin () {
   this.source = new XYZ({
@@ -919,6 +936,7 @@ const layers =
                 { text: '03岩手県古地図', data: { id: 'kotizu03iwate', layer: kotizu03iwateObj, opacity: 1, zoom: 9, center: [141.40762710839144, 39.6512878209730], summary: kotizu03iwateSumm } },
                 { text: '04宮城県古地図', data: { id: 'kotizu04miyagi', layer: kotizu04miyagiObj, opacity: 1, zoom: 9, center: [140.91324236659926, 38.49277272507115], summary: kotizu04miyagiSumm } },
                 { text: '05秋田県古地図', data: { id: 'kotizu05akita', layer: kotizu05akitaObj, opacity: 1, zoom: 9, center: [140.342563594382, 39.746736192608324], summary: kotizu05akitaSumm } },
+                { text: '06山形県古地図', data: { id: 'kotizu06yamagata', layer: kotizu06yamagataObj, opacity: 1, zoom: 9, center: [140.09842298137926, 38.50471461587239], summary: kotizu06yamagataSumm } },
               ]}
           ]},
       ]},
