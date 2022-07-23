@@ -697,21 +697,22 @@ for (let i of mapsStr) {
 const kotizu01hokkaidouSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu4/image/01hokkaidou.jpg" target="_blank">jpg</a>'
 // 	北海道古地図ここまで------------------------------------------------------------------------
 //  レイヤーをマスクする関数
-function mask (dep,layer,i) {
-  var coords = dep.geometry.coordinates;
-  if(i==='map01') {
+function mask (dep,layer) {
+  const coords = dep.geometry.coordinates;
+  // epsg4326(WGS84)のときだけ実行する。
+  if(coords[0][0] [0]< 1000) {
     for (let i = 0; i < coords[0].length; i++) {
       coords[0][i] = fromLonLat(coords[0][i])
     }
   }
-  var f = new Feature(new Polygon(coords));
-  var crop = new Crop({
+  const f = new Feature(new Polygon(coords));
+  const crop = new Crop({
     feature: f,
     wrapX: true,
     inner: false
   });
   layer.addFilter(crop);
-  var mask = new Mask({
+  const mask = new Mask({
     feature: f,
     wrapX: true,
     inner: false,
@@ -719,7 +720,6 @@ function mask (dep,layer,i) {
   });
   layer.addFilter(mask);
   mask.set('active', false);
-
 }
 // 	青森県古地図-------------------------------------------------------------------------------
 function Kotizu01aomori () {
@@ -735,7 +735,7 @@ const kotizu01aomoriObj = {};
 for (let i of mapsStr) {
   kotizu01aomoriObj[i] = new TileLayer(new Kotizu01aomori())
   const dep = MaskDep.aomori
-  mask(dep,kotizu01aomoriObj[i],i)
+  mask(dep,kotizu01aomoriObj[i])
 }
 const kotizu01aomoriSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/02aomoriken.jpg" target="_blank">jpg</a>'
 // 	03岩手県古地図-------------------------------------------------------------------------------
@@ -752,7 +752,7 @@ const kotizu03iwateObj = {};
 for (let i of mapsStr) {
   kotizu03iwateObj[i] = new TileLayer(new Kotizu03iwate())
   const dep = MaskDep.iwate
-  mask(dep,kotizu03iwateObj[i] ,i)
+  mask(dep,kotizu03iwateObj[i])
 }
 const kotizu03iwateSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/3iwateken.jpg" target="_blank">jpg</a>'
 // 	04宮城県古地図-------------------------------------------------------------------------------
@@ -769,7 +769,7 @@ const kotizu04miyagiObj = {};
 for (let i of mapsStr) {
   kotizu04miyagiObj[i] = new TileLayer(new Kotizu04miyagi())
   const dep = MaskDep.miyagi
-  mask(dep,kotizu04miyagiObj[i],i )
+  mask(dep,kotizu04miyagiObj[i])
 }
 const kotizu04miyagiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/04miyagiken.jpg" target="_blank">jpg</a>'
 // 	05秋田県古地図-------------------------------------------------------------------------------
@@ -786,10 +786,10 @@ const kotizu05akitaObj = {};
 for (let i of mapsStr) {
   kotizu05akitaObj[i] = new TileLayer(new Kotizu05akita())
   const dep = MaskDep.akita
-  mask(dep,kotizu05akitaObj[i],i )
+  mask(dep,kotizu05akitaObj[i])
 }
 const kotizu05akitaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/5akitaken.jpg" target="_blank">jpg</a>'
-// 	05山形県古地図-------------------------------------------------------------------------------
+// 	06山形県古地図-------------------------------------------------------------------------------
 function Kotizu06yamagata () {
   // this.extent = transformE([140.200,37.760,141.913,39.132])
   this.source = new XYZ({
@@ -803,10 +803,26 @@ const kotizu06yamagataObj = {};
 for (let i of mapsStr) {
   kotizu06yamagataObj[i] = new TileLayer(new Kotizu06yamagata())
   const dep = MaskDep.yamagata
-  mask(dep,kotizu06yamagataObj[i],i )
+  mask(dep,kotizu06yamagataObj[i])
 }
 const kotizu06yamagataSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/6yamagataken.jpg" target="_blank">jpg</a>'
-
+// 	07福島県古地図-------------------------------------------------------------------------------
+function Kotizu07hukusima () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu3/tile/7hukusimaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu07hukusimaObj = {};
+for (let i of mapsStr) {
+  kotizu07hukusimaObj[i] = new TileLayer(new Kotizu07hukusima())
+  const dep = MaskDep.hukusima
+  mask(dep,kotizu07hukusimaObj[i])
+}
+const kotizu07hukusimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/7hukusimaken.jpg" target="_blank">jpg</a>'
 
 
 
@@ -839,7 +855,7 @@ const kotizu24miekenObj = {};
 for (let i of mapsStr) {
   kotizu24miekenObj[i] = new TileLayer(new Kotizu24mieken())
   const dep = MaskDep.mie
-  mask(dep,kotizu24miekenObj[i],i )
+  mask(dep,kotizu24miekenObj[i])
 }
 const kotizu24miekenSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/24mieken.jpg" target="_blank">jpg</a>'
 // 25滋賀県古地図-------------------------------------------------------------------------------
@@ -856,7 +872,7 @@ const kotizu25sigakenObj = {};
 for (let i of mapsStr) {
   kotizu25sigakenObj[i] = new TileLayer(new Kotizu25sigaken())
   const dep = MaskDep.siga
-  mask(dep,kotizu25sigakenObj[i],i )
+  mask(dep,kotizu25sigakenObj[i])
 }
 const kotizu25sigakenSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/25sigaken.jpg" target="_blank">jpg</a>'
 // 26京都府古地図-------------------------------------------------------------------------------
@@ -873,7 +889,7 @@ const kotizu26kyoutohuObj = {};
 for (let i of mapsStr) {
   kotizu26kyoutohuObj[i] = new TileLayer(new Kotizu26kyoutohu())
   const dep = MaskDep.kyouto
-  mask(dep,kotizu26kyoutohuObj[i],i )
+  mask(dep,kotizu26kyoutohuObj[i])
 }
 const kotizu26kyoutohuSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/26kyoutohu.jpg" target="_blank">jpg</a>'
 // 27大阪府古地図-------------------------------------------------------------------------------
@@ -890,7 +906,7 @@ const kotizu27osakaObj = {};
 for (let i of mapsStr) {
   kotizu27osakaObj[i] = new TileLayer(new Kotizu27osaka())
   const dep = MaskDep.osaka
-  mask(dep,kotizu27osakaObj[i],i )
+  mask(dep,kotizu27osakaObj[i])
 }
 const kotizu27osakaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/27osaka.jpg" target="_blank">jpg</a>'
 // 28兵庫県古地図-------------------------------------------------------------------------------
@@ -907,7 +923,7 @@ const kotizu28hyogoObj = {};
 for (let i of mapsStr) {
   kotizu28hyogoObj[i] = new TileLayer(new Kotizu28hyogo())
   const dep = MaskDep.hyogo
-  mask(dep,kotizu28hyogoObj[i],i )
+  mask(dep,kotizu28hyogoObj[i])
 }
 const kotizu28hyogoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/28hyogoken.jpg" target="_blank">jpg</a>'
 // 29奈良県古地図-------------------------------------------------------------------------------
@@ -924,7 +940,7 @@ const kotizu29naraObj = {};
 for (let i of mapsStr) {
   kotizu29naraObj[i] = new TileLayer(new Kotizu29nara())
   const dep = MaskDep.nara
-  mask(dep,kotizu29naraObj[i],i )
+  mask(dep,kotizu29naraObj[i])
 }
 const kotizu29naraSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/29naraken.jpg" target="_blank">jpg</a>'
 // 30和歌山県古地図-------------------------------------------------------------------------------
@@ -941,7 +957,7 @@ const kotizu30wakayamaObj = {};
 for (let i of mapsStr) {
   kotizu30wakayamaObj[i] = new TileLayer(new Kotizu30wakayama())
   const dep = MaskDep.wakayama
-  mask(dep,kotizu30wakayamaObj[i],i )
+  mask(dep,kotizu30wakayamaObj[i])
 }
 const kotizu30wakayamaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/30wakayamaken.jpg" target="_blank">jpg</a>'
 // 31鳥取県古地図-------------------------------------------------------------------------------
@@ -958,7 +974,7 @@ const kotizu31tottoriObj = {};
 for (let i of mapsStr) {
   kotizu31tottoriObj[i] = new TileLayer(new Kotizu31tottori())
   const dep = MaskDep.tottori
-  mask(dep,kotizu31tottoriObj[i],i )
+  mask(dep,kotizu31tottoriObj[i])
 }
 const kotizu31tottoriSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/31tottoriken.jpg" target="_blank">jpg</a>'
 // 32島根県古地図-------------------------------------------------------------------------------
@@ -975,7 +991,7 @@ const kotizu32shimaneObj = {};
 for (let i of mapsStr) {
   kotizu32shimaneObj[i] = new TileLayer(new Kotizu32shimane())
   const dep = MaskDep.shimane
-  mask(dep,kotizu32shimaneObj[i],i )
+  mask(dep,kotizu32shimaneObj[i])
 }
 const kotizu32shimaneSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/32shimaneken.jpg" target="_blank">jpg</a>'
 // 33岡山県古地図-------------------------------------------------------------------------------
@@ -992,7 +1008,7 @@ const kotizu33okayamaObj = {};
 for (let i of mapsStr) {
   kotizu33okayamaObj[i] = new TileLayer(new Kotizu33okayama())
   const dep = MaskDep.okayama
-  mask(dep,kotizu33okayamaObj[i],i )
+  mask(dep,kotizu33okayamaObj[i])
 }
 const kotizu33okayamaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/33okayamaken.jpg" target="_blank">jpg</a>'
 // 34広島県古地図-------------------------------------------------------------------------------
@@ -1009,7 +1025,7 @@ const kotizu34hiroshimaObj = {};
 for (let i of mapsStr) {
   kotizu34hiroshimaObj[i] = new TileLayer(new Kotizu34hiroshima())
   const dep = MaskDep.hiroshima
-  mask(dep,kotizu34hiroshimaObj[i],i )
+  mask(dep,kotizu34hiroshimaObj[i])
 }
 const kotizu34hiroshimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/34hiroshimaken.jpg" target="_blank">jpg</a>'
 // 35山口県古地図-------------------------------------------------------------------------------
@@ -1026,7 +1042,7 @@ const kotizu35yamaguchiObj = {};
 for (let i of mapsStr) {
   kotizu35yamaguchiObj[i] = new TileLayer(new Kotizu35yamaguchi())
   const dep = MaskDep.yamaguchi
-  mask(dep,kotizu35yamaguchiObj[i],i )
+  mask(dep,kotizu35yamaguchiObj[i])
 }
 const kotizu35yamaguchiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/35yamagutiken.jpg" target="_blank">jpg</a>'
 // 36徳島県古地図-------------------------------------------------------------------------------
@@ -1043,7 +1059,7 @@ const kotizu36tokusimaObj = {};
 for (let i of mapsStr) {
   kotizu36tokusimaObj[i] = new TileLayer(new Kotizu36tokusima())
   const dep = MaskDep.tokusima
-  mask(dep,kotizu36tokusimaObj[i],i )
+  mask(dep,kotizu36tokusimaObj[i])
 }
 const kotizu36tokusimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/36tokusimaken.jpg" target="_blank">jpg</a>'
 // 37香川県古地図-------------------------------------------------------------------------------
@@ -1060,7 +1076,7 @@ const kotizu37kagawaObj = {};
 for (let i of mapsStr) {
   kotizu37kagawaObj[i] = new TileLayer(new Kotizu37kagawa())
   const dep = MaskDep.kagawa
-  mask(dep,kotizu37kagawaObj[i],i )
+  mask(dep,kotizu37kagawaObj[i])
 }
 const kotizu37kagawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/37kagawaken.jpg" target="_blank">jpg</a>'
 // 38愛媛県古地図-------------------------------------------------------------------------------
@@ -1077,7 +1093,7 @@ const kotizu38ehimeObj = {};
 for (let i of mapsStr) {
   kotizu38ehimeObj[i] = new TileLayer(new Kotizu38ehime())
   const dep = MaskDep.ehime
-  mask(dep,kotizu38ehimeObj[i] ,i)
+  mask(dep,kotizu38ehimeObj[i])
 }
 const kotizu38ehimeSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/38ehimeken.jpg" target="_blank">jpg</a>'
 // 39高知県古地図-------------------------------------------------------------------------------
@@ -1094,7 +1110,7 @@ const kotizu39kochiObj = {};
 for (let i of mapsStr) {
   kotizu39kochiObj[i] = new TileLayer(new Kotizu39kochi())
   const dep = MaskDep.kochi
-  mask(dep,kotizu39kochiObj[i],i )
+  mask(dep,kotizu39kochiObj[i])
 }
 const kotizu39kochiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/39kochiken.jpg" target="_blank">jpg</a>'
 // 40福岡県古地図-------------------------------------------------------------------------------
@@ -1111,7 +1127,7 @@ const kotizu40fukuokaObj = {};
 for (let i of mapsStr) {
   kotizu40fukuokaObj[i] = new TileLayer(new Kotizu40fukuoka())
   const dep = MaskDep.fukuoka
-  mask(dep,kotizu40fukuokaObj[i],i )
+  mask(dep,kotizu40fukuokaObj[i])
 }
 const kotizu40fukuokaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/40fukuokaken.jpg" target="_blank">jpg</a>'
 // 41佐賀県古地図-------------------------------------------------------------------------------
@@ -1128,7 +1144,7 @@ const kotizu41sagaObj = {};
 for (let i of mapsStr) {
   kotizu41sagaObj[i] = new TileLayer(new Kotizu41saga())
   const dep = MaskDep.saga
-  mask(dep,kotizu41sagaObj[i],i )
+  mask(dep,kotizu41sagaObj[i])
 }
 const kotizu41sagaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/41sagaken.jpg" target="_blank">jpg</a>'
 // 42長崎県古地図-------------------------------------------------------------------------------
@@ -1145,7 +1161,7 @@ const kotizu42nagasakiObj = {};
 for (let i of mapsStr) {
   kotizu42nagasakiObj[i] = new TileLayer(new Kotizu42nagasaki())
   const dep = MaskDep.nagasaki
-  mask(dep,kotizu42nagasakiObj[i],i )
+  mask(dep,kotizu42nagasakiObj[i])
 }
 const kotizu42nagasakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/42nagasakiken.jpg" target="_blank">jpg</a>'
 // 43熊本県古地図-------------------------------------------------------------------------------
@@ -1162,7 +1178,7 @@ const kotizu43kumamotoObj = {};
 for (let i of mapsStr) {
   kotizu43kumamotoObj[i] = new TileLayer(new Kotizu43kumamoto())
   const dep = MaskDep.kumamoto
-  mask(dep,kotizu43kumamotoObj[i],i )
+  mask(dep,kotizu43kumamotoObj[i])
 }
 const kotizu43kumamotoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/43kumamotoken.jpg" target="_blank">jpg</a>'
 // 44大分県古地図-------------------------------------------------------------------------------
@@ -1179,7 +1195,7 @@ const kotizu44oitaObj = {};
 for (let i of mapsStr) {
   kotizu44oitaObj[i] = new TileLayer(new Kotizu44oita())
   const dep = MaskDep.oita
-  mask(dep,kotizu44oitaObj[i],i )
+  mask(dep,kotizu44oitaObj[i])
 }
 const kotizu44oitaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/44oitaken.jpg" target="_blank">jpg</a>'
 // 45宮崎県古地図-------------------------------------------------------------------------------
@@ -1196,7 +1212,7 @@ const kotizu45miyazakiObj = {};
 for (let i of mapsStr) {
   kotizu45miyazakiObj[i] = new TileLayer(new Kotizu45miyazaki())
   const dep = MaskDep.miyazaki
-  mask(dep,kotizu45miyazakiObj[i],i )
+  mask(dep,kotizu45miyazakiObj[i])
 }
 const kotizu45miyazakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/45miyazakiken.jpg" target="_blank">jpg</a>'
 // 46鹿児島県古地図-------------------------------------------------------------------------------
@@ -1213,7 +1229,7 @@ const kotizu46kagoshimaObj = {};
 for (let i of mapsStr) {
   kotizu46kagoshimaObj[i] = new TileLayer(new Kotizu46kagoshima())
   const dep = MaskDep.kagoshima
-  mask(dep,kotizu46kagoshimaObj[i],i )
+  mask(dep,kotizu46kagoshimaObj[i])
 }
 const kotizu46kagoshimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/46kagoshimaken.jpg" target="_blank">jpg</a>'
 // 47沖縄県県古地図-------------------------------------------------------------------------------
@@ -1230,7 +1246,7 @@ const kotizu47okinawaObj = {};
 for (let i of mapsStr) {
   kotizu47okinawaObj[i] = new TileLayer(new Kotizu47okinawa())
   const dep = MaskDep.okinawa
-  mask(dep,kotizu47okinawaObj[i],i )
+  mask(dep,kotizu47okinawaObj[i])
 }
 const kotizu47okinawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/47okinawaken.jpg" target="_blank">jpg</a>'
 // 洪水浸水想定-------------------------------------------------------------------------------
@@ -1367,6 +1383,7 @@ const layers =
                 { text: '04宮城県古地図(大正14年)', data: { id: 'kotizu04miyagi', layer: kotizu04miyagiObj, opacity: 1, zoom: 9, center: [140.91324236659926, 38.49277272507115], summary: kotizu04miyagiSumm } },
                 { text: '05秋田県古地図(大正13年)', data: { id: 'kotizu05akita', layer: kotizu05akitaObj, opacity: 1, zoom: 9, center: [140.342563594382, 39.746736192608324], summary: kotizu05akitaSumm } },
                 { text: '06山形県古地図(大正13年)', data: { id: 'kotizu06yamagata', layer: kotizu06yamagataObj, opacity: 1, zoom: 9, center: [140.09842298137926, 38.50471461587239], summary: kotizu06yamagataSumm } },
+                { text: '07福島県古地図(大正13年)', data: { id: 'kotizu07hukusima', layer: kotizu07hukusimaObj, opacity: 1, zoom: 9, center: [140.23376849960238, 37.48454580025047], summary: kotizu07hukusimaSumm } },
               ]},
             { text: '近畿',
               children: [
