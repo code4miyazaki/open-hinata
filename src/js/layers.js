@@ -821,6 +821,48 @@ const kotizu06yamagataSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunk
 
 
 
+
+
+
+
+
+
+
+
+// 31鳥取県古地図-------------------------------------------------------------------------------
+function Kotizu31tottori () {
+  // this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/31tottoriken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu31tottoriObj = {};
+for (let i of mapsStr) {
+  kotizu31tottoriObj[i] = new TileLayer(new Kotizu31tottori())
+  const dep = MaskDep.tottori
+  mask(dep,kotizu31tottoriObj[i] )
+}
+const kotizu31tottoriSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/31tottoriken.jpg" target="_blank">jpg</a>'
+// 32島根県古地図-------------------------------------------------------------------------------
+function Kotizu32shimane () {
+  this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/32shimaneken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu32shimaneObj = {};
+for (let i of mapsStr) {
+  kotizu32shimaneObj[i] = new TileLayer(new Kotizu32shimane())
+  const dep = MaskDep.shimane
+  mask(dep,kotizu32shimaneObj[i] )
+}
+const kotizu32shimaneSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/32shimaneken.jpg" target="_blank">jpg</a>'
 // 33岡山県古地図-------------------------------------------------------------------------------
 function Kotizu33okayama () {
   this.extent = transformE([133.235,34.277,134.427,35.381]);
@@ -1213,7 +1255,9 @@ const layers =
               ]},
             { text: ' 中国',
               children: [
-                { text: '33岡山県古地図(大正13年)', data: { id: 'kotizu33okayama', layer: kotizu33okayamaObj, opacity: 1, zoom: 9, center: [133.79959468951728, 34.87942275146696], summary: kotizu33okayamaSumm } },
+                { text: '31鳥取県古地図(大正14年)', data: { id: 'kotizu31tottori', layer: kotizu31tottoriObj, opacity: 1, zoom: 9, center: [133.86368161450991, 35.4283501390533], summary: kotizu31tottoriSumm } },
+                { text: '32島根県古地図(大正14年)', data: { id: 'kotizu32shimane', layer: kotizu32shimaneObj, opacity: 1, zoom: 9, center: [132.38663070035244, 35.00200428279085], summary: kotizu32shimaneSumm } },
+                { text: '33岡山県古地図(大正14年)', data: { id: 'kotizu33okayama', layer: kotizu33okayamaObj, opacity: 1, zoom: 9, center: [133.79959468951728, 34.87942275146696], summary: kotizu33okayamaSumm } },
                 { text: '34広島県古地図(大正13年)', data: { id: 'kotizu34hiroshima', layer: kotizu34hiroshimaObj, opacity: 1, zoom: 9, center: [132.7589452109575, 34.56839937423835], summary: kotizu34hiroshimaSumm } },
                 { text: '35山口県古地図(大正13年)', data: { id: 'kotizu35yamaguchi', layer: kotizu35yamaguchiObj, opacity: 1, zoom: 9, center: [131.59317370493247, 34.230980820797356], summary: kotizu35yamaguchiSumm } },
 
