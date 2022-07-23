@@ -803,6 +803,44 @@ for (let i of mapsStr) {
   mask(dep,kotizu06yamagataObj[i] )
 }
 const kotizu06yamagataSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/05akitaken.jpg" target="_blank">jpg</a>'
+
+
+
+
+// 40福岡県古地図-------------------------------------------------------------------------------
+function Kotizu40fukuoka () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/40fukuokaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu40fukuokaObj = {};
+for (let i of mapsStr) {
+  kotizu40fukuokaObj[i] = new TileLayer(new Kotizu40fukuoka())
+  const dep = MaskDep.fukuoka
+  mask(dep,kotizu40fukuokaObj[i] )
+}
+const kotizu40fukuokaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/40fukuokaken.jpg" target="_blank">jpg</a>'
+// 41佐賀県古地図-------------------------------------------------------------------------------
+function Kotizu41saga () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/41sagaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu41sagaObj = {};
+for (let i of mapsStr) {
+  kotizu41sagaObj[i] = new TileLayer(new Kotizu41saga())
+  const dep = MaskDep.saga
+  mask(dep,kotizu41sagaObj[i] )
+}
+const kotizu41sagaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/41sagaken.jpg" target="_blank">jpg</a>'
 // 洪水浸水想定-------------------------------------------------------------------------------
 function Shinsuishin () {
   this.source = new XYZ({
@@ -937,6 +975,11 @@ const layers =
                 { text: '04宮城県古地図', data: { id: 'kotizu04miyagi', layer: kotizu04miyagiObj, opacity: 1, zoom: 9, center: [140.91324236659926, 38.49277272507115], summary: kotizu04miyagiSumm } },
                 { text: '05秋田県古地図', data: { id: 'kotizu05akita', layer: kotizu05akitaObj, opacity: 1, zoom: 9, center: [140.342563594382, 39.746736192608324], summary: kotizu05akitaSumm } },
                 { text: '06山形県古地図', data: { id: 'kotizu06yamagata', layer: kotizu06yamagataObj, opacity: 1, zoom: 9, center: [140.09842298137926, 38.50471461587239], summary: kotizu06yamagataSumm } },
+              ]},
+            { text: '九州沖縄',
+              children: [
+                { text: '40福岡県古地図', data: { id: 'kotizu40fukuoka', layer: kotizu40fukuokaObj, opacity: 1, zoom: 9, center: [130.63423506830085, 33.52587808087998], summary: kotizu40fukuokaSumm } },
+                { text: '41佐賀県古地図', data: { id: 'kotizu41saga', layer: kotizu41sagaObj, opacity: 1, zoom: 9, center: [130.09476057930058, 33.30502734026227], summary: kotizu41sagaSumm } },
               ]}
           ]},
       ]},
