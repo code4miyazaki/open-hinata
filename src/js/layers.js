@@ -807,9 +807,94 @@ const kotizu06yamagataSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunk
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 36徳島県古地図-------------------------------------------------------------------------------
+function Kotizu36tokusima () {
+  // this.extent = transformE([132.423,32.681,134.354,33.895]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/36tokusimaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu36tokusimaObj = {};
+for (let i of mapsStr) {
+  kotizu36tokusimaObj[i] = new TileLayer(new Kotizu36tokusima())
+  const dep = MaskDep.tokusima
+  mask(dep,kotizu36tokusimaObj[i] )
+}
+const kotizu36tokusimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/36tokusimaken.jpg" target="_blank">jpg</a>'
+// 37香川県古地図-------------------------------------------------------------------------------
+function Kotizu37kagawa () {
+  // this.extent = transformE([132.423,32.681,134.354,33.895]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/37kagawaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu37kagawaObj = {};
+for (let i of mapsStr) {
+  kotizu37kagawaObj[i] = new TileLayer(new Kotizu37kagawa())
+  const dep = MaskDep.kagawa
+  mask(dep,kotizu37kagawaObj[i] )
+}
+const kotizu37kagawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/37kagawaken.jpg" target="_blank">jpg</a>'
+// 38愛媛県古地図-------------------------------------------------------------------------------
+function Kotizu38ehime () {
+  // this.extent = transformE([132.423,32.681,134.354,33.895]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/38ehimeken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu38ehimeObj = {};
+for (let i of mapsStr) {
+  kotizu38ehimeObj[i] = new TileLayer(new Kotizu38ehime())
+  const dep = MaskDep.ehime
+  mask(dep,kotizu38ehimeObj[i] )
+}
+const kotizu38ehimeSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/38ehimeken.jpg" target="_blank">jpg</a>'
+// 39高知県古地図-------------------------------------------------------------------------------
+function Kotizu39kochi () {
+  this.extent = transformE([132.423,32.681,134.354,33.895]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/39kochiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu39kochiObj = {};
+for (let i of mapsStr) {
+  kotizu39kochiObj[i] = new TileLayer(new Kotizu39kochi())
+  const dep = MaskDep.kochi
+  mask(dep,kotizu39kochiObj[i] )
+}
+const kotizu39kochiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/39kochiken.jpg" target="_blank">jpg</a>'
 // 40福岡県古地図-------------------------------------------------------------------------------
 function Kotizu40fukuoka () {
-  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.extent = transformE([130.022,32.998,131.197,33.983]);
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/40fukuokaken/{z}/{x}/{-y}.png',
     crossOrigin: 'Anonymous',
@@ -826,7 +911,7 @@ for (let i of mapsStr) {
 const kotizu40fukuokaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/40fukuokaken.jpg" target="_blank">jpg</a>'
 // 41佐賀県古地図-------------------------------------------------------------------------------
 function Kotizu41saga () {
-  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.extent = transformE([129.730,32.935,130.547,33.628]);
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/41sagaken/{z}/{x}/{-y}.png',
     crossOrigin: 'Anonymous',
@@ -841,6 +926,108 @@ for (let i of mapsStr) {
   mask(dep,kotizu41sagaObj[i] )
 }
 const kotizu41sagaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/41sagaken.jpg" target="_blank">jpg</a>'
+// 42長崎県古地図-------------------------------------------------------------------------------
+function Kotizu42nagasaki () {
+  this.extent = transformE([128.549,32.536,130.419,33.894]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/42nagasakiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu42nagasakiObj = {};
+for (let i of mapsStr) {
+  kotizu42nagasakiObj[i] = new TileLayer(new Kotizu42nagasaki())
+  const dep = MaskDep.nagasaki
+  mask(dep,kotizu42nagasakiObj[i] )
+}
+const kotizu42nagasakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/42nagasakiken.jpg" target="_blank">jpg</a>'
+// 43熊本県古地図-------------------------------------------------------------------------------
+function Kotizu43kumamoto () {
+  this.extent = transformE([130.080,32.093,131.310,33.203]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/43kumamotoken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu43kumamotoObj = {};
+for (let i of mapsStr) {
+  kotizu43kumamotoObj[i] = new TileLayer(new Kotizu43kumamoto())
+  const dep = MaskDep.kumamoto
+  mask(dep,kotizu43kumamotoObj[i] )
+}
+const kotizu43kumamotoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/43kumamotoken.jpg" target="_blank">jpg</a>'
+// 44大分県古地図-------------------------------------------------------------------------------
+function Kotizu44oita () {
+  this.extent = transformE([130.816,32.731,132.122,33.753]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/44oitaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu44oitaObj = {};
+for (let i of mapsStr) {
+  kotizu44oitaObj[i] = new TileLayer(new Kotizu44oita())
+  const dep = MaskDep.oita
+  mask(dep,kotizu44oitaObj[i] )
+}
+const kotizu44oitaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/44oitaken.jpg" target="_blank">jpg</a>'
+// 45宮崎県古地図-------------------------------------------------------------------------------
+function Kotizu45miyazaki () {
+  this.extent = transformE([130.691,31.341,131.888,32.848]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/45miyazakiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu45miyazakiObj = {};
+for (let i of mapsStr) {
+  kotizu45miyazakiObj[i] = new TileLayer(new Kotizu45miyazaki())
+  const dep = MaskDep.miyazaki
+  mask(dep,kotizu45miyazakiObj[i] )
+}
+const kotizu45miyazakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/45miyazakiken.jpg" target="_blank">jpg</a>'
+// 46鹿児島県古地図-------------------------------------------------------------------------------
+function Kotizu46kagoshima () {
+  this.extent = transformE([130.083,30.965,131.213,32.319]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/46kagoshimaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu46kagoshimaObj = {};
+for (let i of mapsStr) {
+  kotizu46kagoshimaObj[i] = new TileLayer(new Kotizu46kagoshima())
+  const dep = MaskDep.kagoshima
+  mask(dep,kotizu46kagoshimaObj[i] )
+}
+const kotizu46kagoshimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/46kagoshimaken.jpg" target="_blank">jpg</a>'
+// 47沖縄県県古地図-------------------------------------------------------------------------------
+function Kotizu47okinawa () {
+  this.extent = transformE([127.227,26.065,128.363,26.881]);
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/47okinawaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu47okinawaObj = {};
+for (let i of mapsStr) {
+  kotizu47okinawaObj[i] = new TileLayer(new Kotizu47okinawa())
+  const dep = MaskDep.okinawa
+  mask(dep,kotizu47okinawaObj[i] )
+}
+const kotizu47okinawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/47okinawaken.jpg" target="_blank">jpg</a>'
 // 洪水浸水想定-------------------------------------------------------------------------------
 function Shinsuishin () {
   this.source = new XYZ({
@@ -976,10 +1163,23 @@ const layers =
                 { text: '05秋田県古地図', data: { id: 'kotizu05akita', layer: kotizu05akitaObj, opacity: 1, zoom: 9, center: [140.342563594382, 39.746736192608324], summary: kotizu05akitaSumm } },
                 { text: '06山形県古地図', data: { id: 'kotizu06yamagata', layer: kotizu06yamagataObj, opacity: 1, zoom: 9, center: [140.09842298137926, 38.50471461587239], summary: kotizu06yamagataSumm } },
               ]},
+            { text: '四国',
+              children: [
+                { text: '36徳島県古地図', data: { id: 'kotizu36tokusima', layer: kotizu36tokusimaObj, opacity: 1, zoom: 9, center: [134.2512548300351, 33.9377907341931], summary: kotizu36tokusimaSumm } },
+                { text: '37香川県古地図', data: { id: 'kotizu37kagawa', layer: kotizu37kagawaObj, opacity: 1, zoom: 9, center: [133.99185542756558, 34.24107268786568], summary: kotizu37kagawaSumm } },
+                { text: '38愛媛県古地図', data: { id: 'kotizu38ehime', layer: kotizu38ehimeObj, opacity: 1, zoom: 9, center: [132.83829096234632, 33.67406931001446], summary: kotizu38ehimeSumm } },
+                { text: '39高知県古地図', data: { id: 'kotizu39kochi', layer: kotizu39kochiObj, opacity: 1, zoom: 9, center: [133.31741694236896, 33.536816779433096], summary: kotizu39kochiSumm } },
+              ]},
             { text: '九州沖縄',
               children: [
                 { text: '40福岡県古地図', data: { id: 'kotizu40fukuoka', layer: kotizu40fukuokaObj, opacity: 1, zoom: 9, center: [130.63423506830085, 33.52587808087998], summary: kotizu40fukuokaSumm } },
                 { text: '41佐賀県古地図', data: { id: 'kotizu41saga', layer: kotizu41sagaObj, opacity: 1, zoom: 9, center: [130.09476057930058, 33.30502734026227], summary: kotizu41sagaSumm } },
+                { text: '42長崎県古地図', data: { id: 'kotizu42nagasaki', layer: kotizu42nagasakiObj, opacity: 1, zoom: 9, center: [129.5362889506741, 33.11863979844799], summary: kotizu42nagasakiSumm } },
+                { text: '43熊本県古地図', data: { id: 'kotizu43kumamoto', layer: kotizu43kumamotoObj, opacity: 1, zoom: 9, center: [130.76919910142672, 32.66250105798969], summary: kotizu43kumamotoSumm } },
+                { text: '44大分県古地図', data: { id: 'kotizu44oita', layer: kotizu44oitaObj, opacity: 1, zoom: 9, center: [131.46499990110914, 33.22847774498263], summary: kotizu44oitaSumm } },
+                { text: '45宮崎県古地図', data: { id: 'kotizu45miyazaki', layer: kotizu45miyazakiObj, opacity: 1, zoom: 9, center: [131.300204984101, 32.13427469145421], summary: kotizu45miyazakiSumm } },
+                { text: '46鹿児島県古地図', data: { id: 'kotizu46kagosima', layer: kotizu46kagoshimaObj, opacity: 1, zoom: 9, center: [130.65933581726637, 31.600372394062873], summary: kotizu46kagoshimaSumm } },
+                { text: '47沖縄県古地図', data: { id: 'kotizu47okinawa', layer: kotizu47okinawaObj, opacity: 1, zoom: 9, center: [127.85255774851787, 26.472759103562595], summary: kotizu47okinawaSumm } },
               ]}
           ]},
       ]},
