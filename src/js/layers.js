@@ -1119,7 +1119,7 @@ for (let i of mapsStr) {
 const kotizu23aichiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/23aichiken.jpg" target="_blank">jpg</a>'
 // 24三重県古地図-------------------------------------------------------------------------------
 function Kotizu24mieken () {
-  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.extent = transformE([135.55755979081184, 33.668481789114,137.21161279527038, 35.41790535710936]);
   this.dep = MaskDep.mie;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/24mieken/{z}/{x}/{-y}.png',
@@ -1131,13 +1131,13 @@ function Kotizu24mieken () {
 const kotizu24miekenObj = {};
 for (let i of mapsStr) {
   kotizu24miekenObj[i] = new TileLayer(new Kotizu24mieken())
-  const dep = MaskDep.mie
+  const dep = kotizu24miekenObj[i].values_.dep
   mask(dep,kotizu24miekenObj[i])
 }
 const kotizu24miekenSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/24mieken.jpg" target="_blank">jpg</a>'
 // 25滋賀県古地図-------------------------------------------------------------------------------
 function Kotizu25sigaken () {
-  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.extent = transformE([135.6308020908143, 34.77370586704984,136.64398559143208, 35.76038208455544]);
   this.dep = MaskDep.siga;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/25sigaken/{z}/{x}/{-y}.png',
@@ -1149,13 +1149,13 @@ function Kotizu25sigaken () {
 const kotizu25sigakenObj = {};
 for (let i of mapsStr) {
   kotizu25sigakenObj[i] = new TileLayer(new Kotizu25sigaken())
-  const dep = MaskDep.siga
+  const dep = kotizu25sigakenObj[i].values_.dep
   mask(dep,kotizu25sigakenObj[i])
 }
 const kotizu25sigakenSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/25sigaken.jpg" target="_blank">jpg</a>'
 // 26京都府古地図-------------------------------------------------------------------------------
 function Kotizu26kyoutohu () {
-  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.extent = transformE([134.666446509287, 34.50504839149191,136.17096309222305, 36.0865950828696]);
   this.dep = MaskDep.kyouto;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/26kyoutohu/{z}/{x}/{-y}.png',
@@ -1167,13 +1167,13 @@ function Kotizu26kyoutohu () {
 const kotizu26kyoutohuObj = {};
 for (let i of mapsStr) {
   kotizu26kyoutohuObj[i] = new TileLayer(new Kotizu26kyoutohu())
-  const dep = MaskDep.kyouto
+  const dep = kotizu26kyoutohuObj[i].values_.dep
   mask(dep,kotizu26kyoutohuObj[i])
 }
 const kotizu26kyoutohuSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/26kyoutohu.jpg" target="_blank">jpg</a>'
 // 27大阪府古地図-------------------------------------------------------------------------------
 function Kotizu27osaka () {
-  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.extent = transformE([134.89227668426307, 34.16232390373379,135.85968392945202, 35.12889509173576]);
   this.dep = MaskDep.osaka;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/27osaka/{z}/{x}/{-y}.png',
@@ -1185,13 +1185,13 @@ function Kotizu27osaka () {
 const kotizu27osakaObj = {};
 for (let i of mapsStr) {
   kotizu27osakaObj[i] = new TileLayer(new Kotizu27osaka())
-  const dep = MaskDep.osaka
+  const dep = kotizu27osakaObj[i].values_.dep
   mask(dep,kotizu27osakaObj[i])
 }
 const kotizu27osakaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/27osaka.jpg" target="_blank">jpg</a>'
 // 28兵庫県古地図-------------------------------------------------------------------------------
 function Kotizu28hyogo () {
-  // this.extent = transformE([134.225,34.151,135.488,35.700]);
+  this.extent = transformE([134.0530432033324, 34.08147963860071,135.71625142534907, 35.84700903949149]);
   this.dep = MaskDep.hyogo;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/28hyogoken/{z}/{x}/{-y}.png',
@@ -1203,13 +1203,13 @@ function Kotizu28hyogo () {
 const kotizu28hyogoObj = {};
 for (let i of mapsStr) {
   kotizu28hyogoObj[i] = new TileLayer(new Kotizu28hyogo())
-  const dep = MaskDep.hyogo
+  const dep = kotizu28hyogoObj[i].values_.dep
   mask(dep,kotizu28hyogoObj[i])
 }
 const kotizu28hyogoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/28hyogoken.jpg" target="_blank">jpg</a>'
 // 29奈良県古地図-------------------------------------------------------------------------------
 function Kotizu29nara () {
-  // this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.extent = transformE([135.3622472647639, 33.800452639216985,136.30218885727842, 34.82382560320653]);
   this.dep = MaskDep.nara;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/29naraken/{z}/{x}/{-y}.png',
@@ -1221,13 +1221,13 @@ function Kotizu29nara () {
 const kotizu29naraObj = {};
 for (let i of mapsStr) {
   kotizu29naraObj[i] = new TileLayer(new Kotizu29nara())
-  const dep = MaskDep.nara
+  const dep = kotizu29naraObj[i].values_.dep
   mask(dep,kotizu29naraObj[i])
 }
 const kotizu29naraSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/29naraken.jpg" target="_blank">jpg</a>'
 // 30和歌山県古地図-------------------------------------------------------------------------------
 function Kotizu30wakayama () {
-  // this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.extent = transformE([134.88006961357738, 33.28666157470339,136.13129027944944, 34.57794810432477]);
   this.dep = MaskDep.wakayama;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/30wakayamaken/{z}/{x}/{-y}.png',
@@ -1239,13 +1239,13 @@ function Kotizu30wakayama () {
 const kotizu30wakayamaObj = {};
 for (let i of mapsStr) {
   kotizu30wakayamaObj[i] = new TileLayer(new Kotizu30wakayama())
-  const dep = MaskDep.wakayama
+  const dep = kotizu30wakayamaObj[i].values_.dep
   mask(dep,kotizu30wakayamaObj[i])
 }
 const kotizu30wakayamaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/30wakayamaken.jpg" target="_blank">jpg</a>'
 // 31鳥取県古地図-------------------------------------------------------------------------------
 function Kotizu31tottori () {
-  // this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.extent = transformE([132.87201291366142, 34.6884324206926,134.9166908529274, 36.09399334219408]);
   this.dep = MaskDep.tottori;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/31tottoriken/{z}/{x}/{-y}.png',
@@ -1257,13 +1257,13 @@ function Kotizu31tottori () {
 const kotizu31tottoriObj = {};
 for (let i of mapsStr) {
   kotizu31tottoriObj[i] = new TileLayer(new Kotizu31tottori())
-  const dep = MaskDep.tottori
+  const dep = kotizu31tottoriObj[i].values_.dep
   mask(dep,kotizu31tottoriObj[i])
 }
 const kotizu31tottoriSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/31tottoriken.jpg" target="_blank">jpg</a>'
 // 32島根県古地図-------------------------------------------------------------------------------
 function Kotizu32shimane () {
-  // this.extent = transformE([131.613,34.290,133.347,35.654]);
+  this.extent = transformE([131.10504508513685, 33.96006826212876,133.78143672104184, 36.07672962939766]);
   this.dep = MaskDep.shimane;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/32shimaneken/{z}/{x}/{-y}.png',
@@ -1275,13 +1275,13 @@ function Kotizu32shimane () {
 const kotizu32shimaneObj = {};
 for (let i of mapsStr) {
   kotizu32shimaneObj[i] = new TileLayer(new Kotizu32shimane())
-  const dep = MaskDep.shimane
+  const dep = kotizu32shimaneObj[i].values_.dep
   mask(dep,kotizu32shimaneObj[i])
 }
 const kotizu32shimaneSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/32shimaneken.jpg" target="_blank">jpg</a>'
 // 33岡山県古地図-------------------------------------------------------------------------------
 function Kotizu33okayama () {
-  // this.extent = transformE([133.235,34.277,134.427,35.381]);
+  this.extent = transformE([133.12836056797116, 34.07389642661967,134.5626867584726, 35.49745065211569]);
   this.dep = MaskDep.okayama;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/33okayamaken/{z}/{x}/{-y}.png',
@@ -1293,13 +1293,13 @@ function Kotizu33okayama () {
 const kotizu33okayamaObj = {};
 for (let i of mapsStr) {
   kotizu33okayamaObj[i] = new TileLayer(new Kotizu33okayama())
-  const dep = MaskDep.okayama
+  const dep = kotizu33okayamaObj[i].values_.dep
   mask(dep,kotizu33okayamaObj[i])
 }
 const kotizu33okayamaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/33okayamaken.jpg" target="_blank">jpg</a>'
 // 34広島県古地図-------------------------------------------------------------------------------
 function Kotizu34hiroshima () {
-  // this.extent = transformE([132.007,34.021,133.504,35.129]);
+  this.extent = transformE([131.67267205452762, 33.77508941185097,133.9584387585356, 35.363172325219395]);
   this.dep = MaskDep.hiroshima;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/34hiroshimaken/{z}/{x}/{-y}.png',
@@ -1311,13 +1311,13 @@ function Kotizu34hiroshima () {
 const kotizu34hiroshimaObj = {};
 for (let i of mapsStr) {
   kotizu34hiroshimaObj[i] = new TileLayer(new Kotizu34hiroshima())
-  const dep = MaskDep.hiroshima
+  const dep = kotizu34hiroshimaObj[i].values_.dep
   mask(dep,kotizu34hiroshimaObj[i])
 }
 const kotizu34hiroshimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/34hiroshimaken.jpg" target="_blank">jpg</a>'
 // 35山口県古地図-------------------------------------------------------------------------------
 function Kotizu35yamaguchi () {
-  // this.extent = transformE([130.734,33.696,132.506,34.709]);
+  this.extent = transformE([130.48858997221657, 33.62275225666322,132.73468370359012, 34.97400177667768]);
   this.dep = MaskDep.yamaguchi;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/35yamaguchiken/{z}/{x}/{-y}.png',
@@ -1329,7 +1329,7 @@ function Kotizu35yamaguchi () {
 const kotizu35yamaguchiObj = {};
 for (let i of mapsStr) {
   kotizu35yamaguchiObj[i] = new TileLayer(new Kotizu35yamaguchi())
-  const dep = MaskDep.yamaguchi
+  const dep = kotizu35yamaguchiObj[i].values_.dep
   mask(dep,kotizu35yamaguchiObj[i])
 }
 const kotizu35yamaguchiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/35yamagutiken.jpg" target="_blank">jpg</a>'
