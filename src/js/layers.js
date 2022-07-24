@@ -840,8 +840,40 @@ for (let i of mapsStr) {
   mask(dep,kotizu08ibarakiObj[i])
 }
 const kotizu08ibarakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/8ibarakiken.jpg" target="_blank">jpg</a>'
-
-
+// 09栃木県古地図-------------------------------------------------------------------------------
+function Kotizu09tochigi () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu3/tile/9tochigiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu09tochigiObj = {};
+for (let i of mapsStr) {
+  kotizu09tochigiObj[i] = new TileLayer(new Kotizu09tochigi())
+  const dep = MaskDep.tochigi
+  mask(dep,kotizu09tochigiObj[i])
+}
+const kotizu09tochigiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/9tochigiken.jpg" target="_blank">jpg</a>'
+// 10群馬県古地図-------------------------------------------------------------------------------
+function Kotizu10gunma () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu3/tile/10gunmaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu10gunmaObj = {};
+for (let i of mapsStr) {
+  kotizu10gunmaObj[i] = new TileLayer(new Kotizu10gunma())
+  const dep = MaskDep.gunma
+  mask(dep,kotizu10gunmaObj[i])
+}
+const kotizu10gunmaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/10gunmaken.jpg" target="_blank">jpg</a>'
 
 
 
@@ -1404,6 +1436,9 @@ const layers =
             { text: '関東',
               children: [
                 { text: '08茨城県古地図(大正14年)', data: { id: 'kotizu08ibaraki', layer: kotizu08ibarakiObj, opacity: 1, zoom: 9, center: [140.33340833916677, 36.289055943305996], summary: kotizu08ibarakiSumm } },
+                { text: '09栃木県古地図(大正14年)', data: { id: 'kotizu09tochigii', layer: kotizu09tochigiObj, opacity: 1, zoom: 9, center: [139.79935070783154, 36.67918938356935], summary: kotizu09tochigiSumm } },
+                { text: '10群馬県古地図(大正14年)', data: { id: 'kotizu10gunma', layer: kotizu10gunmaObj, opacity: 1, zoom: 9, center: [138.96622079371627, 36.50767460653462], summary: kotizu10gunmaSumm } },
+
               ]},
             { text: '近畿',
               children: [
