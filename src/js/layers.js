@@ -937,6 +937,28 @@ for (let i of mapsStr) {
   mask(dep,kotizu13tokyoObj[i])
 }
 const kotizu13tokyoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/13tokyoto.jpg" target="_blank">jpg</a>'
+// 14神奈川県古地図-------------------------------------------------------------------------------
+function Kotizu14kanagawa () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.dep = MaskDep.kanagawa;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu2/tile/14kanagawaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu14kanagawaObj = {};
+for (let i of mapsStr) {
+  kotizu14kanagawaObj[i] = new TileLayer(new Kotizu14kanagawa())
+  const dep = MaskDep.kanagawa
+  mask(dep,kotizu14kanagawaObj[i])
+}
+const kotizu14kanagawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu2/image/14kanagawaken.jpg" target="_blank">jpg</a>'
+
+
+
+
 
 
 
@@ -1523,8 +1545,9 @@ const layers =
                 { text: '09栃木県古地図(大正14年)', data: { id: 'kotizu09tochigii', layer: kotizu09tochigiObj, opacity: 1, zoom: 9, center: [139.79935070783154, 36.67918938356935], summary: kotizu09tochigiSumm } },
                 { text: '10群馬県古地図(大正14年)', data: { id: 'kotizu10gunma', layer: kotizu10gunmaObj, opacity: 1, zoom: 9, center: [138.96622079371627, 36.50767460653462], summary: kotizu10gunmaSumm } },
                 { text: '11埼玉県古地図(大正14年)', data: { id: 'kotizu11saitama', layer: kotizu11saitamaObj, opacity: 1, zoom: 9, center: [139.35699844775343, 36.02985181257246], summary: kotizu11saitamaSumm } },
-                { text: '12千葉県古地図(大正14年)', data: { id: 'kotizu12chiba', layer: kotizu12chibakenObj, opacity: 1, zoom: 9, center: [140.20538708670875, 35.48254193777967], summary: kotizu12chibakenSumm} },
-                { text: '13東京都古地図(大正14年)', data: { id: 'kotizu13tokyo', layer: kotizu13tokyoObj, opacity: 1, zoom: 9, center: [139.42718884237084, 35.69596949636376], summary: kotizu13tokyoSumm} },
+                { text: '12千葉県古地図(大正13年)', data: { id: 'kotizu12chiba', layer: kotizu12chibakenObj, opacity: 1, zoom: 9, center: [140.20538708670875, 35.48254193777967], summary: kotizu12chibakenSumm} },
+                { text: '13東京都古地図(大正13年)', data: { id: 'kotizu13tokyo', layer: kotizu13tokyoObj, opacity: 1, zoom: 9, center: [139.42718884237084, 35.69596949636376], summary: kotizu13tokyoSumm} },
+                { text: '14神奈川県古地図(大正13年)', data: { id: 'kotizu14kanagawa', layer: kotizu14kanagawaObj, opacity: 1, zoom: 9, center: [139.3234291109266, 35.432826032715724], summary: kotizu14kanagawaSumm} },
 
               ]},
             { text: '近畿',
