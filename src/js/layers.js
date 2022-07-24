@@ -961,7 +961,24 @@ const kotizu14kanagawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunk
 
 
 
-
+// 17石川県古地図-------------------------------------------------------------------------------
+function Kotizu17isikawa () {
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.dep = MaskDep.isikawa;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu2/tile/17isikawaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu17isikawaObj = {};
+for (let i of mapsStr) {
+  kotizu17isikawaObj[i] = new TileLayer(new Kotizu17isikawa())
+  const dep = kotizu17isikawaObj[i].values_.dep
+  mask(dep,kotizu17isikawaObj[i])
+}
+const kotizu17isikawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu2/image/17isikawaken.jpg" target="_blank">jpg</a>'
 // 18福井県古地図-------------------------------------------------------------------------------
 function Kotizu18fukuii () {
   // this.extent = transformE([135.081,34.269,135.754,35.065]);
@@ -980,16 +997,6 @@ for (let i of mapsStr) {
   mask(dep,kotizu18fukuiiObj[i])
 }
 const kotizu18fukuiiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/18fukuiken.jpg" target="_blank">jpg</a>'
-
-
-
-
-
-
-
-
-
-
 // 19山梨県古地図-------------------------------------------------------------------------------
 function Kotizu19yamanasi () {
   // this.extent = transformE([135.081,34.269,135.754,35.065]);
@@ -1660,6 +1667,7 @@ const layers =
               ]},
             { text: '中部',
               children: [
+                { text: '17石川県古地図(大正14年)', data: { id: 'kotizu17isikawa', layer: kotizu17isikawaObj, opacity: 1, zoom: 9, center: [136.79657363135973, 36.81563789609989], summary: kotizu17isikawaSumm } },
                 { text: '18福井県古地図(大正14年)', data: { id: 'kotizu18fukui', layer: kotizu18fukuiiObj, opacity: 1, zoom: 9, center: [136.18011838773094, 35.84206149629695], summary: kotizu18fukuiiSumm } },
                 { text: '19山梨県古地図(大正14年)', data: { id: 'kotizu19yamanasi ', layer: kotizu19yamanasiObj, opacity: 1, zoom: 9, center: [138.6367835664595, 35.651345759735065], summary: kotizu19yamanasiSumm} },
                 { text: '20長野県古地図(大正12年)', data: { id: 'kotizu20nagano ', layer: kotizu20naganoObj, opacity: 1, zoom: 9, center: [138.0020178500573, 36.126044472410726], summary: kotizu20naganoSumm} },
