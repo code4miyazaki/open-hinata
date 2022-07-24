@@ -919,7 +919,24 @@ for (let i of mapsStr) {
   mask(dep,kotizu12chibakenObj[i])
 }
 const kotizu12chibakenSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/12chibaken.jpg" target="_blank">jpg</a>'
-
+// 13東京都古地図-------------------------------------------------------------------------------
+function Kotizu13tokyo () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.dep = MaskDep.tokyo;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/13tokyo/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu13tokyoObj = {};
+for (let i of mapsStr) {
+  kotizu13tokyoObj[i] = new TileLayer(new Kotizu13tokyo())
+  const dep = MaskDep.tokyo
+  mask(dep,kotizu13tokyoObj[i])
+}
+const kotizu13tokyoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/13tokyoto.jpg" target="_blank">jpg</a>'
 
 
 
@@ -1507,6 +1524,7 @@ const layers =
                 { text: '10群馬県古地図(大正14年)', data: { id: 'kotizu10gunma', layer: kotizu10gunmaObj, opacity: 1, zoom: 9, center: [138.96622079371627, 36.50767460653462], summary: kotizu10gunmaSumm } },
                 { text: '11埼玉県古地図(大正14年)', data: { id: 'kotizu11saitama', layer: kotizu11saitamaObj, opacity: 1, zoom: 9, center: [139.35699844775343, 36.02985181257246], summary: kotizu11saitamaSumm } },
                 { text: '12千葉県古地図(大正14年)', data: { id: 'kotizu12chiba', layer: kotizu12chibakenObj, opacity: 1, zoom: 9, center: [140.20538708670875, 35.48254193777967], summary: kotizu12chibakenSumm} },
+                { text: '13東京都古地図(大正14年)', data: { id: 'kotizu13tokyo', layer: kotizu13tokyoObj, opacity: 1, zoom: 9, center: [139.42718884237084, 35.69596949636376], summary: kotizu13tokyoSumm} },
 
               ]},
             { text: '近畿',
