@@ -123,20 +123,22 @@ export function initMap (vm) {
       console.log(evt)
        const pixel = (map).getPixelFromCoordinate(evt.coordinate);
        const clickedLayers = [];
+       //クリックされた箇所のレイヤーを複数取得する
       (map).forEachLayerAtPixel(pixel,function(layer){
            clickedLayers.push(layer);
       });
+      // クリックされたレイヤーのうちdepを持っているレイヤーだけ抽出する。
       const kotizuLayer = clickedLayers.find(el => el.values_.dep);
       if (kotizuLayer) {
         const dep = kotizuLayer.values_.dep
         if (kotizuLayer.getFilters().length >0) {
+          // 2回削除する必要がある。
           kotizuLayer.removeFilter()
           kotizuLayer.removeFilter()
         } else {
           Layers.mask(dep,kotizuLayer)
         }
       }
-
 
       // const pixel = (map).getPixelFromCoordinate(evt.coordinate);
       // const features = [];
