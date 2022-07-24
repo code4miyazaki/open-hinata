@@ -962,6 +962,24 @@ const kotizu14kanagawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunk
 
 
 
+// 18福井県古地図-------------------------------------------------------------------------------
+function Kotizu18fukuii () {
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.dep = MaskDep.fukui;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/18fukuiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu18fukuiiObj = {};
+for (let i of mapsStr) {
+  kotizu18fukuiiObj[i] = new TileLayer(new Kotizu18fukuii())
+  const dep = MaskDep.fukui
+  mask(dep,kotizu18fukuiiObj[i])
+}
+const kotizu18fukuiiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/18fukuiken.jpg" target="_blank">jpg</a>'
 
 
 
@@ -971,6 +989,29 @@ const kotizu14kanagawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunk
 
 
 
+
+
+
+
+
+// 23愛知県古地図-------------------------------------------------------------------------------
+function Kotizu23aichi () {
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.dep = MaskDep.aichi;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/23aichiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu23aichiObj = {};
+for (let i of mapsStr) {
+  kotizu23aichiObj[i] = new TileLayer(new Kotizu23aichi())
+  const dep = MaskDep.aichi
+  mask(dep,kotizu23aichiObj[i])
+}
+const kotizu23aichiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/23aichiken.jpg" target="_blank">jpg</a>'
 // 24三重県古地図-------------------------------------------------------------------------------
 function Kotizu24mieken () {
   // this.extent = transformE([135.081,34.269,135.754,35.065]);
@@ -1548,7 +1589,11 @@ const layers =
                 { text: '12千葉県古地図(大正13年)', data: { id: 'kotizu12chiba', layer: kotizu12chibakenObj, opacity: 1, zoom: 9, center: [140.20538708670875, 35.48254193777967], summary: kotizu12chibakenSumm} },
                 { text: '13東京都古地図(大正13年)', data: { id: 'kotizu13tokyo', layer: kotizu13tokyoObj, opacity: 1, zoom: 9, center: [139.42718884237084, 35.69596949636376], summary: kotizu13tokyoSumm} },
                 { text: '14神奈川県古地図(大正13年)', data: { id: 'kotizu14kanagawa', layer: kotizu14kanagawaObj, opacity: 1, zoom: 9, center: [139.3234291109266, 35.432826032715724], summary: kotizu14kanagawaSumm} },
-
+              ]},
+            { text: '中部',
+              children: [
+                { text: '18福井県古地図(大正14年)', data: { id: 'kotizu18fukui', layer: kotizu18fukuiiObj, opacity: 1, zoom: 9, center: [136.18011838773094, 35.84206149629695], summary: kotizu18fukuiiSumm } },
+                { text: '23愛知県古地図(大正14年)', data: { id: 'kotizu23aichi', layer: kotizu23aichiObj, opacity: 1, zoom: 9, center: [137.18109497674774, 34.9965045398574], summary: kotizu23aichiSumm } },
               ]},
             { text: '近畿',
               children: [
