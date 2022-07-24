@@ -993,7 +993,24 @@ const kotizu18fukuiiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunken
 
 
 
-
+// 22静岡県古地図-------------------------------------------------------------------------------
+function Kotizu22sizuoka () {
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.dep = MaskDep.sizuoka;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu/tile/22sizuokaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu22sizuokaObj = {};
+for (let i of mapsStr) {
+  kotizu22sizuokaObj[i] = new TileLayer(new Kotizu22sizuoka())
+  const dep = MaskDep.sizuoka
+  mask(dep,kotizu22sizuokaObj[i])
+}
+const kotizu22sizuokaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/22sizuokaken.jpg" target="_blank">jpg</a>'
 // 23愛知県古地図-------------------------------------------------------------------------------
 function Kotizu23aichi () {
   // this.extent = transformE([135.081,34.269,135.754,35.065]);
@@ -1593,6 +1610,7 @@ const layers =
             { text: '中部',
               children: [
                 { text: '18福井県古地図(大正14年)', data: { id: 'kotizu18fukui', layer: kotizu18fukuiiObj, opacity: 1, zoom: 9, center: [136.18011838773094, 35.84206149629695], summary: kotizu18fukuiiSumm } },
+                { text: '22静岡県古地図(大正14年)', data: { id: 'kotizu22sizuoka ', layer: kotizu22sizuokaObj, opacity: 1, zoom: 9, center: [138.35297002625663, 35.03149650164657], summary: kotizu22sizuokaSumm } },
                 { text: '23愛知県古地図(大正14年)', data: { id: 'kotizu23aichi', layer: kotizu23aichiObj, opacity: 1, zoom: 9, center: [137.18109497674774, 34.9965045398574], summary: kotizu23aichiSumm } },
               ]},
             { text: '近畿',
