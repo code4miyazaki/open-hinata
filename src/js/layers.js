@@ -990,9 +990,60 @@ const kotizu18fukuiiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunken
 
 
 
-
-
-
+// 19山梨県古地図-------------------------------------------------------------------------------
+function Kotizu19yamanasi () {
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.dep = MaskDep.yamanasi;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu2/tile/19yamanasiken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu19yamanasiObj = {};
+for (let i of mapsStr) {
+  kotizu19yamanasiObj[i] = new TileLayer(new Kotizu19yamanasi())
+  const dep = MaskDep.yamanasi
+  mask(dep,kotizu19yamanasiObj[i])
+}
+const kotizu19yamanasiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu2/image/19yamanasiken.jpg" target="_blank">jpg</a>'
+// 20長野県古地図-------------------------------------------------------------------------------
+function Kotizu20nagano () {
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.dep = MaskDep.nagano;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu2/tile/20naganoken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu20naganoObj = {};
+for (let i of mapsStr) {
+  kotizu20naganoObj[i] = new TileLayer(new Kotizu20nagano())
+  const dep = MaskDep.nagano
+  mask(dep,kotizu20naganoObj[i])
+}
+const kotizu20naganoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu2/image/20naganoken.jpg" target="_blank">jpg</a>'
+// 21岐阜県古地図-------------------------------------------------------------------------------
+function Kotizu21gihu () {
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
+  this.dep = MaskDep.gihu;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu2/tile/21gihuken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu21gihuObj = {};
+for (let i of mapsStr) {
+  kotizu21gihuObj[i] = new TileLayer(new Kotizu21gihu())
+  const dep = MaskDep.gihu
+  mask(dep,kotizu21gihuObj[i])
+}
+const kotizu21gihuSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu2/image/21gihuken.jpg" target="_blank">jpg</a>'
 // 22静岡県古地図-------------------------------------------------------------------------------
 function Kotizu22sizuoka () {
   // this.extent = transformE([135.081,34.269,135.754,35.065]);
@@ -1610,6 +1661,9 @@ const layers =
             { text: '中部',
               children: [
                 { text: '18福井県古地図(大正14年)', data: { id: 'kotizu18fukui', layer: kotizu18fukuiiObj, opacity: 1, zoom: 9, center: [136.18011838773094, 35.84206149629695], summary: kotizu18fukuiiSumm } },
+                { text: '19山梨県古地図(大正12年)', data: { id: 'kotizu19yamanasi ', layer: kotizu19yamanasiObj, opacity: 1, zoom: 9, center: [138.6367835664595, 35.651345759735065], summary: kotizu19yamanasiSumm} },
+                { text: '20長野県古地図(大正12年)', data: { id: 'kotizu20nagano ', layer: kotizu20naganoObj, opacity: 1, zoom: 9, center: [138.0020178500573, 36.126044472410726], summary: kotizu20naganoSumm} },
+                { text: '21岐阜県古地図(大正14年)', data: { id: 'kotizu21gihu ', layer: kotizu21gihuObj, opacity: 1, zoom: 9, center: [137.08038704085405, 35.80494491384562], summary: kotizu21gihuSumm } },
                 { text: '22静岡県古地図(大正14年)', data: { id: 'kotizu22sizuoka ', layer: kotizu22sizuokaObj, opacity: 1, zoom: 9, center: [138.35297002625663, 35.03149650164657], summary: kotizu22sizuokaSumm } },
                 { text: '23愛知県古地図(大正14年)', data: { id: 'kotizu23aichi', layer: kotizu23aichiObj, opacity: 1, zoom: 9, center: [137.18109497674774, 34.9965045398574], summary: kotizu23aichiSumm } },
               ]},
