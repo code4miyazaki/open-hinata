@@ -723,7 +723,7 @@ export  function mask (dep,layer) {
 }
 // 	青森県古地図-------------------------------------------------------------------------------
 function Kotizu01aomori () {
-  // this.extent = transformE([139.767154, 40.37258968,141.8301430,41.6254812]);
+  this.extent = transformE([139.14337531230578, 40.07947328862201,141.90826803012916, 41.65330584813219]);
   this.dep = MaskDep.aomori;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/02aomoriken/{z}/{x}/{-y}.png',
@@ -759,7 +759,7 @@ for (let i of mapsStr) {
 const kotizu03iwateSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/3iwateken.jpg" target="_blank">jpg</a>'
 // 	04宮城県古地図-------------------------------------------------------------------------------
 function Kotizu04miyagi () {
-  this.extent = transformE([140.200,37.760,141.913,39.132])
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
   this.dep = MaskDep.miyagi;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/04miyagiken/{z}/{x}/{-y}.png',
@@ -883,7 +883,24 @@ for (let i of mapsStr) {
   mask(dep,kotizu10gunmaObj[i])
 }
 const kotizu10gunmaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu3/image/10gunmaken.jpg" target="_blank">jpg</a>'
-
+// 11埼玉県古地図-------------------------------------------------------------------------------
+function Kotizu11saitama () {
+  // this.extent = transformE([140.200,37.760,141.913,39.132])
+  this.dep = MaskDep.saitama;
+  this.source = new XYZ({
+    url: 'https://kenzkenz.github.io/bunkenzu2/tile/11saitamaken/{z}/{x}/{-y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 13
+  })
+}
+const kotizu11saitamaObj = {};
+for (let i of mapsStr) {
+  kotizu11saitamaObj[i] = new TileLayer(new Kotizu11saitama())
+  const dep = MaskDep.saitama
+  mask(dep,kotizu11saitamaObj[i])
+}
+const kotizu11saitamaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu2/image/11saitamaken.jpg" target="_blank">jpg</a>'
 
 
 
@@ -954,7 +971,7 @@ for (let i of mapsStr) {
 const kotizu26kyoutohuSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/26kyoutohu.jpg" target="_blank">jpg</a>'
 // 27大阪府古地図-------------------------------------------------------------------------------
 function Kotizu27osaka () {
-  this.extent = transformE([135.081,34.269,135.754,35.065]);
+  // this.extent = transformE([135.081,34.269,135.754,35.065]);
   this.dep = MaskDep.osaka;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/27osaka/{z}/{x}/{-y}.png',
@@ -972,7 +989,7 @@ for (let i of mapsStr) {
 const kotizu27osakaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/27osaka.jpg" target="_blank">jpg</a>'
 // 28兵庫県古地図-------------------------------------------------------------------------------
 function Kotizu28hyogo () {
-  this.extent = transformE([134.225,34.151,135.488,35.700]);
+  // this.extent = transformE([134.225,34.151,135.488,35.700]);
   this.dep = MaskDep.hyogo;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/28hyogoken/{z}/{x}/{-y}.png',
@@ -1044,7 +1061,7 @@ for (let i of mapsStr) {
 const kotizu31tottoriSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/31tottoriken.jpg" target="_blank">jpg</a>'
 // 32島根県古地図-------------------------------------------------------------------------------
 function Kotizu32shimane () {
-  this.extent = transformE([131.613,34.290,133.347,35.654]);
+  // this.extent = transformE([131.613,34.290,133.347,35.654]);
   this.dep = MaskDep.shimane;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/32shimaneken/{z}/{x}/{-y}.png',
@@ -1062,7 +1079,7 @@ for (let i of mapsStr) {
 const kotizu32shimaneSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/32shimaneken.jpg" target="_blank">jpg</a>'
 // 33岡山県古地図-------------------------------------------------------------------------------
 function Kotizu33okayama () {
-  this.extent = transformE([133.235,34.277,134.427,35.381]);
+  // this.extent = transformE([133.235,34.277,134.427,35.381]);
   this.dep = MaskDep.okayama;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/33okayamaken/{z}/{x}/{-y}.png',
@@ -1080,7 +1097,7 @@ for (let i of mapsStr) {
 const kotizu33okayamaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/33okayamaken.jpg" target="_blank">jpg</a>'
 // 34広島県古地図-------------------------------------------------------------------------------
 function Kotizu34hiroshima () {
-  this.extent = transformE([132.007,34.021,133.504,35.129]);
+  // this.extent = transformE([132.007,34.021,133.504,35.129]);
   this.dep = MaskDep.hiroshima;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/34hiroshimaken/{z}/{x}/{-y}.png',
@@ -1098,7 +1115,7 @@ for (let i of mapsStr) {
 const kotizu34hiroshimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/34hiroshimaken.jpg" target="_blank">jpg</a>'
 // 35山口県古地図-------------------------------------------------------------------------------
 function Kotizu35yamaguchi () {
-  this.extent = transformE([130.734,33.696,132.506,34.709]);
+  // this.extent = transformE([130.734,33.696,132.506,34.709]);
   this.dep = MaskDep.yamaguchi;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/35yamaguchiken/{z}/{x}/{-y}.png',
@@ -1170,7 +1187,7 @@ for (let i of mapsStr) {
 const kotizu38ehimeSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/38ehimeken.jpg" target="_blank">jpg</a>'
 // 39高知県古地図-------------------------------------------------------------------------------
 function Kotizu39kochi () {
-  this.extent = transformE([132.423,32.681,134.354,33.895]);
+  // this.extent = transformE([132.423,32.681,134.354,33.895]);
   this.dep = MaskDep.kochi;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/39kochiken/{z}/{x}/{-y}.png',
@@ -1188,7 +1205,7 @@ for (let i of mapsStr) {
 const kotizu39kochiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/39kochiken.jpg" target="_blank">jpg</a>'
 // 40福岡県古地図-------------------------------------------------------------------------------
 function Kotizu40fukuoka () {
-  this.extent = transformE([130.022,32.998,131.197,33.983]);
+  // this.extent = transformE([130.022,32.998,131.197,33.983]);
   this.dep = MaskDep.fukuoka;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/40fukuokaken/{z}/{x}/{-y}.png',
@@ -1206,7 +1223,7 @@ for (let i of mapsStr) {
 const kotizu40fukuokaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/40fukuokaken.jpg" target="_blank">jpg</a>'
 // 41佐賀県古地図-------------------------------------------------------------------------------
 function Kotizu41saga () {
-  this.extent = transformE([129.730,32.935,130.547,33.628]);
+  // this.extent = transformE([129.730,32.935,130.547,33.628]);
   this.dep = MaskDep.saga;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/41sagaken/{z}/{x}/{-y}.png',
@@ -1224,7 +1241,7 @@ for (let i of mapsStr) {
 const kotizu41sagaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/41sagaken.jpg" target="_blank">jpg</a>'
 // 42長崎県古地図-------------------------------------------------------------------------------
 function Kotizu42nagasaki () {
-  this.extent = transformE([128.549,32.536,130.419,33.894]);
+  // this.extent = transformE([128.549,32.536,130.419,33.894]);
   this.dep = MaskDep.nagasaki;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/42nagasakiken/{z}/{x}/{-y}.png',
@@ -1242,7 +1259,7 @@ for (let i of mapsStr) {
 const kotizu42nagasakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/42nagasakiken.jpg" target="_blank">jpg</a>'
 // 43熊本県古地図-------------------------------------------------------------------------------
 function Kotizu43kumamoto () {
-  this.extent = transformE([130.080,32.093,131.310,33.203]);
+  // this.extent = transformE([130.080,32.093,131.310,33.203]);
   this.dep = MaskDep.kumamoto;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/43kumamotoken/{z}/{x}/{-y}.png',
@@ -1260,7 +1277,7 @@ for (let i of mapsStr) {
 const kotizu43kumamotoSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/43kumamotoken.jpg" target="_blank">jpg</a>'
 // 44大分県古地図-------------------------------------------------------------------------------
 function Kotizu44oita () {
-  this.extent = transformE([130.816,32.731,132.122,33.753]);
+  // this.extent = transformE([130.816,32.731,132.122,33.753]);
   this.dep = MaskDep.oita;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/44oitaken/{z}/{x}/{-y}.png',
@@ -1278,7 +1295,7 @@ for (let i of mapsStr) {
 const kotizu44oitaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/44oitaken.jpg" target="_blank">jpg</a>'
 // 45宮崎県古地図-------------------------------------------------------------------------------
 function Kotizu45miyazaki () {
-  this.extent = transformE([130.691,31.341,131.888,32.848]);
+  // this.extent = transformE([130.691,31.341,131.888,32.848]);
   this.dep = MaskDep.miyazaki;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/45miyazakiken/{z}/{x}/{-y}.png',
@@ -1296,7 +1313,7 @@ for (let i of mapsStr) {
 const kotizu45miyazakiSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/45miyazakiken.jpg" target="_blank">jpg</a>'
 // 46鹿児島県古地図-------------------------------------------------------------------------------
 function Kotizu46kagoshima () {
-  this.extent = transformE([130.083,30.965,131.213,32.319]);
+  // this.extent = transformE([130.083,30.965,131.213,32.319]);
   this.dep = MaskDep.kagoshima;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/46kagoshimaken/{z}/{x}/{-y}.png',
@@ -1314,7 +1331,7 @@ for (let i of mapsStr) {
 const kotizu46kagoshimaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/46kagoshimaken.jpg" target="_blank">jpg</a>'
 // 47沖縄県県古地図-------------------------------------------------------------------------------
 function Kotizu47okinawa () {
-  this.extent = transformE([127.227,26.065,128.363,26.881]);
+  // this.extent = transformE([127.227,26.065,128.363,26.881]);
   this.dep = MaskDep.okinawa;
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu/tile/47okinawaken/{z}/{x}/{-y}.png',
@@ -1471,6 +1488,7 @@ const layers =
                 { text: '08茨城県古地図(大正14年)', data: { id: 'kotizu08ibaraki', layer: kotizu08ibarakiObj, opacity: 1, zoom: 9, center: [140.33340833916677, 36.289055943305996], summary: kotizu08ibarakiSumm } },
                 { text: '09栃木県古地図(大正14年)', data: { id: 'kotizu09tochigii', layer: kotizu09tochigiObj, opacity: 1, zoom: 9, center: [139.79935070783154, 36.67918938356935], summary: kotizu09tochigiSumm } },
                 { text: '10群馬県古地図(大正14年)', data: { id: 'kotizu10gunma', layer: kotizu10gunmaObj, opacity: 1, zoom: 9, center: [138.96622079371627, 36.50767460653462], summary: kotizu10gunmaSumm } },
+                { text: '11埼玉県古地図(大正14年)', data: { id: 'kotizu11saitama', layer: kotizu11saitamaObj, opacity: 1, zoom: 9, center: [139.35699844775343, 36.02985181257246], summary: kotizu11saitamaSumm } },
 
               ]},
             { text: '近畿',

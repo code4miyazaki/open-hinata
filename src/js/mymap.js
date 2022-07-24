@@ -121,34 +121,21 @@ export function initMap (vm) {
     // シングルクリック------------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {
       console.log(evt)
-      const layers = map.getLayers().getArray();
-
-      const pixel = (map).getPixelFromCoordinate(evt.coordinate);
-      const clickedFeatures = [];
-      const clickedLayers = [];
-      (map).forEachLayerAtPixel(pixel,function(feature,layer){
-        clickedFeatures.push(feature);
-        clickedLayers.push(layer);
+       const pixel = (map).getPixelFromCoordinate(evt.coordinate);
+       const clickedLayers = [];
+      (map).forEachLayerAtPixel(pixel,function(layer){
+           clickedLayers.push(layer);
       });
-      console.log(clickedFeatures)
-
-
-      const kotizuLayer = clickedFeatures.find(el => el.values_.dep);
-      const dep = kotizuLayer.values_.dep
-      if (kotizuLayer.getFilters().length >0) {
-        kotizuLayer.removeFilter()
-        kotizuLayer.removeFilter()
-      } else {
-        Layers.mask(dep,kotizuLayer)
+      const kotizuLayer = clickedLayers.find(el => el.values_.dep);
+      if (kotizuLayer) {
+        const dep = kotizuLayer.values_.dep
+        if (kotizuLayer.getFilters().length >0) {
+          kotizuLayer.removeFilter()
+          kotizuLayer.removeFilter()
+        } else {
+          Layers.mask(dep,kotizuLayer)
+        }
       }
-
-
-
-
-
-
-
-
 
 
       // const pixel = (map).getPixelFromCoordinate(evt.coordinate);
