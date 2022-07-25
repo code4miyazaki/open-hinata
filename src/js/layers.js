@@ -1604,6 +1604,9 @@ for (let i of mapsStr) {
     ]
   })
 }
+for (let i of mapsStr) {
+  kotizu00Obj[i].values_['dep'] = true
+}
 const kotizu00Summ = SSK
 // 洪水浸水想定-------------------------------------------------------------------------------
 function Shinsuishin () {

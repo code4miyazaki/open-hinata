@@ -120,15 +120,20 @@ export function initMap (vm) {
     });
     // シングルクリック------------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {
-      console.log(evt)
-       const pixel = (map).getPixelFromCoordinate(evt.coordinate);
-       const clickedLayers = [];
+      //少しでも処理を早めるために古地図レイヤーがなかったら抜ける。
+      const layers = map.getLayers().getArray();
+      console.log(layers)
+      let kotizuLayer = layers.find(el => el.values_.dep);
+      if (!kotizuLayer) return //ここで抜ける
+      // ここから本番
+      const pixel = (map).getPixelFromCoordinate(evt.coordinate);
+      const clickedLayers = [];
        //クリックされた箇所のレイヤーを複数取得する
       (map).forEachLayerAtPixel(pixel,function(layer){
            clickedLayers.push(layer);
       });
       // クリックされたレイヤーのうちdepを持っているレイヤーだけ抽出する。
-      const kotizuLayer = clickedLayers.find(el => el.values_.dep);
+      kotizuLayer = clickedLayers.find(el => el.values_.dep);
       if (kotizuLayer) {
         const dep = kotizuLayer.values_.dep
         if (kotizuLayer.getFilters().length >0) {
