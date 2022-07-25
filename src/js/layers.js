@@ -367,7 +367,7 @@ const sizuokaCsSumm = '<a href="https://www.geospatial.jp/ckan/dataset/shizuokak
 // 日本CS立体図------------------------------------------------------------------------------
 function NihonCs () {
   this.source = new XYZ({
-    url: 'http://kouapp.main.jp/csmap/tile/japan/{z}/{x}/{y}.jpg',
+    url: 'https://main-kouapp.ssl-lolipop.jp/csmap/tile/japan/{z}/{x}/{y}.jpg',
     // crossOrigin: 'Anonymous',
     minZoom:9,
     maxZoom:15
