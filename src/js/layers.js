@@ -1549,6 +1549,62 @@ for (let i of mapsStr) {
   mask(dep,kotizu47okinawaObj[i])
 }
 const kotizu47okinawaSumm = SSK + '<br><a href="https://kenzkenz.github.io/bunkenzu/image/47okinawaken.jpg" target="_blank">jpg</a>'
+// 古地図全部を一つのレイヤーに-------------------------------------------------------------------------------
+const kotizu00Obj = {};
+for (let i of mapsStr) {
+  kotizu00Obj[i] = new LayerGroup({
+    layers: [
+      kotizu01hokkaidouObj[i],
+      kotizu01aomoriObj[i],
+      kotizu03iwateObj[i],
+      kotizu04miyagiObj[i],
+      kotizu05akitaObj[i],
+      kotizu06yamagataObj[i],
+      kotizu07hukusimaObj[i],
+      kotizu08ibarakiObj[i],
+      kotizu09tochigiObj[i],
+      kotizu10gunmaObj[i],
+      kotizu11saitamaObj[i],
+      kotizu12chibakenObj[i],
+      kotizu13tokyoObj[i],
+      kotizu14kanagawaObj[i],
+      kotizu15niigataObj[i],
+      kotizu16toyamaObj[i],
+      kotizu17isikawaObj[i],
+      kotizu18fukuiiObj[i],
+      kotizu19yamanasiObj[i],
+      kotizu20naganoObj[i],
+      kotizu21gihuObj[i],
+      kotizu22sizuokaObj[i],
+      kotizu23aichiObj[i],
+      kotizu24miekenObj[i],
+      kotizu25sigakenObj[i],
+      kotizu26kyoutohuObj[i],
+      kotizu27osakaObj[i],
+      kotizu28hyogoObj[i],
+      kotizu29naraObj[i],
+      kotizu30wakayamaObj[i],
+      kotizu31tottoriObj[i],
+      kotizu32shimaneObj[i],
+      kotizu33okayamaObj[i],
+      kotizu34hiroshimaObj[i],
+      kotizu35yamaguchiObj[i],
+      kotizu36tokusimaObj[i],
+      kotizu37kagawaObj[i],
+      kotizu38ehimeObj[i],
+      kotizu39kochiObj[i],
+      kotizu40fukuokaObj[i],
+      kotizu41sagaObj[i],
+      kotizu42nagasakiObj[i],
+      kotizu43kumamotoObj[i],
+      kotizu44oitaObj[i],
+      kotizu45miyazakiObj[i],
+      kotizu46kagoshimaObj[i],
+      kotizu47okinawaObj[i],
+    ]
+  })
+}
+const kotizu00Summ = SSK
 // 洪水浸水想定-------------------------------------------------------------------------------
 function Shinsuishin () {
   this.source = new XYZ({
@@ -1675,6 +1731,7 @@ const layers =
         { text: '東西蝦夷山川地理取調図', data: { id: 'ezosansen', layer: ezosansenObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: ezosansenSumm } },
         { text: '最新詳密金刺分縣圖',
           children: [
+            { text: '00全古地図', data: { id: 'kotizu00', layer: kotizu00Obj, opacity: 1, summary: kotizu00Summ } },
             { text: '01北海道古地図', data: { id: 'kotizu01hokkaidou', layer: kotizu01hokkaidouObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: kotizu01hokkaidouSumm } },
             { text: '東北',
               children: [
