@@ -32,7 +32,7 @@
                 <v-dialog-layer :mapName=mapName />
                 <v-dialog-info :mapName=mapName />
                 <v-dialog-menu v-if="mapName === 'map01'"/>
-              <v-dialog-main-info v-if="mapName === 'map01'"/>
+                <v-dialog-main-info v-if="mapName === 'map01'"/>
                 <div class="zoom-div">{{ zoom[mapName] }}</div>
             </div>
         </transition>
