@@ -3,6 +3,7 @@
         <div :style="contentSize">
           <p>製作者＝kenzkenz</p>
           <p><a href="https://github.com/code4miyazaki/open-hinata" target="_blank" >github</a>の「new」ブランチで開発しています。</p>
+          <p><a href="https://twitter.com/kenzkenz" target="_blank">twitter</a></p>
         </div>
     </v-dialog>
 </template>
@@ -10,10 +11,10 @@
 <script>
 
     export default {
-    name: "Menu",
+    name: "mainInfo",
     data () {
       return {
-        contentSize: {'height': 'auto','width':'150px', 'margin': '10px', 'overflow': 'auto', 'user-select': 'text'},
+        contentSize: {'height': 'auto', 'margin': '10px', 'overflow': 'auto', 'user-select': 'text'},
         btnSize: 'sm',
       }
     },
