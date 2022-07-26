@@ -14,6 +14,7 @@ const moduleBase = {
       map04: []
     },
     dialogs: {
+      mainInfoDialog:{style: {top: '56px', left: 'calc(100% - 180px)', 'z-index': 1, height: 'auto', 'min-width': '150px', display: 'none'}},
       menuDialog: {style: {top: '56px', left: '10px', 'z-index': 1, height: 'auto', 'min-width': '150px', display: 'none'}},
       map01: {style: {top: '56px', left:'10px', 'z-index': 1, height: 'auto', 'min-width': '250px', display: 'none'}},
       map02: {style: {top: '56px', left:'10px', 'z-index': 1, height: 'auto', 'min-width': '250px', display: 'none'}},

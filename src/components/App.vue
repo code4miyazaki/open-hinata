@@ -11,7 +11,7 @@
                     <b-button id='menu-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['menuDialog'])" style="margin-right:5px;"><i class="fa-solid fa-bars"></i></b-button>
                     <b-button id='split-map-btn' v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="splitMap" style="margin-right:5px;"><i class="fa-solid fa-table-columns"></i></b-button>
                     <b-button class='olbtn' :size="btnSize" @click="openDialog(s_dialogs[mapName])">背景</b-button>
-                    <b-popover v-if='toolTip'
+                  <b-popover v-if='toolTip'
                                content="画面を分割します。"
                                target="split-map-btn"
                                triggers="hover"
@@ -26,10 +26,13 @@
                                boundary="viewport"
                     />
                 </div>
-                <div class="top-right-div"></div>
+                <div class="top-right-div">
+                  <b-button i v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['mainInfoDialog'])"><i class="fa-solid fa-circle-info"></i></b-button>
+                </div>
                 <v-dialog-layer :mapName=mapName />
                 <v-dialog-info :mapName=mapName />
                 <v-dialog-menu v-if="mapName === 'map01'"/>
+              <v-dialog-main-info v-if="mapName === 'map01'"/>
                 <div class="zoom-div">{{ zoom[mapName] }}</div>
             </div>
         </transition>
@@ -53,6 +56,7 @@
 <script>
   import DialogMenu from './Dialog-menu'
   import DialogLayer from './Dialog-layer'
+  import DialogMainInfo from './Dialog-main-info'
   import * as Permalink from '../js/permalink'
   import Inobounce from '../js/inobounce'
   import * as MyMap from '../js/mymap'
@@ -60,7 +64,8 @@
     name: 'App',
     components: {
       'v-dialog-layer': DialogLayer,
-      'v-dialog-menu': DialogMenu
+      'v-dialog-menu': DialogMenu,
+      'v-dialog-main-info': DialogMainInfo
     },
     data () {
       return {
