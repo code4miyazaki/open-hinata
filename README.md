@@ -1,5 +1,6 @@
 # open-hinata
 ol5+vueで作成したオープン版の「ひなたGIS」です。「ひなたGIS」の作者が作っています。
+newブランチで作成しています。
 # Demo
 [・初期時](https://kenzkenz.xsrv.jp/open-hinata/)
 [・２画面](https://bit.ly/3IpLX1u)
