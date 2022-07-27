@@ -228,7 +228,7 @@ export function initMap (vm) {
     });
 
     const getElevation = (event) =>{
-      let z = map.getView().getZoom() > 13 ? 13 : map.getView().getZoom()
+      let z = map.getView().getZoom()
       if(z>13) z=13;
       // const coord = event.coordinate　こっちにするとマウスの標高を取得する。
       const coord =map.getView().getCenter()
