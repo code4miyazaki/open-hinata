@@ -103,7 +103,10 @@ export function initMap (vm) {
     // イベント追加----------------------------------------------------------------
     // フィーチャーにマウスがあたったとき
     map.on("pointermove",function(evt){
-      document.querySelector(".ol-viewport").style.cursor = "default";
+      document.querySelector("#map01 .ol-viewport").style.cursor = "default";
+      document.querySelector("#map02 .ol-viewport").style.cursor = "default";
+      document.querySelector("#map03 .ol-viewport").style.cursor = "default";
+      document.querySelector("#map04 .ol-viewport").style.cursor = "default";
       const map = evt.map;
       // const option = {
       //   layerFilter: function (layer) {
@@ -116,7 +119,10 @@ export function initMap (vm) {
         });
     // },option);
       if (feature) {
-        document.querySelector(".ol-viewport").style.cursor = "pointer";
+        document.querySelector("#map01 .ol-viewport").style.cursor = "pointer";
+        document.querySelector("#map02 .ol-viewport").style.cursor = "pointer";
+        document.querySelector("#map03 .ol-viewport").style.cursor = "pointer";
+        document.querySelector("#map04 .ol-viewport").style.cursor = "pointer";
       }
     });
     // シングルクリック------------------------------------------------------------------------------------
@@ -163,7 +169,28 @@ export function initMap (vm) {
         content.innerHTML = '明るさレベル＝' +  lightLevel
         overlay[i].setPosition(coordinate);
       }
-
+      //--------------------------------------------------------------------------
+      if (layers[0].values_.id === 'syougakkouku') {
+        console.log(features[0].properties_)
+        const cont = '市区町村コード＝' + features[0].properties_.A27_005 + '<br>' +
+                             '設置主体=' + features[0].properties_.A27_006+ '<br>' +
+                             '名称＝' + features[0].properties_.A27_007+ '<br>' +
+                             '所在地＝' + features[0].properties_.A27_008+ '<br>'
+        const coordinate = evt.coordinate;//
+        content.innerHTML = cont
+        overlay[i].setPosition(coordinate);
+      }
+      //--------------------------------------------------------------------------
+      if (layers[0].values_.id === 'tyuugakkouku' ) {
+        console.log(features[0].properties_)
+        const cont = '市区町村コード＝' + features[0].properties_.A32_006 + '<br>' +
+          '設置主体=' + features[0].properties_.A32_007 + '<br>' +
+          '名称＝' + features[0].properties_.A32_008 + '<br>' +
+          '所在地＝' + features[0].properties_.A32_009 + '<br>'
+        const coordinate = evt.coordinate;//
+        content.innerHTML = cont
+        overlay[i].setPosition(coordinate);
+      }
     })
   //------------------------------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {

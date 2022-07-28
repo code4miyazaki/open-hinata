@@ -6,11 +6,11 @@ export function permalinkEventSet () {
   // value.layerはオブジェクトになっており、map01から04が入っている。
   store.commit('base/unshiftLayerList', {
     value: {
-      id: 1,
-      title: '標準地図',
-      layer: Layers.Layers[1].children[0].data.layer,
+      id: 2,
+      title: '淡色地図',
+      layer: Layers.Layers[1].children[1].data.layer,
       opacity: 1,
-      summary: Layers.Layers[1].children[0].data.summary,
+      summary: Layers.Layers[1].children[1].data.summary,
       component: ''
     },
     mapName: 'map01'
@@ -24,6 +24,14 @@ export function permalinkEventSet () {
       summary: Layers.Layers[1].children[1].data.summary,
       component: ''
     },
+    // value: {
+    //   id: 1,
+    //   title: '標準地図',
+    //   layer: Layers.Layers[1].children[0].data.layer,
+    //   opacity: 1,
+    //   summary: Layers.Layers[1].children[0].data.summary,
+    //   component: ''
+    // },
     mapName: 'map02'
   });
   store.commit('base/unshiftLayerList', {

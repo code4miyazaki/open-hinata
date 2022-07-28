@@ -5,8 +5,9 @@ import * as d3 from "d3";
 import {Fill, Stroke, Style, Text, Circle} from "ol/style";
 const mapsStr = ['map01','map02','map03','map04'];
 
-
+//小学校区------------------------------------------------------------------------------------------------
 function Syougakkouku(){
+  this.id = 'syougakkouku'
   this.source = new VectorTileSource({
     format: new MVT(),
     maxZoom:15,
@@ -100,15 +101,26 @@ function syougakkoukuStyleFunction(feature, resolution) {
   }
   return style;
 }
-
-
+//中学校区---------------------------------------------------------------------------------------
+function Tyuugakkouku(){
+  this.id = 'tyuugakkouku'
+  this.source = new VectorTileSource({
+    format: new MVT(),
+    maxZoom:15,
+    url: "https://mtile.pref.miyazaki.lg.jp/tile/mvt//tyuugakkouku/{z}/{x}/{y}.mvt"
+  });
+  this.style = syougakkoukuStyleFunction;
+}
+export  const tyuugakkoukuObj = {};
+for (let i of mapsStr) {
+  tyuugakkoukuObj[i] = new VectorTileLayer(new Tyuugakkouku())
+}
+export const tyuugakkoukuSumm = "<a href='http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-A32-v2_0.html' target='_blank'>国土数値情報　中学校区データ</a>";
 
 
 
 
 // 夜の明かり---------------------------------------------------------------------------------------
-
-
 function SekaiLight () {
   this.id = 'japanLight'
   this.source = new VectorTileSource({
