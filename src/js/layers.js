@@ -1,5 +1,4 @@
 import store from './store'
-import MVT from 'ol/format/MVT';
 import TileLayer from 'ol/layer/Tile'
 import VectorLayer from 'ol/layer/Vector';
 import ImageLaye from 'ol/layer/Image'
@@ -18,9 +17,7 @@ import Polygon  from "ol/geom/Polygon";
 import Crop from 'ol-ext/filter/Crop'
 import Mask from 'ol-ext/filter/Mask'
 import  * as MaskDep from './mask-dep'
-import VectorTileLayer from 'ol/layer/VectorTile';
-import VectorTileSource from 'ol/source/VectorTile';
-import * as d3 from 'd3'
+import  * as LayersMvt from './layers-mvt'
 const mapsStr = ['map01','map02','map03','map04'];
 const transformE = extent => {
   return transformExtent(extent,'EPSG:4326','EPSG:3857');
@@ -1693,99 +1690,6 @@ for (let i of mapsStr) {
 }
 const hyuugasiHmSumm = '';
 // 日向市ハザードマップここまで------------------------------------------------------------------------
-
-// 夜の明かり---------------------------------------------------------------------------------------
-function SekaiLight () {
-  this.source = new VectorTileSource({
-    format: new MVT(),
-    maxZoom:14,
-    url: "https://kenzkenz.github.io/sekai-light/{z}/{x}/{y}.mvt"
-  });
-  this.style = sekaiLightStyleFunction();
-}
-const sekaiLightObj = {};
-for (let i of mapsStr) {
-  sekaiLightObj[i] = new VectorTileLayer(new SekaiLight())
-}
-const sekaiLightSumm = '';
-
-function  getZoom(resolution)  {
-  let zoom = 0;
-  let r = 156543.03390625; // resolution for zoom 0
-  while (resolution < r) {
-     r /= 2;
-    zoom++;
-    if (resolution > r) {
-       return zoom;
-    }
-  }
-  return zoom; // resolution was greater than 156543.03390625 so return 0
-}
-
- function sekaiLightStyleFunction () {
-  //MVTタイルは７〜１４まで詳細　１から６は簡易
-  const d3Color = d3.interpolateLab("black","yellow");
-  return function(feature, resolution) {
-    const zoom = getZoom(resolution);
-    const prop = feature.getProperties();
-    const text = prop["light"];
-    let light100
-    if(zoom>7) {//うーんzoomが一つずれるけど、どこで間違えている？？とりあえずこれで問題なく動く
-      const lightNum = Number(prop["light"]);
-      light100 = lightNum / 255;
-    }else{
-      light100 = Number(prop["rate"]) / 10;
-    }
-    const rgb = d3.rgb(d3Color(light100));
-    let rgba;
-    if(zoom>7) {
-      if (light100 === 1) {
-        rgba = "rgba(255,165,0,0.8)";
-      } else {
-        rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ", 0.8 )";
-      }
-    }else{
-      rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ", 0.8 )";
-    }
-    const styles = [];
-    const fillStyle =
-      new Style({
-        fill: new Fill({
-          color: rgba
-        })
-      });
-    const strokeStyle =
-      new Style({
-        stroke: new Stroke({
-          color: "silver",
-          width: 1
-        })
-      });
-    const textStyle =
-      new Style({
-        text: new Text({
-          font: "14px sans-serif",
-          text: text,
-          placement:"point",
-          fill: new Fill({
-            color: "black"
-          }),
-          stroke: new Stroke({
-            color: "white",
-            width: 3
-          }),
-          exceedLength:true
-        })
-      });
-    styles.push(fillStyle);
-    if(zoom>=13) {
-      styles.push(strokeStyle);
-      styles.push(textStyle);
-    }
-    return styles;
-  };
-}
-
 // ここにレイヤーを全部書く。クリックするとストアのlayerListに追加されていく-------------------------
 const layers =
   [
@@ -1902,7 +1806,7 @@ const layers =
               ]}
           ]},
       ]},
-    { text: '夜の明かり', data: { id: "sekaiLigh", layer: sekaiLightObj, opacity: 1, summary: sekaiLightSumm } },
+    { text: '夜の明かり', data: { id: "japanLight", layer: LayersMvt.japanLightObj, opacity: 1, summary: LayersMvt.japanLightSumm } },
     { text: '海面上昇',
       children: [
         { text: '海面上昇シミュ5Mdem', data: { id: 'flood5m', layer: flood5Obj, opacity: 1, summary: floodSumm, component: {name: 'flood5m', values:[]}} },
