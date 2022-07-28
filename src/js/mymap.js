@@ -145,18 +145,28 @@ export function initMap (vm) {
         }
       }
 
-      // const pixel = (map).getPixelFromCoordinate(evt.coordinate);
-      // const features = [];
-      // const layers = [];
-      // (map).forEachFeatureAtPixel(pixel,function(feature,layer){
-      //   features.push(feature);
-      //   layers.push(layer);
-      // });
-      // if(!features.length) return;//fフィーチャーがなかったら抜ける。
-      // const coordinate = evt.coordinate;
-      // content.innerHTML = mapName;
-      // overlay[i].setPosition(coordinate);
+
     })
+//--------------------------------------------------------------------------------
+    map.on('singleclick', function (evt) {
+      const pixel = (map).getPixelFromCoordinate(evt.coordinate);
+      const features = [];
+      const layers = [];
+      (map).forEachFeatureAtPixel(pixel,function(feature,layer){
+        features.push(feature);
+        layers.push(layer);
+      });
+      if(!features.length) return;//fフィーチャーがなかったら抜ける。
+
+      if (layers[0].values_.id === 'japanLight') {
+        const lightLevel = features[0].properties_.light
+        const coordinate = evt.coordinate;
+        content.innerHTML = '明るさレベル＝' +  lightLevel
+        overlay[i].setPosition(coordinate);
+      }
+
+    })
+  //------------------------------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
       const map = evt.map;

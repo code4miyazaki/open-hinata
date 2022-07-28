@@ -6,6 +6,7 @@ import * as d3 from "d3";
 import {Fill, Stroke, Style, Text} from "ol/style";
 const mapsStr = ['map01','map02','map03','map04'];
 function SekaiLight () {
+  this.id = 'japanLight'
   this.source = new VectorTileSource({
     format: new MVT(),
     maxZoom:14,
