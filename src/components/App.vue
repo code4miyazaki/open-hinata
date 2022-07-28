@@ -27,7 +27,7 @@
                     />
                 </div>
                 <div class="top-right-div">
-                  <b-button i v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['mainInfoDialog'])"><i class="fa-brands fa-github-alt"></i></b-button>
+                  <b-button i v-if="mapName === 'map01'" class='olbtn' :size="btnSize" @click="openDialog(s_dialogs['mainInfoDialog'])"><i class="fa-brands fa-github"></i></b-button>
                 </div>
                 <v-dialog-layer :mapName=mapName />
                 <v-dialog-info :mapName=mapName />
@@ -319,7 +319,7 @@
     .v-enter, .v-leave-to  {
         opacity: 0;
     }
-    .fa-github-alt{
+    .fa-github{
       font-size: 20px;
     }
 </style>
