@@ -103,10 +103,9 @@ export function initMap (vm) {
     // イベント追加----------------------------------------------------------------
     // フィーチャーにマウスがあたったとき
     map.on("pointermove",function(evt){
-      document.querySelector("#map01 .ol-viewport").style.cursor = "default";
-      document.querySelector("#map02 .ol-viewport").style.cursor = "default";
-      document.querySelector("#map03 .ol-viewport").style.cursor = "default";
-      document.querySelector("#map04 .ol-viewport").style.cursor = "default";
+      document.querySelectorAll(".ol-viewport").forEach((elm)=>{
+        elm.style.cursor = "default";
+      })
       const map = evt.map;
       // const option = {
       //   layerFilter: function (layer) {
@@ -119,10 +118,9 @@ export function initMap (vm) {
         });
     // },option);
       if (feature) {
-        document.querySelector("#map01 .ol-viewport").style.cursor = "pointer";
-        document.querySelector("#map02 .ol-viewport").style.cursor = "pointer";
-        document.querySelector("#map03 .ol-viewport").style.cursor = "pointer";
-        document.querySelector("#map04 .ol-viewport").style.cursor = "pointer";
+        document.querySelectorAll(".ol-viewport").forEach((elm)=>{
+          elm.style.cursor = "pointer";
+        })
       }
     });
     // シングルクリック------------------------------------------------------------------------------------
