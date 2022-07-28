@@ -105,15 +105,16 @@ export function initMap (vm) {
     map.on("pointermove",function(evt){
       document.querySelector(".ol-viewport").style.cursor = "default";
       const map = evt.map;
-      const option = {
-        layerFilter: function (layer) {
-          return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';
-        }
-      };
+      // const option = {
+      //   layerFilter: function (layer) {
+      //     return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';
+      //   }
+      // };
       const feature = map.forEachFeatureAtPixel(evt.pixel,
         function(feature) {
           return feature;
-        },option);
+        });
+    // },option);
       if (feature) {
         document.querySelector(".ol-viewport").style.cursor = "pointer";
       }
@@ -144,8 +145,6 @@ export function initMap (vm) {
           Layers.mask(dep,kotizuLayer)
         }
       }
-
-
     })
 //--------------------------------------------------------------------------------
     map.on('singleclick', function (evt) {

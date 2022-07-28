@@ -1,10 +1,114 @@
-// 夜の明かり---------------------------------------------------------------------------------------
 import VectorTileSource from "ol/source/VectorTile";
 import MVT from "ol/format/MVT";
 import VectorTileLayer from "ol/layer/VectorTile";
 import * as d3 from "d3";
-import {Fill, Stroke, Style, Text} from "ol/style";
+import {Fill, Stroke, Style, Text, Circle} from "ol/style";
 const mapsStr = ['map01','map02','map03','map04'];
+
+
+function Syougakkouku(){
+  this.source = new VectorTileSource({
+    format: new MVT(),
+    maxZoom:15,
+    url: "https://mtile.pref.miyazaki.lg.jp/tile/mvt/syougakkouku/{z}/{x}/{y}.mvt"
+  });
+  this.style = syougakkoukuStyleFunction;
+}
+export  const syougakkoukuObj = {};
+for (let i of mapsStr) {
+  syougakkoukuObj[i] = new VectorTileLayer(new Syougakkouku())
+}
+export const syougakkoukuSumm = "<a href='http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-A27-v2_1.html' target='_blank'>国土数値情報　小学校区データ</a>";
+
+var d3syougakkoukuColor = d3.scaleOrdinal(d3.schemeCategory10);
+var d3tyuugakkoukuColor = d3.scaleOrdinal(d3.schemeCategory10);
+function syougakkoukuStyleFunction(feature, resolution) {
+  var prop = feature.getProperties();
+  var geoType = feature.getGeometry().getType();
+  var text = "";
+  if(resolution<38.22){
+    if(prop["A27_003"]) {
+      text = prop["A27_003"];
+    }else{
+      text = prop["A32_003"];
+    }
+  }
+  if(prop["A27_005"]) {
+    var rgb = d3.rgb(d3syougakkoukuColor(Number(prop["id"])));
+    var rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.7)";
+  }else{
+    var rgb = d3.rgb(d3tyuugakkoukuColor(Number(prop["id"])));
+    var rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.7)";
+  }
+  switch (geoType){
+    case "MultiPoint":
+    case "Point":
+      if(resolution>305) break;
+      var style = new Style({
+        image: new Circle({
+          radius:3,
+          fill: new Fill({
+            color:"black"
+          }),
+          stroke: new Stroke({
+            color: "white",
+            width: 1
+          })
+        }),
+        text: new Text({
+          font: "8px sans-serif",
+          text: text,
+          offsetY:10,
+          stroke: new Stroke({
+            color: "white",
+            width: 3
+          })
+        })
+      });
+      break;
+    case "Polygon":
+    case "MultiPolygon":
+      if(resolution<76) {
+        var style = new Style({
+          fill: new Fill({
+            color:rgba
+          }),
+          stroke: new Stroke({
+            color: "gray",
+            width: 1
+          }),
+          text: new Text({
+            font: "8px sans-serif",
+            text: text,
+            stroke: new Stroke({
+              color: "white",
+              width: 3
+            })
+          }),
+          zIndex: 0
+        });
+      }else{
+        var style = new Style({
+          fill: new Fill({
+            color:rgba
+          }),
+          zIndex: 0
+        });
+      }
+      break;
+    default:
+  }
+  return style;
+}
+
+
+
+
+
+
+// 夜の明かり---------------------------------------------------------------------------------------
+
+
 function SekaiLight () {
   this.id = 'japanLight'
   this.source = new VectorTileSource({
@@ -12,7 +116,7 @@ function SekaiLight () {
     maxZoom:14,
     url: "https://kenzkenz.github.io/sekai-light/{z}/{x}/{y}.mvt"
   });
-  this.style = sekaiLightStyleFunction();
+  this.style = japanLightStyleFunction();
 }
 export  const japanLightObj = {};
 for (let i of mapsStr) {
@@ -33,7 +137,7 @@ function  getZoom(resolution)  {
   return zoom; // resolution was greater than 156543.03390625 so return 0
 }
 
-function sekaiLightStyleFunction () {
+function japanLightStyleFunction () {
   //MVTタイルは７〜１４まで詳細　１から６は簡易
   const d3Color = d3.interpolateLab("black","yellow");
   return function(feature, resolution) {
