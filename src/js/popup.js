@@ -1,7 +1,7 @@
 export function popUp(layers,features,overlay,evt,content) {
   let cont
   const coordinate = evt.coordinate;
-  switch (layers[0].values_.id) {
+  switch (layers[0].get('name') ) {
     // 小学校区
     case 'syougakkouku':
       cont = '市区町村コード＝' + features[0].properties_.A27_005 + '<br>' +

@@ -7,7 +7,7 @@ const mapsStr = ['map01','map02','map03','map04'];
 
 //小学校区------------------------------------------------------------------------------------------------
 function Syougakkouku(){
-  this.id = 'syougakkouku'
+  this.name = 'syougakkouku'
   this.source = new VectorTileSource({
     format: new MVT(),
     maxZoom:15,
@@ -103,7 +103,7 @@ function syougakkoukuStyleFunction(feature, resolution) {
 }
 //中学校区---------------------------------------------------------------------------------------
 function Tyuugakkouku(){
-  this.id = 'tyuugakkouku'
+  this.name = 'tyuugakkouku'
   this.source = new VectorTileSource({
     format: new MVT(),
     maxZoom:15,
@@ -122,7 +122,7 @@ export const tyuugakkoukuSumm = "<a href='http://nlftp.mlit.go.jp/ksj/gml/datali
 
 // 夜の明かり---------------------------------------------------------------------------------------
 function SekaiLight () {
-  this.id = 'japanLight'
+  this.name = 'japanLight'
   this.source = new VectorTileSource({
     format: new MVT(),
     maxZoom:14,
