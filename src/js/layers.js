@@ -665,7 +665,7 @@ for (let i of mapsStr) {
 const mw20Summ = '<a href="https://mapwarper.h-gis.jp/" target="_blank">日本版 Map Warper</a><br>';
 // 日本版mapwarper20万分の１ここまで------------------------------------------------------
 
-// 	東西蝦夷山川地理取調図洪水浸水想定-------------------------------------------------------------------------------
+// 	東西蝦夷山川地理取調図-------------------------------------------------------------------------------
 function Ezosansen () {
   this.source = new XYZ({
     url: 'https://koukita.github.io/touzaiezo/tile/{z}/{x}/{y}.jpg',
@@ -1611,6 +1611,7 @@ for (let i of mapsStr) {
 const kotizu00Summ = SSK
 // 洪水浸水想定-------------------------------------------------------------------------------
 function Shinsuishin () {
+  this.name = 'shinsuishin'
   this.source = new XYZ({
     url: 'https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin/{z}/{x}/{y}.png',
     crossOrigin: 'Anonymous',
