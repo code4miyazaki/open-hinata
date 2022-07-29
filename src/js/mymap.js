@@ -121,16 +121,16 @@ export function initMap (vm) {
       }
     });
     // シングルクリック------------------------------------------------------------------------------------
-    // 洪水浸水用
+    // 洪水浸水用-----------------------------------------------------------------
     map.on('singleclick', function (evt) {
       //少しでも処理を早めるために洪水浸水レイヤーがなかったら抜ける。
       const layers = map.getLayers().getArray();
-      let shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
+      const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
       if (shinsuishinLayer) {
         PopUp.popUpShinsuishin(map,overlay[i],evt,content)
       }
     })
-    // 大正古地図用
+    // 大正古地図用-----------------------------------------------------------------
     map.on('singleclick', function (evt) {
       //少しでも処理を早めるために古地図レイヤーがなかったら抜ける。
       const layers = map.getLayers().getArray();
@@ -177,6 +177,12 @@ export function initMap (vm) {
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
       const map = evt.map;
+      //  洪水浸水想定と重ねるときは動作させない
+      const layers0 = map.getLayers().getArray();
+      const shinsuishinLayer = layers0.find(el => el.get('name')==='shinsuishin');
+      if (shinsuishinLayer) return
+      // ここまで
+
       const option = {
         layerFilter: function (layer) {
           return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';
