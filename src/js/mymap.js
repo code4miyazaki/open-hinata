@@ -123,11 +123,18 @@ export function initMap (vm) {
     // シングルクリック------------------------------------------------------------------------------------
     // 洪水浸水用-----------------------------------------------------------------
     map.on('singleclick', function (evt) {
-      //少しでも処理を早めるために洪水浸水レイヤーがなかったら抜ける。
       const layers = map.getLayers().getArray();
       const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
       if (shinsuishinLayer) {
         PopUp.popUpShinsuishin(map,overlay[i],evt,content)
+      }
+    })
+    // 津波用-----------------------------------------------------------------
+    map.on('singleclick', function (evt) {
+      const layers = map.getLayers().getArray();
+      const tunamiLayer = layers.find(el => el.get('name')==='tunami');
+      if (tunamiLayer) {
+        PopUp.popUpTunami(map,overlay[i],evt,content)
       }
     })
     // 大正古地図用-----------------------------------------------------------------

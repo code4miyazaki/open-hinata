@@ -1629,6 +1629,7 @@ const shinsuishinSumm = '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/shin
 
 // 津波浸水想定-------------------------------------------------------------------------------
 function Tsunami () {
+  this.name = 'tunami'
   this.source = new XYZ({
     // url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}\.png',
     url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/{z}/{x}/{y}.png',
