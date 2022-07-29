@@ -24,30 +24,63 @@ export function popUp(layers,features,overlay,evt,content) {
   content.innerHTML = cont
   if (cont) overlay.setPosition(coordinate);
 }
-export function popUpShinsuishin(overlay,evt,content,rs,gs,bs) {
-  let cont
-  if(rs.substr(0,2)==="25" && gs.substr(0,2)==="25" && bs.substr(0,2)==="18") {
-    cont = "0.3m未満"
-  }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="17") {
-    cont = "0.3〜0.5m"
-  }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="22" && bs.substr(0,2)==="17") {
-    cont = "0.5〜1.0m"
-  }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="21" && bs.substr(0,2)==="19") {
-    cont = "1.0〜3.0m"
-  }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="16") {
-    cont = "0.5m未満"
-  }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="21" && bs.substr(0,2)==="19") {
-    cont = "0.5〜3.0m"
-  }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="18" && bs.substr(0,2)==="18") {
-    cont = "3.0〜5.0m"
-  }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="14" && bs.substr(0,2)==="14") {
-    cont = "5.0〜10.0m"
-  }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="13" && bs.substr(0,2)==="20") {
-    cont = "10.0〜20.0m"
-  }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="17") {
-    cont = "20.0m以上"
-  }
-  const coordinate = evt.coordinate;
-  content.innerHTML = cont
-  overlay.setPosition(coordinate);
+export function popUpShinsuishin(map,overlay,evt,content) {
+  var url = 'https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin/';
+  var z = Math.floor(eval(map).getView().getZoom());
+  if(z>17) z=17;
+  var R = 6378137;// 地球の半径(m);
+  var rx = (0.5 + evt.coordinate[0]/(2*R*Math.PI))*Math.pow(2,z);
+  var ry = (0.5 - evt.coordinate[1]/(2*R*Math.PI))*Math.pow(2,z);
+  var x = Math.floor(rx);// タイルX座標
+  var y = Math.floor(ry);// タイルY座標
+  var ii= (rx - x) * 256;// タイル内i座標
+  var j = (ry - y) * 256;// タイル内j座標
+  var img = new Image();
+  img.crossOrigin = "anonymouse";
+  img.onload = function(){
+    var canvas = document.createElement("canvas");
+    var context = canvas.getContext("2d");
+    var data;
+    canvas.width = 1;
+    canvas.height = 1;
+    context.drawImage(img,ii,j,1,1,0,0,1,1);
+    data = context.getImageData(0,0,1,1).data;
+    var r = data[0];
+    var g = data[1];
+    var b = data[2];
+    var rs = String(r);
+    var gs = String(g);
+    var bs = String(b);
+    console.log(rs,gs,bs);
+    if (r + g + b === 0) return
+    var rgba = "rgba(" + r + "," + g + "," + b + ",1.0)";
+    let cont
+    if(rs.substr(0,2)==="25" && gs.substr(0,2)==="25" && bs.substr(0,2)==="18") {
+      cont = "0.3m未満"
+    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="17") {
+      cont = "0.3〜0.5m"
+    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="22" && bs.substr(0,2)==="17") {
+      cont = "0.5〜1.0m"
+    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="21" && bs.substr(0,2)==="19") {
+      cont = "1.0〜3.0m"
+    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="16") {
+      cont = "0.5m未満"
+    }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="21" && bs.substr(0,2)==="19") {
+      cont = "0.5〜3.0m"
+    }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="18" && bs.substr(0,2)==="18") {
+      cont = "3.0〜5.0m"
+    }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="14" && bs.substr(0,2)==="14") {
+      cont = "5.0〜10.0m"
+    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="13" && bs.substr(0,2)==="20") {
+      cont = "10.0〜20.0m"
+    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="17") {
+      cont = "20.0m以上"
+    }
+    const coordinate = evt.coordinate;
+    content.innerHTML = cont
+    overlay.setPosition(coordinate);
+}
+const imgSrc = url + z + '/' + x + '/' + y+ ".png";
+img.src = imgSrc;
+
 }
