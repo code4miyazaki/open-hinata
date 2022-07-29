@@ -125,7 +125,8 @@ export function initMap (vm) {
     map.on('singleclick', function (evt) {
       const layers = map.getLayers().getArray();
       const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
-      if (shinsuishinLayer) {
+      const tunamiLayer = layers.find(el => el.get('name')==='tunami');
+      if (shinsuishinLayer && !tunamiLayer) {
         PopUp.popUpShinsuishin(map,overlay[i],evt,content)
       }
     })
@@ -133,8 +134,28 @@ export function initMap (vm) {
     map.on('singleclick', function (evt) {
       const layers = map.getLayers().getArray();
       const tunamiLayer = layers.find(el => el.get('name')==='tunami');
-      if (tunamiLayer) {
+      const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
+      if (tunamiLayer && !shinsuishinLayer) {
         PopUp.popUpTunami(map,overlay[i],evt,content)
+      }
+    })
+    // 洪水津波用-----------------------------------------------------------------
+    map.on('singleclick', function (evt) {
+      const layers = map.getLayers().getArray();
+      const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
+      const tunamiLayer = layers.find(el => el.get('name')==='tunami');
+      if (tunamiLayer && shinsuishinLayer) {
+        PopUp.popUpShinsuishin(map,overlay[i],evt,content,true)
+        PopUp.popUpTunami(map,overlay[i],evt,content,true)
+        // 少し待つ
+        var popup = function() {
+          const coordinate = evt.coordinate;
+          const cont = store.state.base.popUpCont
+          content.innerHTML = cont
+          if (cont) overlay[i].setPosition(coordinate)
+          store.commit('base/popUpContReset')
+        }
+        setTimeout(popup,300)
       }
     })
     // 大正古地図用-----------------------------------------------------------------

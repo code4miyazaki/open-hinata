@@ -1,3 +1,4 @@
+import store from './store'
 export function popUp(layers,features,overlay,evt,content) {
   let cont
   const coordinate = evt.coordinate;
@@ -25,7 +26,7 @@ export function popUp(layers,features,overlay,evt,content) {
   if (cont) overlay.setPosition(coordinate);
 }
 //----------------------------------------------------------------------------------------
-export function popUpShinsuishin(map,overlay,evt,content) {
+export function popUpShinsuishin(map,overlay,evt,content,overlap) {
   const url = 'https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin/';
   let z = Math.floor(eval(map).getView().getZoom());
   if(z>17) z=17;
@@ -77,14 +78,18 @@ export function popUpShinsuishin(map,overlay,evt,content) {
       cont = "洪水浸水深　20.0m以上"
     }
     const coordinate = evt.coordinate;
-    content.innerHTML = cont
-    if (cont) overlay.setPosition(coordinate);
- }
+    if (overlap) {
+      store.commit('base/popUpContUpdate',cont)
+    } else {
+      content.innerHTML = cont
+      if (cont) overlay.setPosition(coordinate);
+    }
+  }
  const imgSrc = url + z + '/' + x + '/' + y+ ".png";
  img.src = imgSrc;
 }
 //----------------------------------------------------------------------------------------
-export function popUpTunami(map,overlay,evt,content) {
+export function popUpTunami(map,overlay,evt,content,overlap) {
   const url = 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/';
   let z = Math.floor(eval(map).getView().getZoom());
   if(z>14) z=14;
@@ -130,8 +135,12 @@ export function popUpTunami(map,overlay,evt,content) {
       cont = "津波浸水深　20m以上"
     }
     const coordinate = evt.coordinate;
-    content.innerHTML = cont
-    overlay.setPosition(coordinate);
+    if (overlap) {
+      store.commit('base/popUpContUpdate',cont)
+    } else {
+      content.innerHTML = cont
+      if (cont) overlay.setPosition(coordinate);
+    }
   }
   const imgSrc = url + z + '/' + x + '/' + y+ ".png";
   img.src = imgSrc;

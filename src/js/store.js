@@ -32,7 +32,8 @@ const moduleBase = {
     notification: '',
     dialogMaxZindex:1,
     splitFlg: 1,
-    firstFlg: true
+    firstFlg: true,
+    popUpCont: ''
   },
   getters: {
     layerList: (state) => (mapName) => {
@@ -59,6 +60,17 @@ const moduleBase = {
     }
   },
   mutations: {
+    popUpContReset(state) {
+      state.popUpCont = ''
+    },
+    popUpContUpdate(state,payload) {
+      if (!state.popUpCont) {
+        state.popUpCont = state.popUpCont + payload
+      } else {
+        state.popUpCont = state.popUpCont + '<br>' + payload
+      }
+    },
+    //------------------------------------------------------------------------------------
     updateFirstFlg (state,payload) {
       state.firstFlg = payload
     },
