@@ -106,8 +106,6 @@
         this.$store.commit('base/incrDialogMaxZindex');
         dialog.style["z-index"] = this.s_dialogMaxZindex;
         dialog.style.display = 'block'
-
-        // this.$store.commit('editDialogArr', {name: dialog.name, flg: 'toggle'})
       },
       // 分割-------------------------------------------------------------------------------------
       splitMap () {
@@ -182,7 +180,6 @@
       // 同期-------------------------------------------------------------------------------------
       synch () {
         MyMap.synch(this)
-        console.log(this.synchFlg)
         if(this.synchFlg) {
           document.querySelector('.lock-open').style.display ='none'
           document.querySelector('.lock').style.display ='block'
@@ -320,7 +317,7 @@
         opacity: 0;
     }
     .fa-github{
-      font-size: 20px;
+        font-size: 20px;
     }
 </style>
 <style>

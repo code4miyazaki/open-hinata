@@ -28,7 +28,7 @@ export function initMap (vm) {
     zoom: 6
   });
   for (let i in maps) {
-    //ポップアップを作る。現在不使用
+    //ポップアップを作る。
     const container = document.getElementById(maps[i].mapName + '-popup');
     const content = document.getElementById(maps[i].mapName  + '-popup-content');
     const closer = document.getElementById(maps[i].mapName  + '-popup-closer');
