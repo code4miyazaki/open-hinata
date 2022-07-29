@@ -21,12 +21,12 @@ for (let i of mapsStr) {
 }
 export const syougakkoukuSumm = "<a href='http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-A27-v2_1.html' target='_blank'>国土数値情報　小学校区データ</a>";
 
-var d3syougakkoukuColor = d3.scaleOrdinal(d3.schemeCategory10);
-var d3tyuugakkoukuColor = d3.scaleOrdinal(d3.schemeCategory10);
+const d3syougakkoukuColor = d3.scaleOrdinal(d3.schemeCategory10);
+const d3tyuugakkoukuColor = d3.scaleOrdinal(d3.schemeCategory10);
 function syougakkoukuStyleFunction(feature, resolution) {
-  var prop = feature.getProperties();
-  var geoType = feature.getGeometry().getType();
-  var text = "";
+  const prop = feature.getProperties();
+  const geoType = feature.getGeometry().getType();
+  let text = "";
   if(resolution<38.22){
     if(prop["A27_003"]) {
       text = prop["A27_003"];
@@ -34,18 +34,20 @@ function syougakkoukuStyleFunction(feature, resolution) {
       text = prop["A32_003"];
     }
   }
+  let rgb
+  let rgba
   if(prop["A27_005"]) {
-    var rgb = d3.rgb(d3syougakkoukuColor(Number(prop["id"])));
-    var rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.7)";
+    rgb = d3.rgb(d3syougakkoukuColor(Number(prop["id"])));
+    rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.7)";
   }else{
-    var rgb = d3.rgb(d3tyuugakkoukuColor(Number(prop["id"])));
-    var rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.7)";
+    rgb = d3.rgb(d3tyuugakkoukuColor(Number(prop["id"])));
+    rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.7)";
   }
   switch (geoType){
     case "MultiPoint":
     case "Point":
       if(resolution>305) break;
-      var style = new Style({
+      const style = new Style({
         image: new Circle({
           radius:3,
           fill: new Fill({
@@ -70,7 +72,7 @@ function syougakkoukuStyleFunction(feature, resolution) {
     case "Polygon":
     case "MultiPolygon":
       if(resolution<76) {
-        var style = new Style({
+        const style = new Style({
           fill: new Fill({
             color:rgba
           }),
@@ -89,7 +91,7 @@ function syougakkoukuStyleFunction(feature, resolution) {
           zIndex: 0
         });
       }else{
-        var style = new Style({
+        const style = new Style({
           fill: new Fill({
             color:rgba
           }),
@@ -116,10 +118,6 @@ for (let i of mapsStr) {
   tyuugakkoukuObj[i] = new VectorTileLayer(new Tyuugakkouku())
 }
 export const tyuugakkoukuSumm = "<a href='http://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-A32-v2_0.html' target='_blank'>国土数値情報　中学校区データ</a>";
-
-
-
-
 // 夜の明かり---------------------------------------------------------------------------------------
 function SekaiLight () {
   this.name = 'japanLight'
@@ -135,7 +133,7 @@ for (let i of mapsStr) {
   japanLightObj[i] = new VectorTileLayer(new SekaiLight())
 }
 export const japanLightSumm = "世界メッシュ研究所さんの世界メッシュコードを使用しています。<hr>本3次世界メッシュ夜間光統計はNASAが提供する全球夜間光画像(2012年)を元に世界メッシュ研究所が作成したものです。夜間光データの源データはアメリカ航空宇宙局(NASA)に帰属します。データの品質や信頼性について世界メッシュ研究所、NASAが一切保証するものではなく、利用者が本データセットの利用によって生じた損害または損失について世界メッシュ研究所、NASAは一切の責任を負うものではありません。Data courtesy Marc Imhoff of NASA GSFC and Christopher Elvidge of NOAA NGDC. Image by Craig Mayhew and Robert Simmon, NASA GSFC. (c) NASA "
-
+//----------------------------------------------------------------------------------
 function  getZoom(resolution)  {
   let zoom = 0;
   let r = 156543.03390625; // resolution for zoom 0
@@ -148,9 +146,9 @@ function  getZoom(resolution)  {
   }
   return zoom; // resolution was greater than 156543.03390625 so return 0
 }
-
+//----------------------------------------------------------------------------------
 function japanLightStyleFunction () {
-  //MVTタイルは７〜１４まで詳細　１から６は簡易
+  // MVTタイルは７〜１４まで詳細 １から６は簡易
   const d3Color = d3.interpolateLab("black","yellow");
   return function(feature, resolution) {
     const zoom = getZoom(resolution);
