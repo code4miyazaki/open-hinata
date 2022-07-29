@@ -11,6 +11,7 @@ import Target from 'ol-ext/control/Target'
 import Lego from 'ol-ext/filter/Lego'
 import Notification from './notification'
 import * as Layers from './layers'
+import * as PopUp from './popup'
 import {defaults as defaultInteractions, DragRotateAndZoom} from 'ol/interaction';
 let maxZndex = 0;
 let legoFilter = null;
@@ -103,9 +104,7 @@ export function initMap (vm) {
     // イベント追加----------------------------------------------------------------
     // フィーチャーにマウスがあたったとき
     map.on("pointermove",function(evt){
-      document.querySelectorAll(".ol-viewport").forEach((elm)=>{
-        elm.style.cursor = "default";
-      })
+      document.querySelector('#' + mapName + ' .ol-viewport').style.cursor = "default"
       const map = evt.map;
       // const option = {
       //   layerFilter: function (layer) {
@@ -118,12 +117,11 @@ export function initMap (vm) {
         });
     // },option);
       if (feature) {
-        document.querySelectorAll(".ol-viewport").forEach((elm)=>{
-          elm.style.cursor = "pointer";
-        })
+        document.querySelector('#' + mapName + ' .ol-viewport').style.cursor = "pointer"
       }
     });
     // シングルクリック------------------------------------------------------------------------------------
+    // 大正古地図用
     map.on('singleclick', function (evt) {
       //少しでも処理を早めるために古地図レイヤーがなかったら抜ける。
       const layers = map.getLayers().getArray();
@@ -151,6 +149,7 @@ export function initMap (vm) {
       }
     })
 //--------------------------------------------------------------------------------
+// ポップアップ用
     map.on('singleclick', function (evt) {
       const pixel = (map).getPixelFromCoordinate(evt.coordinate);
       const features = [];
@@ -159,38 +158,12 @@ export function initMap (vm) {
         features.push(feature);
         layers.push(layer);
       });
-      if(!features.length) return;//fフィーチャーがなかったら抜ける。
-
-      if (layers[0].values_.id === 'japanLight') {
-        const lightLevel = features[0].properties_.light
-        const coordinate = evt.coordinate;
-        content.innerHTML = '明るさレベル＝' +  lightLevel
-        overlay[i].setPosition(coordinate);
-      }
-      //--------------------------------------------------------------------------
-      if (layers[0].values_.id === 'syougakkouku') {
-        console.log(features[0].properties_)
-        const cont = '市区町村コード＝' + features[0].properties_.A27_005 + '<br>' +
-                             '設置主体=' + features[0].properties_.A27_006+ '<br>' +
-                             '名称＝' + features[0].properties_.A27_007+ '<br>' +
-                             '所在地＝' + features[0].properties_.A27_008+ '<br>'
-        const coordinate = evt.coordinate;//
-        content.innerHTML = cont
-        overlay[i].setPosition(coordinate);
-      }
-      //--------------------------------------------------------------------------
-      if (layers[0].values_.id === 'tyuugakkouku' ) {
-        console.log(features[0].properties_)
-        const cont = '市区町村コード＝' + features[0].properties_.A32_006 + '<br>' +
-          '設置主体=' + features[0].properties_.A32_007 + '<br>' +
-          '名称＝' + features[0].properties_.A32_008 + '<br>' +
-          '所在地＝' + features[0].properties_.A32_009 + '<br>'
-        const coordinate = evt.coordinate;//
-        content.innerHTML = cont
-        overlay[i].setPosition(coordinate);
+      if(features.length){
+        PopUp.popUp(layers,features,overlay[i],evt,content)
       }
     })
   //------------------------------------------------------------------------------------------------------
+  // 旧版地形図用
     map.on('singleclick', function (evt) {
       console.log(transform(evt.coordinate, "EPSG:3857", "EPSG:4326"));
       const map = evt.map;
@@ -260,7 +233,7 @@ export function initMap (vm) {
         }
       }
     });
-
+    //----------------------------------------------------------------------------------------
     const getElevation = (event) =>{
       let z = map.getView().getZoom()
       if(z>13) z=13;
