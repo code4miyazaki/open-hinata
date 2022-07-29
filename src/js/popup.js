@@ -22,7 +22,7 @@ export function popUp(layers,features,overlay,evt,content) {
       break
   }
   content.innerHTML = cont
-  overlay.setPosition(coordinate);
+  if (cont) overlay.setPosition(coordinate);
 
 
 
