@@ -121,25 +121,7 @@ export function initMap (vm) {
       }
     });
     // シングルクリック------------------------------------------------------------------------------------
-    // 洪水浸水用-----------------------------------------------------------------
-    // map.on('singleclick', function (evt) {
-    //   const layers = map.getLayers().getArray();
-    //   const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
-    //   const tunamiLayer = layers.find(el => el.get('name')==='tunami');
-    //   if (shinsuishinLayer && !tunamiLayer) {
-    //     PopUp.popUpShinsuishin(map,overlay[i],evt,content)
-    //   }
-    // })
-    // // 津波用-----------------------------------------------------------------
-    // map.on('singleclick', function (evt) {
-    //   const layers = map.getLayers().getArray();
-    //   const tunamiLayer = layers.find(el => el.get('name')==='tunami');
-    //   const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
-    //   if (tunamiLayer && !shinsuishinLayer) {
-    //     PopUp.popUpTunami(map,overlay[i],evt,content)
-    //   }
-    // })
-    // 洪水津波用-----------------------------------------------------------------
+    // 洪水,津波,継続用-----------------------------------------------------------------
     map.on('singleclick', function (evt) {
       const layers = map.getLayers().getArray();
       const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
@@ -154,10 +136,10 @@ export function initMap (vm) {
           const coordinate = evt.coordinate;
           const cont = store.state.base.popUpCont
           content.innerHTML = cont
-          if (cont) {
-            overlay[i].setPosition(coordinate)
+          if (cont.includes('undefined') || cont==='') {
+            overlay[i].setPosition(undefined)
           } else {
-            overlay[i].setPosition(undefined);
+            overlay[i].setPosition(coordinate);
           }
           store.commit('base/popUpContReset')
         }
@@ -172,6 +154,15 @@ export function initMap (vm) {
       // let kotizuLayer = layers.find(el => el.values_.dep);
       let kotizuLayer = layers.find(el => el.get('dep'));
       if (!kotizuLayer) return //ここで抜ける
+
+      //  洪水浸水想定と重ねるときは動作させない
+      const layers0 = map.getLayers().getArray();
+      const hazardLayers = layers0.filter(el => el.get('name')==='shinsuishin'
+        || el.get('name')==='tunami'
+        || el.get('name')==='keizoku');
+      if (hazardLayers.length>0) return
+      // ここまで
+
       // ここから本番
       const pixel = (map).getPixelFromCoordinate(evt.coordinate);
       const clickedLayers = [];
