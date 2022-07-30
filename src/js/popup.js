@@ -90,9 +90,10 @@ export function popUpShinsuishin(map,overlay,evt,content,overlap) {
 }
 //----------------------------------------------------------------------------------------
 export function popUpTunami(map,overlay,evt,content,overlap) {
-  const url = 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/';
+  // const url = 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/';
+  const url = 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/'
   let z = Math.floor(eval(map).getView().getZoom());
-  if(z>14) z=14;
+  if(z>17) z=17;
   const R = 6378137;// 地球の半径(m);
   const rx = (0.5 + evt.coordinate[0]/(2*R*Math.PI))*Math.pow(2,z);
   const ry = (0.5 - evt.coordinate[1]/(2*R*Math.PI))*Math.pow(2,z);
@@ -119,21 +120,39 @@ export function popUpTunami(map,overlay,evt,content,overlap) {
     if (r + g + b === 0) return
     const rgba = "rgba(" + r + "," + g + "," + b + ",1.0)";
     let cont
-    if(r===0 && g===255 && b===0) {
-      cont = "津波浸水深　0.01m以上0.3m未満"
-    }else if(r===255 && g===230 && b===0) {
-      cont = "津波浸水深　0.3m以上1.0m未満"
-    }else if(r===255 && g===153 && b===0) {
-      cont = "津波浸水深　1m以上2m未満"
-    }else if(r===239 && g===117 && b===152) {
-      cont = "津波浸水深　2m以上5m未満"
-    }else if(r===255 && g===40 && b===0) {
-      cont = "津波浸水深　5m以上10m未満"
-    }else if(r===180 && g===0 && b===104) {
-      cont = "津波浸水深　10m以上20m未満"
-    }else if(r===128 && g===0 && b===255) {
+    if(r===255 && g===255 && b===179) {
+      cont = "津波浸水深　0.3m未満"
+    }else if(r===247 && g===245 && b===169) {
+      cont = "津波浸水深　0.3m~0.5m"
+    }else if(r===248 && g===225 && b===166) {
+      cont = "津波浸水深　0.5m~1.0m"
+    }else if(r===255 && g===216 && b===192) {
+      cont = "津波浸水深　1m~3m"
+    }else if(r===255 && g===183 && b===183) {
+      cont = "津波浸水深　3m~5m"
+    }else if(r===255 && g===145 && b===145) {
+      cont = "津波浸水深　5m~10m"
+    }else if(r===242 && g===133 && b===201) {
+      cont = "津波浸水深　10m~20m"
+    }else if(r===220 && g===122 && b===220) {
       cont = "津波浸水深　20m以上"
     }
+    // 旧バージョンのとき
+    // if(r===0 && g===255 && b===0) {
+    //   cont = "津波浸水深　0.01m以上0.3m未満"
+    // }else if(r===255 && g===230 && b===0) {
+    //   cont = "津波浸水深　0.3m以上1.0m未満"
+    // }else if(r===255 && g===153 && b===0) {
+    //   cont = "津波浸水深　1m以上2m未満"
+    // }else if(r===239 && g===117 && b===152) {
+    //   cont = "津波浸水深　2m以上5m未満"
+    // }else if(r===255 && g===40 && b===0) {
+    //   cont = "津波浸水深　5m以上10m未満"
+    // }else if(r===180 && g===0 && b===104) {
+    //   cont = "津波浸水深　10m以上20m未満"
+    // }else if(r===128 && g===0 && b===255) {
+    //   cont = "津波浸水深　20m以上"
+    // }
     const coordinate = evt.coordinate;
     if (overlap) {
       store.commit('base/popUpContUpdate',cont)

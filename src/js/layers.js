@@ -1631,8 +1631,8 @@ const shinsuishinSumm = '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/shin
 function Tsunami () {
   this.name = 'tunami'
   this.source = new XYZ({
-    // url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}\.png',
-    url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/{z}/{x}/{y}.png',
+    url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}.png',
+    // url: 'https://disaportaldata.gsi.go.jp/raster/04_tsunami_oldlegend/{z}/{x}/{y}.png',
     crossOrigin: 'Anonymous',
     minZoom: 1,
     maxZoom: 17
@@ -1642,7 +1642,7 @@ const tsunamiObj = {};
 for (let i of mapsStr) {
   tsunamiObj[i] = new TileLayer(new Tsunami())
 }
-const tunamiSumm = 'test';
+const tunamiSumm =  '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/tsunami_newlegend.png">';
 // 津波浸水想定ここまで------------------------------------------------------------------------
 
 // 宮崎市ハザードマップ-------------------------------------------------------------------------------
