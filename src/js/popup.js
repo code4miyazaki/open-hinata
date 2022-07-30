@@ -188,10 +188,6 @@ export function popUpKeizoku(map,overlay,evt,content,overlap) {
     const r = data[0];
     const g = data[1];
     const b = data[2];
-    const rs = String(r);
-    const gs = String(g);
-    const bs = String(b);
-    console.log(rs,gs,bs);
     if (r + g + b === 0) return
     const rgba = "rgba(" + r + "," + g + "," + b + ",1.0)";
     let cont

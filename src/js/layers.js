@@ -1654,7 +1654,7 @@ const keizokuObj = {};
 for (let i of mapsStr) {
   keizokuObj[i] = new TileLayer(new Keizoku())
 }
-const keizokuSumm =  '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/tsunami_newlegend.png">';
+const keizokuSumm =  '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/shinsui_legend_l2_keizoku.png">';
 // 土砂災害警戒区域（土石流-------------------------------------------------------------------------------
 function Dosya () {
   this.name = 'dosya'
@@ -1841,7 +1841,7 @@ const layers =
       children: [
         { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } },
         { text: '津波浸水想定', data: { id: 'tunami', layer: tsunamiObj, opacity: 1, summary: tunamiSumm } },
-        { text: '浸水継続時間', data: { id: 'keizoku', layer: keizokuObj, opacity: 1, summary: keizokuSumm } },
+        { text: '浸水継続時間(想定最大規模)', data: { id: 'keizoku', layer: keizokuObj, opacity: 1, summary: keizokuSumm } },
         { text: '土砂災害警戒区域(土石流)', data: { id: 'dosya', layer: dosyaObj, opacity: 1, summary: dosyaSumm } },
         { text: '宮崎市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyazakisiHm', layer: miyazakisiHmObj, opacity: 1, zoom: 13, center: [131.42054548436312, 31.907339493919977], summary: miyazakisiHmSumm } },
         { text: '都城市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyakonozyousiHm', layer: miyakonozyousiHmObj, opacity: 1, zoom: 13, center: [131.07797970576192, 31.78882205640913], summary: miyakonozyousiHmSumm } },
