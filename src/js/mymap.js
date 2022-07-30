@@ -213,8 +213,10 @@ export function initMap (vm) {
       const map = evt.map;
       //  洪水浸水想定と重ねるときは動作させない
       const layers0 = map.getLayers().getArray();
-      const shinsuishinLayer = layers0.find(el => el.get('name')==='shinsuishin');
-      if (shinsuishinLayer) return
+      const hazardLayers = layers0.filter(el => el.get('name')==='shinsuishin'
+                                                                    || el.get('name')==='tunami'
+                                                                    || el.get('name')==='keizoku');
+      if (hazardLayers.length>0) return
       // ここまで
 
       const option = {
