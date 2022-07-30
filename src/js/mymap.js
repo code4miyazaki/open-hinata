@@ -152,7 +152,11 @@ export function initMap (vm) {
           const coordinate = evt.coordinate;
           const cont = store.state.base.popUpCont
           content.innerHTML = cont
-          if (cont) overlay[i].setPosition(coordinate)
+          if (cont) {
+            overlay[i].setPosition(coordinate)
+          } else {
+            overlay[i].setPosition(undefined);
+          }
           store.commit('base/popUpContReset')
         }
         setTimeout(popup,300)
