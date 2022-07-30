@@ -219,5 +219,6 @@
 <style scoped>
 .content-div{
   width: 200px;
+  padding: 10px;
 }
 </style>

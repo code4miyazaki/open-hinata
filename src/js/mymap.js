@@ -178,8 +178,11 @@ export function initMap (vm) {
           // 2回削除する必要がある。
           kotizuLayer.removeFilter()
           kotizuLayer.removeFilter()
+          maxZndex++
+          kotizuLayer.setZIndex(maxZndex)
         } else {
           Layers.mask(dep,kotizuLayer)
+          kotizuLayer.setZIndex(undefined)
         }
       }
     })
