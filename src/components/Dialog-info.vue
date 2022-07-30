@@ -57,10 +57,10 @@
         border: 1px solid whitesmoke;
         border-radius: 4px;
         transition: opacity 1s;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+        /*-webkit-user-select: none;*/
+        /*-moz-user-select: none;*/
+        /*-ms-user-select: none;*/
+        /*user-select: none;*/
     }
     .drag-handle{
         height: 30px;
@@ -86,7 +86,7 @@
     }
     .info-content-div{
         padding: 10px;
-        max-width: 350px;
+        /*max-width: 350px;*/
         word-wrap: break-word;
         overflow-wrap: break-word;
     }

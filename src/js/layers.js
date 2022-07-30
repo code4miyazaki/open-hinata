@@ -289,7 +289,7 @@ for (let i of mapsStr) {
   ryuuikiObj[i] = new TileLayer(new Ryuuiki())
 }
 const ryuuikiSumm = '<a href="https://tiles.dammaps.jp/ryuiki/" target="_blank">川だけ地形地図</a><br>' +
-  '<small>本図は国土交通省 国土数値情報「河川」「流域メッシュ」「湖沼」（第2.1版）および国土地理院 地球地図日本「行政界」（第２版）をもとに高根たかね様が作成したものです。国土数値情報は国土計画関連業務のために作成されたデータが副次的に公開されたものであり、国土計画関連業務に差しさわりがない範囲で時間的、位置的精度において現況と誤差が含まれています。本地図を利用される場合はその点に十分ご留意の上ご利用ください。また、国土数値情報 利用約款を遵守しご利用ください。</small>'
+  '<div style="width: 400px"><small>本図は国土交通省 国土数値情報「河川」「流域メッシュ」「湖沼」（第2.1版）および国土地理院 地球地図日本「行政界」（第２版）をもとに高根たかね様が作成したものです。国土数値情報は国土計画関連業務のために作成されたデータが副次的に公開されたものであり、国土計画関連業務に差しさわりがない範囲で時間的、位置的精度において現況と誤差が含まれています。本地図を利用される場合はその点に十分ご留意の上ご利用ください。また、国土数値情報 利用約款を遵守しご利用ください。</small></div>'
 // エコリス植生図---------------------------------------------------------------------------
 function Ecoris () {
   this.source = new XYZ({
@@ -304,7 +304,7 @@ for (let i of mapsStr) {
   ecorisObj[i] = new TileLayer(new Ecoris())
 }
 const ecorisSumm = '<a href="http://map.ecoris.info/" target="_blank">エコリス地図タイル</a><br>' +
-  '<small>第5回 自然環境保全基礎調査 植生調査結果を着色し、国土地理院 基盤地図情報 数値標高データ10mメッシュから作成した陰影起伏図に重ねたものです。</small>'
+  '<div style="width: 300px"><small>第5回 自然環境保全基礎調査 植生調査結果を着色し、国土地理院 基盤地図情報 数値標高データ10mメッシュから作成した陰影起伏図に重ねたものです。</small></div>'
 // 岐阜県CS立体図----------------------------------------------------------------------------
 function GihuCs () {
   this.extent = transformE([136.257111,35.141011,137.666902,36.482164143934]);
@@ -1624,9 +1624,6 @@ for (let i of mapsStr) {
   shinsuishinObj[i] = new TileLayer(new Shinsuishin())
 }
 const shinsuishinSumm = '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/shinsui_legend2-1.png">';
-// const shinsuishinSumm = '<img src=@/assets/img/shinsui_legend2-1.png>';
-// 洪水浸水想定ここまで------------------------------------------------------------------------
-
 // 津波浸水想定-------------------------------------------------------------------------------
 function Tsunami () {
   this.name = 'tunami'
@@ -1643,8 +1640,21 @@ for (let i of mapsStr) {
   tsunamiObj[i] = new TileLayer(new Tsunami())
 }
 const tunamiSumm =  '<img src="https://kenzkenz.xsrv.jp/open-hinata/img/tsunami_newlegend.png">';
-// 津波浸水想定ここまで------------------------------------------------------------------------
-
+// 土砂災害警戒区域（土石流-------------------------------------------------------------------------------
+function Dosya () {
+  this.name = 'dosya'
+  this.source = new XYZ({
+    url: 'https://disaportaldata.gsi.go.jp/raster/05_dosekiryukeikaikuiki/{z}/{x}/{y}.png',
+    crossOrigin: 'Anonymous',
+    minZoom: 1,
+    maxZoom: 17
+  })
+}
+const dosyaObj = {};
+for (let i of mapsStr) {
+  dosyaObj[i] = new TileLayer(new Dosya())
+}
+const dosyaSumm =  '<a href="https://kenzkenz.xsrv.jp/open-hinata/img/dosha_keikai.png" target="_blank" ><img width="600" src="https://kenzkenz.xsrv.jp/open-hinata/img/dosha_keikai.png"></a>  ';
 // 宮崎市ハザードマップ-------------------------------------------------------------------------------
 function MiyazakisiHm () {
   this.source = new XYZ({
@@ -1659,8 +1669,6 @@ for (let i of mapsStr) {
   miyazakisiHmObj[i] = new TileLayer(new MiyazakisiHm())
 }
 const miyazakisiHmSumm = '<a href="http://www.city.miyazaki.miyazaki.jp/life/fire_department/hazard_map/1153.html" target="_blank">宮崎市洪水ハザードマップ</a>へ';
-// 宮崎市ハザードマップここまで------------------------------------------------------------------------
-
 // 都城市ハザードマップ-------------------------------------------------------------------------------
 function MiyakonozyousiHm () {
   this.source = new XYZ({
@@ -1675,8 +1683,6 @@ for (let i of mapsStr) {
   miyakonozyousiHmObj[i] = new TileLayer(new MiyakonozyousiHm())
 }
 const miyakonozyousiHmSumm = '';
-// 都城市ハザードマップここまで------------------------------------------------------------------------
-
 // 日向市ハザードマップ-------------------------------------------------------------------------------
 function HyuugasiHm () {
   this.source = new XYZ({
@@ -1691,7 +1697,6 @@ for (let i of mapsStr) {
   hyuugasiHmObj[i] = new TileLayer(new HyuugasiHm())
 }
 const hyuugasiHmSumm = '';
-// 日向市ハザードマップここまで------------------------------------------------------------------------
 // ここにレイヤーを全部書く。クリックするとストアのlayerListに追加されていく-------------------------
 const layers =
   [
@@ -1821,6 +1826,7 @@ const layers =
       children: [
         { text: '洪水浸水想定', data: { id: 'shinsuishin', layer: shinsuishinObj, opacity: 1, summary: shinsuishinSumm } },
         { text: '津波浸水想定', data: { id: 'tunami', layer: tsunamiObj, opacity: 1, summary: tunamiSumm } },
+        { text: '土砂災害警戒区域(土石流)', data: { id: 'dosya', layer: dosyaObj, opacity: 1, summary: dosyaSumm } },
         { text: '宮崎市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyazakisiHm', layer: miyazakisiHmObj, opacity: 1, zoom: 13, center: [131.42054548436312, 31.907339493919977], summary: miyazakisiHmSumm } },
         { text: '都城市洪水ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'miyakonozyousiHm', layer: miyakonozyousiHmObj, opacity: 1, zoom: 13, center: [131.07797970576192, 31.78882205640913], summary: miyakonozyousiHmSumm } },
         { text: '日向市防災ﾊｻﾞｰﾄﾞﾏｯﾌﾟ', data: { id: 'hyuugasiHm', layer: hyuugasiHmObj, opacity: 1, zoom: 13, center: [131.6400086045909, 32.395198966795306], summary: hyuugasiHmSumm } }
