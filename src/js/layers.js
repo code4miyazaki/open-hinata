@@ -420,6 +420,7 @@ function Cs10m01 () {
     maxZoom:15
   });
   this.extent = transformE([128.4,32.5,129.530,34.7]);
+  this.extent2 = transformE([128.4,32.5,129.530,34.7]);
 }
 function Cs10m02 () {
   this.source = new XYZ({
@@ -429,6 +430,7 @@ function Cs10m02 () {
     maxZoom:15
   });
   this.extent = transformE([129.02,30.2,132.9,34]);
+  this.extent2 = transformE([129.02,30.2,132.9,34]);
 }
 function Cs10m03 () {
   this.source = new XYZ({
@@ -438,6 +440,7 @@ function Cs10m03 () {
     maxZoom:15
   });
   this.extent = transformE([129.99,33.33,133.7,36.6]);
+  this.extent2 = transformE([129.99,33.33,133.7,36.6]);
 }
 function Cs10m04 () {
   this.source = new XYZ({
@@ -447,6 +450,7 @@ function Cs10m04 () {
     maxZoom:15
   });
   this.extent = transformE([131.99,32.68,134.98,34.67]);
+  this.extent2 = transformE([131.99,32.68,134.98,34.67]);
 }
 function Cs10m05 () {
   this.source = new XYZ({
@@ -456,6 +460,7 @@ function Cs10m05 () {
     maxZoom:15
   });
   this.extent = transformE([132.99,34.00,135.48,35.8]);
+  this.extent2 = transformE([132.99,34.00,135.48,35.8]);
 }
 function Cs10m06 () {
   this.source = new XYZ({
@@ -465,6 +470,7 @@ function Cs10m06 () {
     maxZoom:15
   });
   this.extent = transformE([134.51,33.40,137.02,36.34]);
+  this.extent2 = transformE([134.51,33.40,137.02,36.34]);
 }
 function Cs10m07 () {
   this.source = new XYZ({
@@ -474,6 +480,7 @@ function Cs10m07 () {
     maxZoom:15
   });
   this.extent = transformE([135.99,34.00,137.90,37.66]);
+  this.extent2 = transformE([135.99,34.00,137.90,37.66]);
 }
 function Cs10m08 () {
   this.source = new XYZ({
@@ -483,6 +490,7 @@ function Cs10m08 () {
     maxZoom:15
   });
   this.extent = transformE([137.00,38.68,139.97,34.56]);
+  this.extent2 = transformE([137.00,38.68,139.97,34.56]);
 }
 function Cs10m09 () {
   this.source = new XYZ({
@@ -492,6 +500,7 @@ function Cs10m09 () {
     maxZoom:15
   });
   this.extent = transformE([138.05,38.00,140.99,32.43]);
+  this.extent2 = transformE([138.05,38.00,140.99,32.43]);
 }
 function Cs10m10 () {
   this.source = new XYZ({
@@ -501,6 +510,7 @@ function Cs10m10 () {
     maxZoom:15
   });
   this.extent = transformE([139.46,41.65,142.12,37.66]);
+  this.extent2 = transformE([139.46,41.65,142.12,37.66]);
 }
 function Cs10m11 () {
   this.source = new XYZ({
@@ -510,6 +520,7 @@ function Cs10m11 () {
     maxZoom:15
   });
   this.extent = transformE([139.00,43.35,141.19,41.33]);
+  this.extent2 = transformE([139.00,43.35,141.19,41.33]);
 }
 function Cs10m12 () {
   this.source = new XYZ({
@@ -519,6 +530,7 @@ function Cs10m12 () {
     maxZoom:15
   });
   this.extent = transformE([140.93,45.65,144.05,41.85]);
+  this.extent2 = transformE([140.93,45.65,144.05,41.85]);
 }
 function Cs10m13 () {
   this.source = new XYZ({
@@ -528,6 +540,7 @@ function Cs10m13 () {
     maxZoom:15
   });
   this.extent = transformE([143.95,44.35,145.95,42.70]);
+  this.extent2 = transformE([143.95,44.35,145.95,42.70]);
 }
 function Cs10m15 () {
   this.source = new XYZ({
@@ -537,6 +550,7 @@ function Cs10m15 () {
     maxZoom:15
   });
   this.extent = transformE([126.60,27.37,128.82,26.00]);
+  this.extent2 = transformE([126.60,27.37,128.82,26.00]);
 }
 const cs10mObj = {};
 for (let i of mapsStr) {
