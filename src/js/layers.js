@@ -684,6 +684,7 @@ const ezosansenSumm = '<a href="https://github.com/koukita/touzaiezo" target="_b
 const SSK = '<a href="https://dl.ndl.go.jp/search/searchResult?featureCode=all&searchWord=%E6%9C%80%E6%96%B0%E8%A9%B3%E5%AF%86%E9%87%91%E5%88%BA%E5%88%86%E7%B8%A3%E5%9C%96&fulltext=1&viewRestricted=0" target="_blank">最新詳密金刺分縣圖</a>です。'
 // 	北海道古地図-------------------------------------------------------------------------------
 function Kotizu01hokkaidou () {
+  this.extent = transformE([139.53735724663997, 41.186004293591395,146.42212376570964, 46.26259923231669]);
   this.source = new XYZ({
     url: 'https://kenzkenz.github.io/bunkenzu4/tile/01hokkaidou0/{z}/{x}/{-y}.png',
     crossOrigin: 'Anonymous',
