@@ -1602,7 +1602,7 @@ for (let i of mapsStr) {
       kotizu44oitaObj[i],
       kotizu45miyazakiObj[i],
       kotizu46kagoshimaObj[i],
-      kotizu47okinawaObj[i],
+      kotizu47okinawaObj[i]
     ]
   })
 }
