@@ -456,8 +456,10 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
      const gLayers = layer.values_.layers.array_;
      for (let i in gLayers) {
        gLayers[i].setZIndex(undefined);
-       const extent2 = gLayers[i].values_['extent2'];
-       gLayers[i].setExtent(extent2);
+       // const extent2 = gLayers[i].values_['extent2'];
+       // gLayers[i].setExtent(extent2);
+       const extent = gLayers[i].extent;
+       gLayers[i].setExtent(extent);
      }
    }
     // グループレイヤーのときzindexは効かないようだ。しかしz順が必要になるときがあるので項目を作っている。
