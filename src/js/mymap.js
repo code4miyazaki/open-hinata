@@ -456,6 +456,7 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
      const gLayers = layer.values_.layers.array_;
      for (let i in gLayers) {
        gLayers[i].setZIndex(undefined);
+       //グループレイヤー内のレイヤーはextentの設定がないのでここで作る。
        const extent2 = gLayers[i].values_['extent2'];
        gLayers[i].setExtent(extent2);
      }

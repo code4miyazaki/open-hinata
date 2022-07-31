@@ -419,7 +419,6 @@ function Cs10m01 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([128.4,32.5,129.530,34.7]);
   this.extent2 = transformE([128.4,32.5,129.530,34.7]);
 }
 function Cs10m02 () {
@@ -429,7 +428,6 @@ function Cs10m02 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([129.02,30.2,132.9,34]);
   this.extent2 = transformE([129.02,30.2,132.9,34]);
 }
 function Cs10m03 () {
@@ -439,7 +437,6 @@ function Cs10m03 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([129.99,33.33,133.7,36.6]);
   this.extent2 = transformE([129.99,33.33,133.7,36.6]);
 }
 function Cs10m04 () {
@@ -449,7 +446,6 @@ function Cs10m04 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([131.99,32.68,134.98,34.67]);
   this.extent2 = transformE([131.99,32.68,134.98,34.67]);
 }
 function Cs10m05 () {
@@ -459,7 +455,6 @@ function Cs10m05 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([132.99,34.00,135.48,35.8]);
   this.extent2 = transformE([132.99,34.00,135.48,35.8]);
 }
 function Cs10m06 () {
@@ -469,7 +464,6 @@ function Cs10m06 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([134.51,33.40,137.02,36.34]);
   this.extent2 = transformE([134.51,33.40,137.02,36.34]);
 }
 function Cs10m07 () {
@@ -479,7 +473,6 @@ function Cs10m07 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([135.99,34.00,137.90,37.66]);
   this.extent2 = transformE([135.99,34.00,137.90,37.66]);
 }
 function Cs10m08 () {
@@ -489,7 +482,6 @@ function Cs10m08 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([137.00,38.68,139.97,34.56]);
   this.extent2 = transformE([137.00,38.68,139.97,34.56]);
 }
 function Cs10m09 () {
@@ -499,7 +491,6 @@ function Cs10m09 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([138.05,38.00,140.99,32.43]);
   this.extent2 = transformE([138.05,38.00,140.99,32.43]);
 }
 function Cs10m10 () {
@@ -509,7 +500,6 @@ function Cs10m10 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([139.46,41.65,142.12,37.66]);
   this.extent2 = transformE([139.46,41.65,142.12,37.66]);
 }
 function Cs10m11 () {
@@ -519,7 +509,6 @@ function Cs10m11 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([139.00,43.35,141.19,41.33]);
   this.extent2 = transformE([139.00,43.35,141.19,41.33]);
 }
 function Cs10m12 () {
@@ -529,7 +518,6 @@ function Cs10m12 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([140.93,45.65,144.05,41.85]);
   this.extent2 = transformE([140.93,45.65,144.05,41.85]);
 }
 function Cs10m13 () {
@@ -539,7 +527,6 @@ function Cs10m13 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([143.95,44.35,145.95,42.70]);
   this.extent2 = transformE([143.95,44.35,145.95,42.70]);
 }
 function Cs10m15 () {
@@ -549,7 +536,6 @@ function Cs10m15 () {
     minZoom:1,
     maxZoom:15
   });
-  this.extent = transformE([126.60,27.37,128.82,26.00]);
   this.extent2 = transformE([126.60,27.37,128.82,26.00]);
 }
 const cs10mObj = {};
@@ -698,6 +684,7 @@ const ezosansenSumm = '<a href="https://github.com/koukita/touzaiezo" target="_b
 const SSK = '<a href="https://dl.ndl.go.jp/search/searchResult?featureCode=all&searchWord=%E6%9C%80%E6%96%B0%E8%A9%B3%E5%AF%86%E9%87%91%E5%88%BA%E5%88%86%E7%B8%A3%E5%9C%96&fulltext=1&viewRestricted=0" target="_blank">最新詳密金刺分縣圖</a>です。'
 // 	北海道古地図-------------------------------------------------------------------------------
 function Kotizu01hokkaidou () {
+  //extent は個別レイヤー用。extent2はグループレイヤー用。mymapのwatchLayerでグループレイヤー用を設定している。
   this.extent = transformE([139.53735724663997, 41.186004293591395,146.42212376570964, 46.26259923231669]);
   this.extent2 = transformE([139.53735724663997, 41.186004293591395,146.42212376570964, 46.26259923231669]);
   this.source = new XYZ({
@@ -1818,7 +1805,7 @@ const layers =
         { text: '東西蝦夷山川地理取調図', data: { id: 'ezosansen', layer: ezosansenObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: ezosansenSumm } },
         { text: '大正13,14年古地図',
           children: [
-            { text: '<i class="fa-solid fa-layer-group"></i>全古地図', data: { id: 'kotizu00', layer: kotizu00Obj, opacity: 1, summary: kotizu00Summ } },
+            { text: '<i class="fa-solid fa-layer-group"></i>大正古地図全て', data: { id: 'kotizu00', layer: kotizu00Obj, opacity: 1, summary: kotizu00Summ } },
             { text: '01北海道古地図', data: { id: 'kotizu01hokkaidou', layer: kotizu01hokkaidouObj, opacity: 1, zoom: 8, center: [142.6944008210318, 43.241646716680606], summary: kotizu01hokkaidouSumm } },
             { text: '東北',
               children: [
@@ -1911,4 +1898,3 @@ const layers =
       ]}
   ];
 export const Layers = layers;
-
