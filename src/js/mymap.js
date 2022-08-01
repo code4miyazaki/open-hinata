@@ -210,7 +210,8 @@ export function initMap (vm) {
       if (kotizuLayer) {
         const dep = kotizuLayer.values_.dep
         if (kotizuLayer.getFilters().length >0) {
-          // 2回削除する必要がある。
+          // 3回削除する必要がある。
+          kotizuLayer.removeFilter()
           kotizuLayer.removeFilter()
           kotizuLayer.removeFilter()
           maxZndex++
