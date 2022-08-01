@@ -452,15 +452,15 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
     // リストクリックによる追加したレイヤーで リストの先頭で リストの増加があったとき
      const layer = newLayerList[0][i].layer;
     // グループレイヤーで個別にzindexを触っているときがあるのでリセット。重くなるようならここをあきらめる。
-   if (layer.values_.layers) {
-     const gLayers = layer.values_.layers.array_;
-     for (let i in gLayers) {
-       gLayers[i].setZIndex(undefined);
-       //グループレイヤー内のレイヤーはextentの設定がないのでここで作る。
-       const extent2 = gLayers[i].values_['extent2'];
-       gLayers[i].setExtent(extent2);
-     }
-   }
+   // if (layer.values_.layers) {
+   //   const gLayers = layer.values_.layers.array_;
+   //   for (let i in gLayers) {
+   //     gLayers[i].setZIndex(undefined);
+   //     //グループレイヤー内のレイヤーはextentの設定がないのでここで作る。
+   //     const extent2 = gLayers[i].values_['extent2'];
+   //     gLayers[i].setExtent(extent2);
+   //   }
+   // }
     // グループレイヤーのときzindexは効かないようだ。しかしz順が必要になるときがあるので項目を作っている。
     layer['myZindex'] = myZindex++;
     map.removeLayer(layer);
