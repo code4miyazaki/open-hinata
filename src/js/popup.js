@@ -49,32 +49,22 @@ export function popUpShinsuishin(map,overlay,evt,content,overlap) {
     const r = data[0];
     const g = data[1];
     const b = data[2];
-    const rs = String(r);
-    const gs = String(g);
-    const bs = String(b);
-    console.log(rs,gs,bs);
     if (r + g + b === 0) return
     const rgba = "rgba(" + r + "," + g + "," + b + ",1.0)";
     let cont
-    if(rs.substr(0,2)==="25" && gs.substr(0,2)==="25" && bs.substr(0,2)==="18") {
-      cont = "洪水浸水深　0.3m未満"
-    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="17") {
-      cont = "洪水浸水深　0.3〜0.5m"
-    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="22" && bs.substr(0,2)==="17") {
-      cont = "洪水浸水深　0.5〜1.0m"
-    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="21" && bs.substr(0,2)==="19") {
-      cont = "洪水浸水深　1.0〜3.0m"
-    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="16") {
+    if(r===255 && g===255 && b===179) {
       cont = "洪水浸水深　0.5m未満"
-    }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="21" && bs.substr(0,2)==="19") {
+    }else if(r===247 && g===245 && b===169) {
+      cont = "洪水浸水深　0.5m未満"
+    }else if(r===255 && g===216 && b===192) {
       cont = "洪水浸水深　0.5〜3.0m"
-    }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="18" && bs.substr(0,2)==="18") {
+    }else if(r===255 && g===183 && b===183) {
       cont = "洪水浸水深　3.0〜5.0m"
-    }else if(rs.substr(0,2)==="25" && gs.substr(0,2)==="14" && bs.substr(0,2)==="14") {
+    }else if(r===255 && g===145 && b===145) {
       cont = "洪水浸水深　5.0〜10.0m"
-    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="13" && bs.substr(0,2)==="20") {
+    }else if(r===242 && g===133 && b===201) {
       cont = "洪水浸水深　10.0〜20.0m"
-    }else if(rs.substr(0,2)==="24" && gs.substr(0,2)==="24" && bs.substr(0,2)==="17") {
+    }else if(r===220 && g===122 && b===220) {
       cont = "洪水浸水深　20.0m以上"
     }
     const coordinate = evt.coordinate;
