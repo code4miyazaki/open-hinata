@@ -13,6 +13,7 @@ import Notification from './notification'
 import * as Layers from './layers'
 import * as PopUp from './popup'
 import {defaults as defaultInteractions, DragRotateAndZoom} from 'ol/interaction';
+import {popUpKeizoku, popUpShinsuishin, popUpTunami} from "./popup";
 let maxZndex = 0;
 let legoFilter = null;
 export function initMap (vm) {
@@ -142,35 +143,50 @@ export function initMap (vm) {
     // シングルクリック------------------------------------------------------------------------------------
     // 洪水,津波,継続用-----------------------------------------------------------------
     map.on('singleclick', function (evt) {
-      const layers = map.getLayers().getArray();
-      const shinsuishinLayer = layers.find(el => el.get('name')==='shinsuishin');
-      const tunamiLayer = layers.find(el => el.get('name')==='tunami');
-      const keizokuLayer = layers.find(el => el.get('name')==='keizoku');
-      if (shinsuishinLayer) PopUp.popUpShinsuishin(map,overlay[i],evt,content,true)
-      if (tunamiLayer)  PopUp.popUpTunami(map,overlay[i],evt,content,true)
-      if (keizokuLayer)  PopUp.popUpKeizoku(map,overlay[i],evt,content,true)
-        // 少し待つ
-      if (tunamiLayer || shinsuishinLayer || keizokuLayer) {
-        var popup = function() {
-          const coordinate = evt.coordinate;
-          const cont = store.state.base.popUpCont
-          content.innerHTML = cont
-          if (cont.includes('undefined') || cont==='') {
-            overlay[i].setPosition(undefined)
-          } else {
-            overlay[i].setPosition(coordinate);
-          }
-          store.commit('base/popUpContReset')
+      //処理を早くするため抜ける。
+      const layers0 = map.getLayers().getArray();
+      const hazardLayers = layers0.filter(el => el.get('name')==='shinsuishin'
+        || el.get('name')==='tunami'
+        || el.get('name')==='keizoku');
+      if (hazardLayers.length===0) return
+      //-------------------------------------------------------------------------
+      const pixel = (map).getPixelFromCoordinate(evt.coordinate);
+      const layersObj = [];
+      //マウスがあたった箇所のレイヤーを複数取得する
+      (map).forEachLayerAtPixel(pixel,function(layer, rgba){
+        layersObj.push({
+            layer,
+            rgba
+        });
+      })
+      layersObj.forEach(object =>{
+        switch (object.layer.get('name')){
+          case 'shinsuishin':
+            popUpShinsuishin(object.rgba)
+            break;
+          case 'tunami':
+            popUpTunami(object.rgba)
+            break;
+          case 'keizoku':
+            popUpKeizoku(object.rgba)
+            break;
+          default:
         }
-        setTimeout(popup,200)
-       }
+      });
+      const coordinate = evt.coordinate;
+      const cont = store.state.base.popUpCont
+      content.innerHTML = cont
+      if (cont.includes('undefined') || cont==='') {
+        overlay[i].setPosition(undefined)
+      } else {
+        overlay[i].setPosition(coordinate);
+      }
+      store.commit('base/popUpContReset')
     })
     // 大正古地図用-----------------------------------------------------------------
     map.on('singleclick', function (evt) {
       //少しでも処理を早めるために古地図レイヤーがなかったら抜ける。
       const layers = map.getLayers().getArray();
-      console.log(layers)
-      // let kotizuLayer = layers.find(el => el.values_.dep);
       let kotizuLayer = layers.find(el => el.get('dep'));
       if (!kotizuLayer) return //ここで抜ける
 
@@ -231,7 +247,6 @@ export function initMap (vm) {
                                                                     || el.get('name')==='keizoku');
       if (hazardLayers.length>0) return
       // ここまで
-
       const option = {
         layerFilter: function (layer) {
           return layer.get('name') === 'Mw5center' || layer.get('name') === 'Mw20center';

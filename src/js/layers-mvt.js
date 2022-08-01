@@ -43,11 +43,12 @@ function syougakkoukuStyleFunction(feature, resolution) {
     rgb = d3.rgb(d3tyuugakkoukuColor(Number(prop["id"])));
     rgba = "rgba(" + rgb.r + "," + rgb.g + "," + rgb.b + ",0.7)";
   }
+  let style
   switch (geoType){
     case "MultiPoint":
     case "Point":
       if(resolution>305) break;
-      const style = new Style({
+      style = new Style({
         image: new Circle({
           radius:3,
           fill: new Fill({
@@ -72,7 +73,7 @@ function syougakkoukuStyleFunction(feature, resolution) {
     case "Polygon":
     case "MultiPolygon":
       if(resolution<76) {
-        const style = new Style({
+         style = new Style({
           fill: new Fill({
             color:rgba
           }),
@@ -91,7 +92,7 @@ function syougakkoukuStyleFunction(feature, resolution) {
           zIndex: 0
         });
       }else{
-        const style = new Style({
+         style = new Style({
           fill: new Fill({
             color:rgba
           }),
