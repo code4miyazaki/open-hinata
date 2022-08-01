@@ -102,6 +102,11 @@ export function initMap (vm) {
     // コントロール追加ここまで----------------------------------------------------------------------
 
     // イベント追加----------------------------------------------------------------
+    map.on("pointermove",function(evt) {
+
+
+    })
+
     // フィーチャーにマウスがあたったとき
     map.on("pointermove",function(evt){
       document.querySelector('#' + mapName + ' .ol-viewport').style.cursor = "default"
@@ -117,6 +122,20 @@ export function initMap (vm) {
         });
     // },option);
       if (feature) {
+        document.querySelector('#' + mapName + ' .ol-viewport').style.cursor = "pointer"
+      }
+      //----------------------------------
+      // 特定のラスターでカーソルを変える
+      const pixel = (map).getPixelFromCoordinate(evt.coordinate);
+      const layers = [];
+      //マウスがあたった箇所のレイヤーを複数取得する
+      (map).forEachLayerAtPixel(pixel,function(layer){
+        layers.push(layer);
+      });
+      const tgtLayers = layers.filter(el => el.get('name')==='shinsuishin'
+        || el.get('name')==='tunami'
+        || el.get('name')==='keizoku');
+      if (tgtLayers.length>0) {
         document.querySelector('#' + mapName + ' .ol-viewport').style.cursor = "pointer"
       }
     });

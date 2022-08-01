@@ -701,7 +701,7 @@ const kotizu01hokkaidouSumm = SSK + '<br><a href="https://kenzkenz.github.io/bun
 export  function mask (dep,layer) {
   const coords = dep.geometry.coordinates;
   // epsg4326(WGS84)のときだけ実行する。
-  if(coords[0][0] [0]< 1000) {
+  if(coords[0][0][0]< 1000) {
     for (let i = 0; i < coords[0].length; i++) {
       coords[0][i] = fromLonLat(coords[0][i])
     }
