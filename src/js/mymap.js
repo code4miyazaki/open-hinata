@@ -451,16 +451,19 @@ export function watchLayer (map, thisName, newLayerList,oldLayerList) {
   for (let i = newLayerList[0].length - 1; i >= 0; i--) {
     // リストクリックによる追加したレイヤーで リストの先頭で リストの増加があったとき
      const layer = newLayerList[0][i].layer;
-    // グループレイヤーで個別にzindexを触っているときがあるのでリセット。重くなるようならここをあきらめる。
-   // if (layer.values_.layers) {
-   //   const gLayers = layer.values_.layers.array_;
-   //   for (let i in gLayers) {
-   //     gLayers[i].setZIndex(undefined);
-   //     //グループレイヤー内のレイヤーはextentの設定がないのでここで作る。
-   //     const extent2 = gLayers[i].values_['extent2'];
-   //     gLayers[i].setExtent(extent2);
-   //   }
-   // }
+    // グループレイヤーで個別にzindexを触っているときがあるのでリセット。重くなるようならここを再検討。
+   if (layer.values_.layers) {
+     const gLayers = layer.values_.layers.array_;
+     for (let i in gLayers) {
+       gLayers[i].setZIndex(undefined);
+       // mw5,mw20のためのコード。気にしすぎ、なくてもいい。
+       const extent2 = gLayers[i].values_['extent2'];
+       if(extent2) gLayers[i].setExtent(extent2);
+       // 古地図のためのコード。気にしすぎ、なくてもいい。
+       const dep = gLayers[i].values_['dep'];
+       if (dep) Layers.mask(dep,gLayers[i])
+     }
+   }
     // グループレイヤーのときzindexは効かないようだ。しかしz順が必要になるときがあるので項目を作っている。
     layer['myZindex'] = myZindex++;
     map.removeLayer(layer);
